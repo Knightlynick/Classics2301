@@ -4,14 +4,20 @@ This repository is organized so the study materials are easy to find and the qui
 
 ## Folder layout
 
-- `study-docs/`: written study materials, including the main final exam guide
-- `course-materials/`: source lecture scripts, slide extracts, readings, PowerPoints, and study questions
+- `study-docs/`: written study materials, including the final LaTeX source and compiled PDF guide
+- `course-materials/`: local-only archive of lecture scripts, slide extracts, readings, PowerPoints, and study questions
 - `docs/`: the static quiz app for desktop, phone, and GitHub Pages
 
 ## Start here
 
-- Main guide: `study-docs/final_exam_study_guide.md`
+- Main guide PDF: `study-docs/final_exam_study_guide.pdf`
+- Main guide source: `study-docs/final_exam_study_guide.tex`
 - Quiz app: `docs/index.html`
+- Rebuild the PDF: `powershell -ExecutionPolicy Bypass -File study-docs/build-guide.ps1`
+
+## Publishing note
+
+This repo is set up so `docs/` and `study-docs/` can be published without exposing the raw course archive. `course-materials/` is kept locally and ignored by git.
 
 ## GitHub Pages setup
 

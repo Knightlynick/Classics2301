@@ -1,0 +1,1888 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{titlesec}
+\usepackage{parskip}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=BrickRed,
+  urlcolor=BrickRed,
+  pdftitle={Roman Crime Final Exam Study Guide},
+  pdfauthor={OpenAI Codex},
+  pdfsubject={Classics 2301 final exam review}
+}
+\setlength{\parskip}{0.45em}
+\setlength{\parindent}{0pt}
+\setlength{\headheight}{14pt}
+\setlist[itemize]{leftmargin=1.5em, itemsep=0.2em, topsep=0.35em}
+\setlist[enumerate]{leftmargin=1.8em, itemsep=0.25em, topsep=0.35em}
+\definecolor{RomanRed}{HTML}{8A3B22}
+\definecolor{Parchment}{HTML}{F6F0E5}
+\definecolor{InkBlue}{HTML}{22313F}
+\definecolor{BorderTan}{HTML}{D8C7A4}
+\titleformat{\section}{\Large\bfseries\color{RomanRed}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\large\bfseries\color{InkBlue}}{}{0em}{}
+\newtcolorbox{quotebox}{colback=Parchment,colframe=BorderTan,boxrule=0.6pt,arc=2pt,left=7pt,right=7pt,top=6pt,bottom=6pt}
+\newtcolorbox{calloutbox}[1][]{colback=RomanRed!6,colframe=RomanRed!70!black,boxrule=0.8pt,arc=2pt,left=8pt,right=8pt,top=7pt,bottom=7pt,fonttitle=\bfseries,title=#1}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Roman Crime Final}
+\fancyhead[R]{\thepage}
+\begin{document}
+\hypersetup{pageanchor=false}
+\begin{titlepage}
+\centering
+{\Huge\bfseries Roman Crime Final Exam Study Guide\par}
+\vspace{1.5em}
+{\Large Classics 2301\par}
+\vspace{2em}
+{\large Crime and Punishment in Ancient Greece and Rome\par}
+\vfill
+\begin{calloutbox}[How to Use This Packet]
+Read the core themes and timeline first, then spend most of your time on Weeks 10--12. Use the earlier weeks to define terms, anchor chronology, and build comparisons. Treat the reading passages as exam evidence, not just illustrations.
+\end{calloutbox}
+\vfill
+{\large Prepared from lecture scripts, slide extracts, study questions, and assigned readings in the local course archive.\par}
+\vspace{0.75em}
+{\large \today\par}
+\end{titlepage}
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+\begin{calloutbox}[Fast Exam Priorities]
+Highest priority: Week 10 Roman law institutions, Week 11 Catiline chronology and the \texttt{SCU}, and Week 12 \texttt{Pro Caelio}, \texttt{vis}, and Cicero's character-based strategy.\newline
+Second priority: Week 7 Draco and \texttt{Lysias 1}, Week 8 \texttt{Gorgias}, and Week 6 criminology models.\newline
+Foundation priority: Weeks 1--4 for chronology, public/private distinctions, tragedy, and Greek legal vocabulary.
+\end{calloutbox}
+
+\section*{Overview}
+\addcontentsline{toc}{section}{Overview}
+
+
+This guide is built from the course materials in this folder: lecture scripts, slide decks, study-question files, the assigned PDFs for \texttt{Lysias 1} and \texttt{In Defense of Marcus Caelius}, and the existing local study-note \texttt{.tex/.pdf} files. The lecture scripts are treated as the main teaching source. The exam is cumulative, but the course materials make clear that Weeks 10-12 deserve the heaviest emphasis.
+
+\section{How to use this guide}
+
+\begin{enumerate}
+
+\item Read the "Core Themes" and "Master Timeline" sections first.
+
+\item Study Weeks 10-12 in detail.
+
+\item Use Weeks 1-4 and 6-8 to make comparisons, define terms, and answer cumulative questions.
+
+\item For reading weeks, memorize both the argument of the text and the professor's interpretation of why the passage matters.
+
+\item Use the study-question answers at the end of each week to self-test.
+
+\end{enumerate}
+
+\section{Core Themes You Should See Everywhere}
+
+\subsection{1. Crime is not the same thing in antiquity and modernity}
+
+\begin{itemize}
+
+\item Modern systems sharply separate criminal law and civil law, rely on police and public prosecutors, and use imprisonment as a central punishment.
+
+\item Ancient Athens and Rome distinguished public and private matters, but the line was much narrower and much stranger. Many things modern people call crimes were handled as private wrongs.
+
+\item In classical Athens, homicide was not a public crime in the modern sense. In Rome, many violent acts remained outside a strong state criminal apparatus for a very long time.
+
+\end{itemize}
+
+\subsection{2. Self-help matters}
+
+\begin{itemize}
+
+\item Ancient societies expected households, kin groups, patrons, and private citizens to respond to wrongs.
+
+\item Law often regulated self-help rather than replacing it.
+
+\item Greek homicide law and Roman patron-client practice both show that the state did not monopolize force in the modern way.
+
+\end{itemize}
+
+\subsection{3. Rhetoric shapes criminality}
+
+\begin{itemize}
+
+\item Ancient law-court speeches do not just prove facts. They construct identities.
+
+\item Lysias turns Euphiletos into a modest victim and Eratosthenes into a corrupt seducer.
+
+\item Cicero turns Caelius into a charming young hero and Clodia into a scandalous villain.
+
+\item Sallust frames Catiline in contradictory ways: criminal, aristocrat, revolutionary, enemy, and heroic commander.
+
+\end{itemize}
+
+\subsection{4. Crime is often treated as a matter of character, not just action}
+
+\begin{itemize}
+
+\item Modern positivist criminology looks for causes of criminality in biology, environment, and psychology.
+
+\item Ancient texts often do something similar: they explain crime through ancestry, upbringing, moral weakness, gender, class position, and desire.
+
+\item This matters especially in Weeks 11 and 12.
+
+\end{itemize}
+
+\subsection{5. Insider versus outsider is a recurring structure}
+
+\begin{itemize}
+
+\item Criminals are cast as threats to the community.
+
+\item Punishment often removes them from the community: exile in antiquity, imprisonment in modernity.
+
+\item But the dangerous figure in this course is often an insider: a citizen, aristocrat, householder, wife, husband, politician, or general.
+
+\end{itemize}
+
+\subsection{6. State violence develops over time}
+
+\begin{itemize}
+
+\item In both Greece and Rome, early law coexists with private retaliation.
+
+\item Over time, institutions become more formal.
+
+\item In Rome especially, the state gradually centralizes legitimate violence, and the law on \texttt{vis} becomes a key turning point in that story.
+
+\end{itemize}
+
+\section{Master Timeline}
+
+\subsection{Greek timeline}
+
+\begin{itemize}
+
+\item c. 6500-3000 BCE: Neolithic Greece
+
+\item c. 3000-1100 BCE: Bronze Age
+
+\item c. 1100-750 BCE: Greek Dark Age
+
+\item c. 750-480 BCE: Archaic Period
+
+\item c. 594 BCE: Solon's reforms
+
+\item c. 508 BCE: Cleisthenic reforms at Athens
+
+\item 499-479 BCE: Persian Wars
+
+\item 480-323 BCE: Classical Period
+
+\item 431-404 BCE: Peloponnesian War
+
+\item 469-399 BCE: Socrates
+
+\item 458 BCE: Aeschylus' \texttt{Oresteia}
+
+\item 429-347 BCE: Plato
+
+\item 323-30 BCE: Hellenistic Period
+
+\end{itemize}
+
+\subsection{Roman timeline}
+
+\begin{itemize}
+
+\item 753 BCE: Traditional foundation of Rome
+
+\item 509 BCE: End of monarchy, start of Republic
+
+\item early 5th century BCE: Plebeian secession and Struggle of the Orders
+
+\item 450 BCE: Twelve Tables
+
+\item 367 BCE: Praetorship created; consular hierarchy clarified
+
+\item 287 BCE: \texttt{lex Hortensia} makes plebiscites binding on all Rome
+
+\item 149 BCE: \texttt{lex Calpurnia} creates first \texttt{quaestio perpetua}
+
+\item 82-81 BCE: Sulla's dictatorship and expansion of permanent criminal courts
+
+\item 81 BCE: \texttt{lex Cornelia de sicariis et veneficis}
+
+\item 63 BCE: Catilinarian conspiracy
+
+\item 58 BCE: Clodius' law targets executions without trial; Cicero goes into exile
+
+\item 56 BCE: Trial of Caelius, Cicero delivers \texttt{Pro Caelio}
+
+\item 27 BCE: Augustan settlement
+
+\item 426 CE: Law of Citations
+
+\item 439 CE: \texttt{Codex Theodosianus}
+
+\item 528-534 CE: Justinian's codification, \texttt{Corpus Iuris Civilis}
+
+\end{itemize}
+
+\section{Week 1: Introduction to Crime and Punishment in Ancient Greece and Rome}
+
+\subsection{What Week 1 is really doing}
+
+Week 1 is not just an introduction. It sets the method of the course. The main claim is that modern categories like "crime," "criminal justice," "punishment," "democracy," and even "prison" do not map neatly onto ancient Greece and Rome.
+
+\subsection{Key examples and why they matter}
+
+\begin{itemize}
+
+\item Ned Stark executing a deserter: judgment and punishment are not separated.
+
+\item Salem witch trials: formal procedure can still be unjust.
+
+\item Omar Khadr: one event can generate both criminal and civil consequences.
+
+\item Mike Duffy: public scandal, criminal process, and civil litigation can all diverge.
+
+\end{itemize}
+
+\subsection{Ancient case study: Publius Claudius Pulcher and the sacred chickens}
+
+\begin{itemize}
+
+\item Date: 249 BCE, First Punic War.
+
+\item Claudius ignored bad bird omens before attacking at Drepana.
+
+\item He mocked the sacred chickens, attacked anyway, lost badly, and was prosecuted.
+
+\item The case mixes religion, war, politics, procedure, and punishment.
+
+\item It shows that what counts as a punishable public wrong in Rome includes religious failure, not just modern-style criminal conduct.
+
+\end{itemize}
+
+\subsection{Major concepts}
+
+\begin{itemize}
+
+\item Public case versus private case
+
+\item Criminal law versus civil law
+
+\item Self-help
+
+\item Exile versus imprisonment
+
+\item Parricide and the \texttt{culleus}
+
+\item Foucault and historical discontinuity
+
+\end{itemize}
+
+\subsection{High-yield takeaways}
+
+\begin{calloutbox}[Key Takeaway]
+
+\begin{itemize}
+
+\item Ancient Athens and Rome did distinguish public from private matters, but the categories were narrower than in modern law.
+
+\item Homicide in Athens was not prosecuted the way a modern state prosecutes murder.
+
+\item Ancient prisons were generally temporary holding places, not long-term correctional institutions.
+
+\item Exile is one of the most important ancient punishments.
+
+\end{itemize}
+
+\end{calloutbox}
+
+\subsection{Study questions answered}
+
+\begin{enumerate}
+
+\item What comes to mind when you think about crime and criminals? The course wants you to realize that modern answers are shaped by media, police, courts, and prisons, not by universal truths.
+
+\item Where do we get information about crimes and criminals? Mostly through popular culture, news, legal drama, social media, and highly mediated public stories.
+
+\item How are modern and ancient justice systems similar? Both distinguish serious public wrongs from private disputes, use formal procedures, and try to protect the community.
+
+\item How are they different? Ancient systems rely much more on kinship, self-help, exile, status, and weak state enforcement.
+
+\end{enumerate}
+
+\section{Week 2: Historical Background and Context}
+
+\subsection{Why this week matters}
+
+Week 2 gives you the chronological map required for the whole course. If you cannot place authors, legal reforms, and political systems in the right order, later weeks become confusing.
+
+\subsection{Greek periods you should know}
+
+\begin{itemize}
+
+\item Neolithic
+
+\item Bronze Age
+
+\item Dark Age
+
+\item Archaic
+
+\item Classical
+
+\item Hellenistic
+
+\end{itemize}
+
+\subsection{Roman periods you should know}
+
+\begin{itemize}
+
+\item Regal Period
+
+\item Republican Period
+
+\item Imperial Period
+
+\item Later Roman Empire
+
+\end{itemize}
+
+\subsection{High-yield anchors}
+
+\begin{calloutbox}[Key Takeaway]
+
+\begin{itemize}
+
+\item Draco and Solon are Archaic, before tragedy and before Plato.
+
+\item Aeschylus belongs to the early Classical period.
+
+\item Socrates and Plato belong to the later Classical period.
+
+\item The Roman law material in Weeks 10-12 belongs mainly to the Republic and early Empire, but codification reaches late antiquity.
+
+\end{itemize}
+
+\end{calloutbox}
+
+\subsection{Study questions answered}
+
+\begin{enumerate}
+
+\item What are the major systems of dating chronology for antiquity? BCE/CE dating plus period labels like Archaic, Classical, Hellenistic, Regal, Republic, and Empire.
+
+\item What are the major periods of Greek history? Neolithic, Bronze Age, Dark Age, Archaic, Classical, Hellenistic.
+
+\item What are the major periods of Roman history? Regal, Republic, Empire, later empire.
+
+\item When did Greek culture emerge in the Mediterranean? In the Bronze Age and especially again after the Dark Age with polis formation and colonization.
+
+\item How did Greek culture develop politically? From small communities and aristocratic structures toward poleis, tyrannies, reforms, and in some places democracy.
+
+\item Which wars shaped Greek and Roman history? Persian Wars, Peloponnesian War, Punic Wars, Roman civil wars.
+
+\item What is meant by "Hellenistic"? The post-Alexander Greek world, after 323 BCE.
+
+\item When did Romans control the Mediterranean? Gradually through the middle and late Republic, especially after the Punic Wars.
+
+\item What connections can you draw between Greek and Roman culture? Roman culture borrows heavily from Greek culture, but Roman legal and political development remains distinct.
+
+\end{enumerate}
+
+\section{Week 3: Introduction to Greek Law}
+
+\subsection{What this lecture teaches}
+
+Week 3 gives the vocabulary and institutional structure for Greek law, especially Athenian law. It is one of the densest lectures in the course.
+
+\subsection{Core Greek legal ideas}
+
+\begin{itemize}
+
+\item Earliest Greek dispute resolution often involves arbitration, compensation, and vengeance.
+
+\item Written law becomes important in the Archaic period.
+
+\item Law emerges alongside political reform.
+
+\end{itemize}
+
+\subsection{Key terms}
+
+\begin{itemize}
+
+\item \texttt{nomos}: law, custom, convention
+
+\item \texttt{thesmos}: law laid down
+
+\item \texttt{dike}: often private suit or justice
+
+\item \texttt{graphe}: public prosecution
+
+\item \texttt{Heliaia}: people's court system
+
+\item archons
+
+\item Areopagus
+
+\item boule
+
+\item assembly
+
+\item juries
+
+\item lethal self-help
+
+\end{itemize}
+
+\subsection{Draco and Solon}
+
+\begin{itemize}
+
+\item Draco is associated especially with homicide law.
+
+\item Solon is associated with broader reform and with appeal rights.
+
+\item The important point is not "Draco always imposed death," but that Athenian law formalized when force and homicide were legally permitted or forbidden.
+
+\end{itemize}
+
+\subsection{Private versus public cases}
+
+\begin{itemize}
+
+\item Private cases are brought by the injured party or family.
+
+\item Public cases are brought in the name of the community.
+
+\item This distinction is crucial for understanding why homicide can be legally important without being a public crime in the modern sense.
+
+\end{itemize}
+
+\subsection{Typical Athenian jury trial}
+
+\begin{itemize}
+
+\item No professional judge in the modern sense.
+
+\item Large citizen juries.
+
+\item Timed speeches.
+
+\item No lawyers speaking for you in the modern sense; litigants speak, though they may use speechwriters like Lysias.
+
+\item Heavy dependence on rhetoric.
+
+\end{itemize}
+
+\subsection{Study questions answered}
+
+\begin{enumerate}
+
+\item What are the major terms for Greek laws? \texttt{nomos}, \texttt{thesmos}, \texttt{dike}, and \texttt{graphe} are among the most important distinctions.
+
+\item What is meant by lethal self-help? Legally permitted private violence used to defend household order or respond to certain wrongs.
+
+\item What are the main sources for Greek law in the pre-Classical period? Epic, inscriptions, later historians, and surviving statutes cited in speeches.
+
+\item What are the main features of Greek law in the Archaic period? Increasing written law, lawgivers, kin-based retaliation still present, and formal limits on violence.
+
+\item Who are the major reformers at Athens? Draco, Solon, and later Cleisthenes in political organization.
+
+\item What are the main organizations of the Athenian system? Archons, Areopagus, boule, assembly, juries.
+
+\item What is the procedural difference between private and public cases? Who brings the case, whose interest is represented, and sometimes how the case is framed.
+
+\item How does a typical Greek jury trial proceed? Complaint, pretrial stages, speeches, witnesses, jury vote, and sometimes a separate penalty phase.
+
+\end{enumerate}
+
+\section{Week 4: Greek Tragedy of Crime - Aeschylus' Oresteia}
+
+\subsection{The Five Things}
+
+\begin{itemize}
+
+\item Author: Aeschylus
+
+\item Title: \texttt{Oresteia}
+
+\item Date: 458 BCE
+
+\item Location: Athens
+
+\item Language: Greek
+
+\end{itemize}
+
+\subsection{What the trilogy is about}
+
+\textbf{The \texttt{Oresteia} tracks a chain of violence inside the house of Atreus.}
+
+\begin{itemize}
+
+\item Agamemnon sacrifices Iphigenia.
+
+\item Clytemnestra kills Agamemnon.
+
+\item Orestes kills Clytemnestra to avenge Agamemnon.
+
+\item The Furies pursue Orestes.
+
+\item Athena creates a court and transforms vengeance into civic adjudication.
+
+\end{itemize}
+
+\subsection{Why the trilogy matters for the course}
+
+\begin{itemize}
+
+\item It dramatizes a world before stable civic justice.
+
+\item It presents violent revenge as both necessary and destructive.
+
+\item It shows the transition from blood vengeance to courtroom justice.
+
+\item It treats crime as moral, familial, civic, and divine at the same time.
+
+\end{itemize}
+
+\subsection{Major themes}
+
+\begin{itemize}
+
+\item Hospitality
+
+\item Kinship violence
+
+\item Gender inversion and anxiety
+
+\item Divine justice versus human justice
+
+\item Pollution
+
+\item Founding of the court
+
+\end{itemize}
+
+\subsection{High-yield interpretation}
+
+\begin{calloutbox}[Key Takeaway]
+
+\textbf{The trilogy does not simply say "law replaces revenge." It stages a compromise.}
+
+\begin{itemize}
+
+\item older forces of vengeance are not destroyed;
+
+\item they are incorporated into civic order as the Eumenides;
+
+\item justice becomes institutional, but only by accommodating older claims.
+
+\end{itemize}
+
+\end{calloutbox}
+
+\subsection{Study questions answered}
+
+\begin{enumerate}
+
+\item How does the backstory set up revenge? The house of Atreus is already trapped in inherited violence before the trilogy begins.
+
+\item How does Aeschylus describe life before a justice system? As a world where blood must answer blood and no stable neutral authority resolves conflict.
+
+\item Does Clytemnestra fit expected gender norms? No. She is repeatedly coded as masculine, authoritative, strategic, and politically dangerous.
+
+\item What role does hospitality play? Violations of household trust and guest relationships deepen the moral horror of the crimes.
+
+\item Human versus divine justice? Human judgments are limited and political; divine claims are older, broader, and harder to escape.
+
+\item How does Orestes resolve the conflict? He does not resolve it privately. The case is transferred into a court.
+
+\item How does the trilogy reflect court development? Athena's institution of trial mirrors the move toward civic adjudication.
+
+\item What role do divinities play? They embody competing justice systems.
+
+\item Do punishments fit crimes? Not neatly; each punishment generates further guilt.
+
+\item What do the Eumenides preserve? Order, fear, and the older logic of vengeance, now folded into civic life.
+
+\end{enumerate}
+
+\section{Week 5}
+
+There is no lecture-content week in this local course folder. The cumulative guide therefore moves from Week 4 to Week 6.
+
+\section{Week 6: Modern Criminology and Ancient Crime}
+
+\subsection{Why this week matters}
+
+Week 6 gives the theoretical toolkit the professor uses to read the ancient materials. You should know the theory names, but more importantly you should know how they are applied in later weeks.
+
+\subsection{Five approaches to defining crime}
+
+\begin{itemize}
+
+\item Legal: crime is law-breaking.
+
+\item Moral: crime is what is wrong.
+
+\item Social: crime is norm violation.
+
+\item Humanistic: crime is violation of fundamental human rights.
+
+\item Social constructionist: societies construct both crime and criminality.
+
+\end{itemize}
+
+\subsection{Positivism}
+
+\begin{itemize}
+
+\item Biological positivism: Lombroso and the search for physical criminal types.
+
+\item Sociological positivism: environment, neighborhood, and measurable social forces.
+
+\item Psychological positivism: mental and internal causal models.
+
+\end{itemize}
+
+\subsection{Walklate's four explanation models}
+
+\begin{itemize}
+
+\item Rational Choice Theory
+
+\item Social Control Theory
+
+\item Relative Deprivation Theory
+
+\item Hegemonic Masculinity
+
+\end{itemize}
+
+\subsection{Otherness}
+
+\begin{itemize}
+
+\item Criminological other: a person who does not fit the expected image of a criminal.
+
+\item Victimological other: a person who does not fit the expected image of a victim.
+
+\end{itemize}
+
+\subsection{High-yield takeaways}
+
+\begin{calloutbox}[Key Takeaway]
+
+\begin{itemize}
+
+\item Ancient texts can look strikingly modern when they explain criminality through personality, desire, class frustration, or social environment.
+
+\item The course repeatedly asks whether ancient writers focus on the act or on the person.
+
+\end{itemize}
+
+\end{calloutbox}
+
+\subsection{Study questions answered}
+
+\begin{enumerate}
+
+\item How is criminology defined? As a flexible field studying crime, criminality, punishment, victims, and social responses.
+
+\item What are the approaches to defining crime? Legal, moral, social, humanistic, social constructionist.
+
+\item How did criminology develop? Through changing emphasis from law and punishment to scientific, social, and cultural explanation.
+
+\item What is positivism? The search for empirical causes of criminal behavior.
+
+\item What are the three positivist strands? Biological, sociological, psychological.
+
+\item What are Walklate's four models? Rational choice, social control, relative deprivation, hegemonic masculinity.
+
+\item What are the criminological and victimological others? People who do not fit expected public stereotypes of offender or victim.
+
+\end{enumerate}
+
+\section{Week 7: Athens and Draco's Homicide Law / Lysias 1}
+
+\subsection{The Five Things}
+
+\begin{itemize}
+
+\item Author: Lysias
+
+\item Title: \texttt{On the Murder of Eratosthenes} (\texttt{Lysias 1})
+
+\item Date: probably after 403 BCE, before Lysias' death
+
+\item Location: Athens
+
+\item Language: Greek
+
+\end{itemize}
+
+\subsection{Who is who}
+
+\begin{itemize}
+
+\item Author: Lysias
+
+\item Speaker in court: Euphiletos
+
+\item Defendant: Euphiletos
+
+\item Dead man: Eratosthenes
+
+\end{itemize}
+
+\subsection{Why this case matters}
+
+This week shows how Athenian homicide law works in practice and how rhetoric bends law. Euphiletos must show that the killing was legal, not premeditated murder.
+
+\subsection{The key legal issue}
+
+\textbf{The defense relies on the exception in Draco's homicide law for killing a seducer caught in the act. The most important exam point is this.}
+
+\begin{itemize}
+
+\item the law creates an exception to homicide liability;
+
+\item it does not simply say "adultery is punishable by death."
+
+\end{itemize}
+
+\subsection{Why "seducer" matters}
+
+\textbf{The lecture stresses that seduction is treated as worse than rape because seduction threatens.}
+
+\begin{itemize}
+
+\item household authority,
+
+\item legitimacy of children,
+
+\item inheritance,
+
+\item the integrity of the household.
+
+\end{itemize}
+
+\subsection{Euphiletos' strategy}
+
+\begin{itemize}
+
+\item portray himself as ordinary, modest, gullible, and law-abiding;
+
+\item portray Eratosthenes as a serial corrupter of households;
+
+\item claim the killing was lawful revenge, not murder;
+
+\item imply he acted as the law commanded, even though the law is more limited than that.
+
+\end{itemize}
+
+\subsection{Direct passages from the reading}
+
+\textbf{From \texttt{Lysias 1.pdf}, section 4.}
+
+\begin{quotebox}\itshape
+
+"I believe, gentlemen, that what I have to demonstrate is this: that Eratosthenes seduced my wife and corrupted her ... and that I did not commit this deed for money ... except revenge, as the law allows."
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item This is the entire defense theory in miniature.
+
+\item Euphiletos reframes the case from homicide to justified household revenge.
+
+\item The phrase "as the law allows" is doing major rhetorical work.
+
+\end{itemize}
+
+\textbf{From \texttt{Lysias 1.pdf}, section 21.}
+
+\begin{quotebox}\itshape
+
+"Make sure, then, no one else finds out about this; otherwise, our agreement will be worth nothing. I expect you to show me them in the act. For I do not need words, but clear evidence..."
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item Euphiletos tries to prove that he waited for lawful, direct confirmation.
+
+\item It supports his claim that he was not acting out of long-term personal hatred.
+
+\item It also reveals calculated preparation, which is exactly why the speech needs to manage the line between plan and lawful response.
+
+\end{itemize}
+
+\textbf{From \texttt{Lysias 1.pdf}, opening.}
+
+\begin{quotebox}\itshape
+
+"If you employed the same standards for others as you do for your own behaviour, there is not a single one of you who would not be furious..."
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item Euphiletos invites the jury to identify with him personally.
+
+\item The case is not presented as technical law alone, but as shared masculine household experience.
+
+\end{itemize}
+
+\subsection{Study questions answered}
+
+\begin{enumerate}
+
+\item What are the Five Things? See above.
+
+\item Who is on trial and who is dead? Euphiletos is on trial for killing Eratosthenes.
+
+\item Who speaks and who wrote the speech? Euphiletos speaks; Lysias wrote it.
+
+\item What matters in Draco's law? The homicide exception for killing a seducer caught in the act.
+
+\item What are the main defense arguments? Eratosthenes seduced the wife, the killing was lawful, there was no prior enmity, and Euphiletos acted with witnesses.
+
+\item How do these fit adultery procedure? The speech exaggerates the law's support for killing and makes lawful response sound mandatory.
+
+\item Why might the defense succeed? Because it aligns with Athenian anxieties about household control and jury identification.
+
+\item How does this connect to Week 6? The speech constructs criminality through character, household role, and social norm rather than bare legal definition.
+
+\item Is the approach similar to modern court practice? In one sense yes, because narrative and character matter; in another no, because the whole legal framework is radically different.
+
+\end{enumerate}
+
+\section{Week 8: Greek Philosophy of Crime - Plato's Gorgias}
+
+\subsection{The Five Things}
+
+\begin{itemize}
+
+\item Author: Plato
+
+\item Title: \texttt{Gorgias}
+
+\item Date: fourth century BCE, set in the late fifth century
+
+\item Location: Athens
+
+\item Language: Greek
+
+\end{itemize}
+
+\subsection{Main figures}
+
+\begin{itemize}
+
+\item Socrates
+
+\item Gorgias
+
+\item Polus
+
+\item Callicles
+
+\end{itemize}
+
+\subsection{Why rhetoric matters}
+
+Rhetoric is the art of persuasion. In Athens, persuasive speech could shape assemblies and trials. The dialogue asks whether persuasion without truth is power, corruption, or both.
+
+\subsection{Socrates versus Polus}
+
+Polus argues that a successful criminal can be happy if he avoids punishment.
+
+\textbf{Socrates argues.}
+
+\begin{itemize}
+
+\item wrongdoing makes the soul worse;
+
+\item escaping punishment is worse than being punished;
+
+\item punishment is a kind of cure.
+
+\end{itemize}
+
+This is one of the clearest ancient arguments for rehabilitation over simple deterrence.
+
+\subsection{Socrates versus Callicles}
+
+\textbf{Callicles argues.}
+
+\begin{itemize}
+
+\item \texttt{physis} (nature) and \texttt{nomos} (convention/law) are opposed;
+
+\item the strong should dominate the weak;
+
+\item justice is a tool invented by the weak majority;
+
+\item self-indulgence is natural.
+
+\end{itemize}
+
+\textbf{Socrates argues.}
+
+\begin{itemize}
+
+\item justice and self-discipline are real goods;
+
+\item unrestrained desire produces disorder;
+
+\item the predatory outlaw cannot live in stable community.
+
+\end{itemize}
+
+\subsection{High-yield takeaways}
+
+\begin{calloutbox}[Key Takeaway]
+
+\begin{itemize}
+
+\item Gorgias is not a law lecture; it is a lecture on competing definitions of crime and justice.
+
+\item Socrates takes a moral and almost religious view of criminality.
+
+\item Callicles pushes a radical social-constructionist and anti-moral line.
+
+\end{itemize}
+
+\end{calloutbox}
+
+\subsection{Study questions answered}
+
+\begin{enumerate}
+
+\item What are the Five Things? See above.
+
+\item Who are the main speakers? Socrates, Gorgias, Polus, Callicles.
+
+\item What is rhetoric and why does it matter? Persuasive speech; it matters because it shapes law, politics, and public truth.
+
+\item Who is Gorgias in relation to Socrates? A sophist and teacher of rhetoric, unlike Socrates' philosophical method.
+
+\item Who are Polus and Callicles? Successors in the debate: Polus defends power and success, Callicles defends natural domination and anti-conventional ethics.
+
+\item What criminological theories are visible? Social construction, deterrence, rehabilitation, moral versus legal definitions of crime, hegemonic masculinity.
+
+\item Can the speakers be mapped to modern theories? Yes. Polus resembles deterrence and success-centered thinking; Socrates resembles rehabilitation and moral theory; Callicles resembles radical anti-norm naturalism and social-constructionist suspicion of law.
+
+\end{enumerate}
+
+\section{Week 10: Introduction to Roman Law}
+
+\subsection{Why this is a very high-yield lecture}
+
+Week 10 is one of the most term-heavy lectures in the course. It covers Roman legal history, magistrates, assemblies, jurists, codification, criminal procedure, and the growth of state authority.
+
+\subsection{Origin story of Roman law}
+
+\begin{itemize}
+
+\item Rome begins, in legend, in 753 BCE.
+
+\item Early Rome is governed by kings.
+
+\item Justice in the regal period is largely custom-based.
+
+\item Priests initially control written law.
+
+\item Family law and religious regulation are early formal areas.
+
+\item Patron-client relations act as a parallel social structure for dispute resolution.
+
+\end{itemize}
+
+\subsection{Core early developments}
+
+\begin{itemize}
+
+\item \texttt{imperium}: power to command
+
+\item \texttt{intercessio}: veto or blocking power
+
+\item Struggle of the Orders
+
+\item tribunes of the plebs
+
+\item Twelve Tables, 450 BCE
+
+\item \texttt{provocatio ad populum}: citizen appeal from magistrate to people
+
+\end{itemize}
+
+\subsection{Magistrates and offices you must know}
+
+\begin{itemize}
+
+\item consuls
+
+\item praetors
+
+\item \texttt{praetor urbanus}
+
+\item \texttt{praetor peregrinus}
+
+\item tribunes of the plebs
+
+\item quaestors
+
+\item aediles
+
+\item censors
+
+\item dictator
+
+\item prorogation, proconsuls, propraetors
+
+\end{itemize}
+
+\subsection{Praetors and legal development}
+
+\begin{itemize}
+
+\item Praetors are central to the justice system.
+
+\item They issue edicts when entering office.
+
+\item Law developed from the edicts is called \texttt{ius honorarium}.
+
+\item This is different from more formal law made by assemblies.
+
+\end{itemize}
+
+\subsection{Roman lawyers and jurists}
+
+\begin{itemize}
+
+\item Early legal specialists are the \texttt{pontifices}.
+
+\item Roman legal work includes:
+
+\item \texttt{ad respondendum} - giving legal advice
+
+\item \texttt{ad agendum} - preparing cases
+
+\item \texttt{ad cavendum} - drafting documents
+
+\item Under Augustus and later emperors, some jurists receive \texttt{ius respondendi ex auctoritate principis}.
+
+\end{itemize}
+
+\subsection{Jurists and schools you should know}
+
+\begin{itemize}
+
+\item Marcus Antistius Labeo
+
+\item Proculian school
+
+\item Masurius Sabinus
+
+\item Sabinian school
+
+\item Gaius
+
+\item Papinian
+
+\item Ulpian
+
+\item Paulus
+
+\item Modestinus
+
+\end{itemize}
+
+\subsection{Codification stages}
+
+\begin{itemize}
+
+\item Law of Citations, 426 CE
+
+\item \texttt{Codex Theodosianus}, 439 CE
+
+\item Justinian's \texttt{Corpus Iuris Civilis}, from 528 CE
+
+\item \texttt{Codex Iustiniani}
+
+\item \texttt{Novellae}
+
+\item \texttt{Institutiones}
+
+\item \texttt{Digest}
+
+\end{itemize}
+
+\subsection{Republican constitution and assemblies}
+
+\begin{itemize}
+
+\item SPQR = Senate and People of Rome.
+
+\item Senate: advisory, but hugely authoritative through \texttt{senatus consulta}.
+
+\item Centuriate assembly:
+
+\item wealth-based;
+
+\item favors the rich;
+
+\item elects consuls, praetors, censors;
+
+\item votes on war;
+
+\item hears appeals in capital cases.
+
+\item Tribal assembly:
+
+\item tribe/residence based;
+
+\item more egalitarian;
+
+\item elects quaestors and curule aediles;
+
+\item votes on \texttt{leges}.
+
+\item Plebeian assembly:
+
+\item plebeians only;
+
+\item elects tribunes and plebeian aediles;
+
+\item votes on \texttt{plebiscita};
+
+\item after \texttt{lex Hortensia}, plebiscites bind all Rome.
+
+\end{itemize}
+
+\subsection{Criminal procedure development}
+
+\begin{itemize}
+
+\item Early criminal action comes from magistrates with \texttt{imperium}.
+
+\item Most cases are still private for a long time.
+
+\item \texttt{quaestio}: ad hoc criminal inquiry/court.
+
+\item \texttt{quaestio perpetua}: permanent court, beginning with \texttt{lex Calpurnia} in 149 BCE.
+
+\item Key permanent courts include:
+
+\item \texttt{repetundae}
+
+\item \texttt{maiestas}
+
+\item \texttt{veneficia et sicarii}
+
+\item \texttt{ambitus}
+
+\item \texttt{vis}
+
+\end{itemize}
+
+\subsection{Why \texttt{lex Cornelia de sicariis et veneficis} matters}
+
+\begin{itemize}
+
+\item 81 BCE
+
+\item Establishes a permanent court for murder and poisoning.
+
+\item Also criminalizes carrying weapons with intent to kill or steal.
+
+\item This is one place where you can argue that murder becomes criminal in Rome in a stronger sense than earlier.
+
+\end{itemize}
+
+\subsection{Later empire and class}
+
+\begin{itemize}
+
+\item \texttt{cognitio extraordinaria} eventually takes over much judicial work.
+
+\item Urban prefects and other prefects extend enforcement.
+
+\item \texttt{honestiores} receive better treatment than \texttt{humiliores}.
+
+\item Augustus adds moral legislation, including adultery courts.
+
+\end{itemize}
+
+\subsection{Delicts}
+
+\begin{itemize}
+
+\item Not quite crimes, not quite torts.
+
+\item Core delicts:
+
+\item \texttt{furtum}
+
+\item \texttt{rapina}
+
+\item \texttt{damnum iniuria datum}
+
+\item \texttt{iniuria}
+
+\end{itemize}
+
+\subsection{Study questions answered}
+
+\begin{enumerate}
+
+\item What are the main features of the origin story of Roman law? Custom, kings, priests, patron-client relations, family and religion, and then the Twelve Tables.
+
+\item Why are the Twelve Tables important? They publicize law, reduce priestly secrecy, and become the iconic beginning of Roman law.
+
+\item Which officials are mainly responsible for legal affairs? Above all the praetors, especially in the Republic.
+
+\item What are the main sources of law? Republic: Twelve Tables, praetorian edicts, \texttt{leges}, \texttt{plebiscita}, some \texttt{senatus consulta}. Empire: increasingly juristic writings and imperial authority.
+
+\item How did legal education develop? From priestly expertise to prestigious juristic schooling, especially under the empire.
+
+\item What are the main stages in codification? Law of Citations, \texttt{Codex Theodosianus}, then Justinian's \texttt{Corpus Iuris Civilis}.
+
+\item How did legislation work? Senate advised; assemblies voted; magistrates proposed and executed; the emperor later dominates.
+
+\item How did criminal law and trials develop? From magistrate action to ad hoc \texttt{quaestiones} to permanent criminal courts.
+
+\item What role did the emperor play? Appointment, legislation, appeals, juristic authority, and eventual codification.
+
+\end{enumerate}
+
+\section{Week 11: Criminals and Enemy Combatants - Sallust's Catiline}
+
+\subsection{The Five Things}
+
+\begin{itemize}
+
+\item Author: Sallust
+
+\item Title: \texttt{Catiline's War} (\texttt{Bellum Catilinae})
+
+\item Date: c. 44-40 BCE
+
+\item Location: Rome
+
+\item Language: Latin
+
+\end{itemize}
+
+\subsection{Why this week matters}
+
+This is the course's big Roman case study in how rhetoric, political crisis, and criminality overlap. The central question is whether Catiline is a criminal conspirator or an enemy combatant in a civil war.
+
+\subsection{Background to the conspiracy}
+
+\begin{itemize}
+
+\item Catiline is a noble but indebted aristocrat.
+
+\item Roman politics is split between \texttt{optimates} and \texttt{populares}.
+
+\item Debt crisis matters.
+
+\item Sulla's civil wars and veteran settlements leave instability in Italy, especially Etruria.
+
+\item Gaius Manlius becomes crucial in Etruria.
+
+\end{itemize}
+
+\subsection{Core chronology of 63-62 BCE}
+
+\begin{itemize}
+
+\item 64 BCE: Catiline loses bid for the consulship of 63.
+
+\item 63 BCE: Catiline loses again for the consulship of 62.
+
+\item July 63 BCE: failed election deepens his crisis.
+
+\item October 20: anonymous letters reveal conspiracy.
+
+\item October 21: Senate passes the \texttt{senatus consultum ultimum}.
+
+\item October 27: Manlius raises revolt in Etruria.
+
+\item early November: Catiline charged with \texttt{vis}.
+
+\item November 7: attempted assassination of Cicero fails.
+
+\item November 8: Cicero delivers the First Catilinarian.
+
+\item mid-November: Catiline declared \texttt{hostis}.
+
+\item December 3: Allobroges produce evidence; conspirators arrested.
+
+\item December 5: Senate advises execution of captured conspirators without trial.
+
+\item January 62 BCE: Catiline dies in battle.
+
+\end{itemize}
+
+\subsection{Why the legal issue is so important}
+
+The captured conspirators were Roman citizens. They should still have had \texttt{provocatio}. Cicero executes them without trial under cover of the \texttt{SCU}, and that choice later contributes to his exile.
+
+\subsection{Criminological reading of Sallust}
+
+\textbf{Sallust does not present Catiline simply as a villain. He mixes.}
+
+\begin{itemize}
+
+\item psychological explanation,
+
+\item moral corruption,
+
+\item class resentment,
+
+\item elite decadence,
+
+\item relative deprivation,
+
+\item rational calculation,
+
+\item charisma and heroism.
+
+\end{itemize}
+
+\subsection{Direct passages from the reading as quoted in the lecture script}
+
+\textbf{From the Week 11 lecture, quoting Sallust on the urban plebs.}
+
+\begin{quotebox}\itshape
+
+"the entire plebs, in its enthusiasm for revolution, approved completely of Catiline's projects"
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item Catiline is not a lone deviant.
+
+\item The crisis has a social base.
+
+\item This supports a relative-deprivation reading of the conspiracy.
+
+\end{itemize}
+
+\textbf{From the Week 11 lecture, Sallust on Crassus.}
+
+\begin{quotebox}\itshape
+
+"everyone cried that the informant was false ... while very many of them were beholden to Crassus through personal business"
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item Status shapes legal truth.
+
+\item Roman political justice is shown as selective and class-bound.
+
+\item Power can move a man out of the category of suspect altogether.
+
+\end{itemize}
+
+\textbf{From the Week 11 lecture, Caesar's proposal.}
+
+\begin{quotebox}\itshape
+
+"their money should be confiscated and they themselves held in chains in the municipalities..."
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item Caesar argues against execution without trial.
+
+\item He implicitly proposes long-term detention, which is strikingly unclassical.
+
+\item He treats the captives more like criminals than battlefield enemies.
+
+\end{itemize}
+
+\textbf{From the Week 11 lecture, Cato's deterrence argument.}
+
+\begin{quotebox}\itshape
+
+"when you decide about P. Lentulus and the others, be assured that at the same time you are issuing a decree about Catiline's army"
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item Cato shifts the frame from prosecution to war.
+
+\item He justifies extreme punishment as preemption and deterrence.
+
+\item This is the decisive move from "criminal conspiracy" to "enemy threat."
+
+\end{itemize}
+
+\subsection{Catiline's contradictory image}
+
+\textbf{Sallust makes Catiline.}
+
+\begin{itemize}
+
+\item depraved but charismatic,
+
+\item criminal but aristocratic,
+
+\item socially dangerous but politically comprehensible,
+
+\item enemy of Rome but heroic in battle.
+
+\end{itemize}
+
+At the end he dies bravely, which keeps the category unstable.
+
+\subsection{Study questions answered}
+
+\begin{enumerate}
+
+\item What are the Five Things? See above.
+
+\item What social issues lead Catiline toward revolution? Debt, elite faction, dispossession, veteran unrest, and blocked aristocratic ambition.
+
+\item What is happening in Etruria? A revolt base is forming among discontented veterans and displaced farmers under Manlius.
+
+\item Who is Catiline? An indebted aristocrat, \texttt{popularis}, failed candidate, and alleged revolutionary leader.
+
+\item Who is Cicero? Consul, orator, and the self-styled savior of the state.
+
+\item How does Sallust explain Catiline's criminality? Through character, corrupted desire, ambition, social crisis, and broader elite decline.
+
+\item How does Catiline explain his own turn to crime? Through grievance, exclusion, and political frustration, which resembles relative deprivation and rational choice.
+
+\item How do Caesar and Cato relate to crime and punishment? Caesar argues restraint and anti-execution precedent; Cato argues deterrence, emergency, and war logic.
+
+\item What is the outcome and lasting issue? The conspiracy is crushed, but Rome is left with the unresolved problem of when citizens become enemies.
+
+\end{enumerate}
+
+\section{Week 12: Character and Ciceronian Crime - Pro Caelio}
+
+\subsection{The Five Things}
+
+\begin{itemize}
+
+\item Author: Marcus Tullius Cicero
+
+\item Title: \texttt{In Defense of Marcus Caelius} (\texttt{Pro Caelio})
+
+\item Date: 56 BCE
+
+\item Location: Rome
+
+\item Language: Latin
+
+\end{itemize}
+
+\subsection{Background to the case}
+
+\begin{itemize}
+
+\item Caelius is charged with \texttt{vis}, political violence.
+
+\item Prosecutors: Atratinus, Publius Clodius, and Herennius Balbus.
+
+\item Defense: Caelius, Crassus, and Cicero.
+
+\item The wider background involves Egyptian politics, Ptolemy XII, the Alexandrian embassy, and the death of Dio.
+
+\item Clodia, Caelius' former lover, becomes central to Cicero's version of events.
+
+\end{itemize}
+
+\subsection{Why the charge matters}
+
+\texttt{Vis} is supposed to cover dangerous violence against the state, not private scandal. Cicero's whole strategy is to make the jury think the charge is absurdly overblown.
+
+\subsection{Cicero's main strategy}
+
+\textbf{He does not focus primarily on reconstructing facts. He.}
+
+\begin{itemize}
+
+\item turns the trial into comedy;
+
+\item turns Caelius into a charming young hero;
+
+\item turns Clodia into the scandalous manipulator behind the prosecution;
+
+\item makes the case about character instead of action.
+
+\end{itemize}
+
+\subsection{Direct passages from the reading}
+
+\textbf{From \texttt{Cicero In Defense of Marcus Caelius.pdf}, opening section.}
+
+\begin{quotebox}\itshape
+
+"If somebody were here who knew nothing about our laws, our courts, and our customs, he would certainly wonder what crime could be so vicious ... this one court should be in session."
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item Cicero opens by exaggerating the seriousness of the legal frame.
+
+\item He then undercuts it by suggesting the charge of \texttt{vis} is wildly disproportionate to the real case.
+
+\item He prepares the jury to see the prosecution as theatrical overreach.
+
+\end{itemize}
+
+\textbf{From \texttt{Cicero In Defense of Marcus Caelius.pdf}, on the charges.}
+
+\begin{quotebox}\itshape
+
+"There are two charges. One involves gold, the other poison; in both of them one and the same person is concerned."
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item Cicero narrows the case to Clodia-centered allegations.
+
+\item He tries to strip away the public-crime frame and recast the prosecution as a private vendetta.
+
+\end{itemize}
+
+\textbf{From \texttt{Cicero In Defense of Marcus Caelius.pdf}, on Clodia's narrative.}
+
+\begin{quotebox}\itshape
+
+"This whole tale, for instance, belongs to an aging lady poet who has written a lot of comedies - but it has no plot and no ending."
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item Cicero accuses the prosecution of theatrical fabrication while doing theatrical fabrication himself.
+
+\item This is a perfect example of rhetorical projection.
+
+\end{itemize}
+
+\textbf{From \texttt{Cicero In Defense of Marcus Caelius.pdf}, section 70.}
+
+\begin{quotebox}\itshape
+
+"Members of the jury, my case is said and done ... This is the law under which this young man Caelius is being prosecuted not to exact punishment on behalf of the commonwealth but on behalf of the sexual perversions of this woman."
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item Cicero returns to the seriousness of the \texttt{vis} law.
+
+\item He argues that the state is being misused for private erotic revenge.
+
+\item He fuses legal argument, misogyny, and comic performance.
+
+\end{itemize}
+
+\textbf{From the Week 12 lecture script, quoting Cicero's description of Catiline.}
+
+\begin{quotebox}\itshape
+
+"he could alter his character and direct it for the occasion, twisting and bending it in all directions"
+
+\end{quotebox}
+
+\textbf{Why it matters.}
+
+\begin{itemize}
+
+\item Cicero uses Catiline's adaptability to excuse Caelius' youthful association with him.
+
+\item This shows how flexible courtroom rhetoric can be: last week's monster becomes this week's useful comparison.
+
+\end{itemize}
+
+\subsection{What the lecture wants you to notice}
+
+\begin{calloutbox}[Key Takeaway]
+
+\begin{itemize}
+
+\item Cicero makes a public-crime case look like sex comedy.
+
+\item He uses family, class, sexuality, and gender performance to assign criminality.
+
+\item He relies on what looks very much like positivist thinking: good families produce good citizens, corrupt households produce corrupt actors.
+
+\item The case also reveals a larger Roman shift toward treating unauthorized violence as violence against the state.
+
+\end{itemize}
+
+\end{calloutbox}
+
+\subsection{Riggsby's contribution}
+
+\textbf{The lecture uses Andrew Riggsby to argue.}
+
+\begin{itemize}
+
+\item Cicero replaces a judicial frame with a theatrical one.
+
+\item Metaphor changes what outcomes feel "natural."
+
+\item The law on \texttt{vis} helps show the Roman state's growing monopoly on legitimate force.
+
+\end{itemize}
+
+\subsection{Study questions answered}
+
+\begin{enumerate}
+
+\item What are the Five Things? See above.
+
+\item What are the background issues of the trial? Egyptian diplomacy, the death of Dio, and Roman political instability.
+
+\item Who is on the prosecution team? Atratinus, Clodius, and Herennius Balbus.
+
+\item Who is on the defense team? Caelius, Crassus, and Cicero.
+
+\item Who is Cicero in this trial? Final defense speaker and master rhetorician.
+
+\item How does Cicero characterize Caelius? As a talented, basically good young man with ordinary youthful excesses.
+
+\item Who is Clodia and what role does she play? Ex-lover, socialite, and in Cicero's telling, the manipulative force behind the prosecution.
+
+\item What is the relationship between Caelius and Catiline? Caelius was associated with Catiline's circle, and Cicero must neutralize that fact.
+
+\item What is Cicero's legal strategy and what theory does it resemble? He substitutes character for fact, which resembles positivist and stereotype-based thinking.
+
+\item How are elements of this trial still visible today? Media spectacle, sexual double standards, celebrity scandal, character assassination, and metaphor-driven politics.
+
+\end{enumerate}
+
+\section{Cross-Course Comparison Table}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.15\textwidth}>{\raggedright\arraybackslash}p{0.21\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.26\textwidth}}
+\toprule
+Topic & Greek material & Roman material & Why it matters \\
+\midrule
+\endfirsthead
+\toprule
+Topic & Greek material & Roman material & Why it matters \\
+\midrule
+\endhead
+Public/private distinction & Homicide can remain private & Many violent matters remain outside strong public prosecution for a long time & Modern criminal law is not universal \\
+Self-help & Draco regulates it & Patron-client structure and weak policing preserve it & Ancient states do not fully monopolize force \\
+Rhetoric & Lysias and Gorgias & Sallust and Cicero & Persuasion constructs criminality \\
+Punishment & exile, blood vengeance, civic adjudication & exile, fines, execution, later stronger criminal courts & Prison is not the default ancient answer \\
+Character versus act & seducer, adulterer, tyrant & Catiline, Clodia, Caelius & The person often matters more than the legal category \\
+Insider versus outsider & household polluter, tyrant, seducer & citizen conspirator, aristocrat, enemy combatant & The threat often comes from within \\
+\bottomrule
+\end{longtable}
+
+\section{High-Yield Terms to Memorize}
+
+\subsection{Greek}
+
+\begin{itemize}
+
+\item \texttt{nomos}
+
+\item \texttt{dike}
+
+\item \texttt{graphe}
+
+\item lethal self-help
+
+\item Areopagus
+
+\item Socrates
+
+\item rhetoric
+
+\item \texttt{physis}
+
+\item \texttt{nomos} as convention
+
+\end{itemize}
+
+\subsection{Roman}
+
+\begin{itemize}
+
+\item \texttt{imperium}
+
+\item \texttt{intercessio}
+
+\item \texttt{provocatio}
+
+\item Twelve Tables
+
+\item \texttt{praetor urbanus}
+
+\item \texttt{praetor peregrinus}
+
+\item \texttt{ius honorarium}
+
+\item \texttt{senatus consultum}
+
+\item \texttt{senatus consultum ultimum}
+
+\item \texttt{quaestio}
+
+\item \texttt{quaestio perpetua}
+
+\item \texttt{repetundae}
+
+\item \texttt{maiestas}
+
+\item \texttt{ambitus}
+
+\item \texttt{vis}
+
+\item \texttt{hostis}
+
+\item \texttt{ius respondendi}
+
+\item \texttt{Corpus Iuris Civilis}
+
+\item \texttt{honestiores}
+
+\item \texttt{humiliores}
+
+\item delict
+
+\end{itemize}
+
+\section{Final Exam Focus: What to prioritize in the last review pass}
+
+\begin{calloutbox}[Exam Callout]
+Use this weighting for the last pass before the exam: master Roman legal structure first, then Catiline and \texttt{Pro Caelio}, then use the Greek units to define terms and build comparison answers.
+\end{calloutbox}
+
+\subsection{Highest priority}
+
+\begin{calloutbox}[Key Takeaway]
+
+\begin{itemize}
+
+\item Week 10 Roman law terms, institutions, assemblies, procedures, and codification
+
+\item Week 11 Catiline chronology, \texttt{SCU}, \texttt{hostis}, Caesar versus Cato
+
+\item Week 12 \texttt{Pro Caelio}, \texttt{vis}, Cicero's theatrical strategy, Clodia, and character-based criminality
+
+\end{itemize}
+
+\end{calloutbox}
+
+\subsection{Second priority}
+
+\begin{calloutbox}[Key Takeaway]
+
+\begin{itemize}
+
+\item Week 7 Draco's law and Lysias' defense strategy
+
+\item Week 8 Socrates versus Polus and Callicles
+
+\item Week 6 criminology definitions and theories
+
+\end{itemize}
+
+\end{calloutbox}
+
+\subsection{Foundation priority}
+
+\begin{calloutbox}[Key Takeaway]
+
+\begin{itemize}
+
+\item Week 1 public/private distinction, exile versus prison, Foucault
+
+\item Week 2 chronology
+
+\item Week 3 Greek-law vocabulary
+
+\item Week 4 \texttt{Oresteia} as movement from vengeance toward civic justice
+
+\end{itemize}
+
+\end{calloutbox}
+
+\section{Final Checklist}
+
+\begin{itemize}
+
+\item Can you explain why murder is not simply a "crime" in the same way in classical Athens?
+
+\item Can you explain the difference between a homicide exception and a death penalty?
+
+\item Can you define \texttt{vis} and explain why it matters in both Week 11 and Week 12?
+
+\item Can you explain why the Twelve Tables matter for Roman legal history?
+
+\item Can you explain the difference between \texttt{leges}, \texttt{plebiscita}, praetorian edicts, and juristic writings?
+
+\item Can you explain why Caesar and Cato disagree about the Catilinarian conspirators?
+
+\item Can you explain how Cicero turns a criminal prosecution into comedy?
+
+\item Can you connect ancient material to modern criminological theories without claiming the two worlds are identical?
+
+\end{itemize}
+
+If you can answer those clearly, you are covering the spine of the course.
+
+\end{document}

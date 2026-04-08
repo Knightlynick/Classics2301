@@ -2,5 +2,8 @@
 *.log
 *.out
 *.toc
+course-materials/
+study-docs/latex-build/*
+!study-docs/latex-build/.gitkeep
 Thumbs.db
 .DS_Store
