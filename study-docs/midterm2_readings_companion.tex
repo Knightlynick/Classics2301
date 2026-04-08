@@ -1,0 +1,495 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+\microtypesetup{expansion=false}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{leftmargin=*, itemsep=0.25em, topsep=0.25em}
+\setlist[enumerate]{leftmargin=*, itemsep=0.25em, topsep=0.25em}
+\renewcommand{\arraystretch}{1.18}
+
+\definecolor{PassageBg}{RGB}{243,247,255}
+\definecolor{PassageBorder}{RGB}{83,111,158}
+\definecolor{LinkBg}{RGB}{239,249,239}
+\definecolor{TrapBg}{RGB}{255,245,229}
+\definecolor{TrapBorder}{RGB}{191,108,0}
+\definecolor{SourceBg}{RGB}{248,248,248}
+\definecolor{DetailBg}{RGB}{250,250,250}
+
+\newcommand{\keyterm}[1]{\textbf{#1}}
+\newcommand{\passagebox}[5]{%
+    \par\noindent
+    \fcolorbox{PassageBorder}{PassageBg}{%
+        \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{%
+            \textbf{Passage. }#1\\
+            \textbf{Who is speaking? }#2\\
+            \textbf{Immediate context. }#3\\
+            \textbf{Why it matters. }#4\\
+            \textbf{Lecture link. }#5%
+        }%
+    }%
+    \par\medskip
+}
+\newcommand{\linkbox}[1]{%
+    \par\noindent
+    \fcolorbox{black}{LinkBg}{%
+        \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{Lecture Link. }#1}%
+    }%
+    \par\medskip
+}
+\newcommand{\mcqtrap}[1]{%
+    \par\noindent
+    \fcolorbox{TrapBorder}{TrapBg}{%
+        \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{Reading Trap. }#1}%
+    }%
+    \par\medskip
+}
+\newcommand{\sourcebox}[1]{%
+    \par\noindent
+    \fcolorbox{black}{SourceBg}{%
+        \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{Source note. }#1}%
+    }%
+    \par\medskip
+}
+\newcommand{\detailbox}[2]{%
+    \par\noindent
+    \fcolorbox{black}{DetailBg}{%
+        \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{#1. }#2}%
+    }%
+    \par\medskip
+}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{CS2301 Midterm 2 Readings Companion}}\\[0.4em]
+{\large Crime and Punishment in Ancient Greece and Rome}\\[0.2em]
+{\normalsize Reading-depth supplement for Walklate, the \textit{Oresteia}, and Plato's \textit{Gorgias}}
+\end{center}
+
+\sourcebox{This companion is built primarily from the local lecture scripts and study-question sheets, with the reading assignments used as the target for explanation. Exact wording is used only where the course materials themselves provide it clearly; otherwise the guide paraphrases the argument while preserving the cited passage anchors.}
+
+\section*{How to Use This Companion}
+Use this file when you want to understand what the assigned readings are doing, not just what the lecture wants you to memorize. Each major passage note identifies the speaker, the immediate context, the claim the passage makes, and the reason it matters for crime and punishment. Read the overview for each work first, then go back through the passage boxes as if you were reconstructing the text scene by scene.
+
+\tableofcontents
+
+\section{Walklate, \textit{Criminology: the Basics}, Chapters 1, 4, and 5}
+
+\subsection*{What these chapters are doing together}
+The Walklate assignment gives the course a modern conceptual vocabulary. Chapter 1 defines what criminology studies and shows that ``crime'' can be approached in several ways rather than one. Chapter 4 turns from definitions to explanations of criminal behavior. Chapter 5 shifts toward victimization and the social production of visibility: who gets imagined as a criminal, who gets imagined as a victim, and how those images can distort analysis. The lecture uses these chapters to show that ancient texts can ask criminological questions even without modern institutions.
+
+\begin{tabular}{@{}p{0.16\linewidth}p{0.36\linewidth}p{0.38\linewidth}@{}}
+\toprule
+\textbf{Chapter} & \textbf{Main move} & \textbf{Why it matters for the course} \\
+\midrule
+Chapter 1 & Defines criminology, shows multiple ways to define crime, sketches the history of the discipline. & Prevents you from treating ``crime'' as a simple legal category. \\
+Chapter 4 & Explains major models of criminal behavior such as Rational Choice and Social Control. & Gives you tools for reading ancient characters as decision-makers rather than just plot devices. \\
+Chapter 5 & Shifts attention to victims, visibility, stereotypes, and social assumptions. & Helps explain why some people look ``criminal'' or ``victim-like'' to a society and others do not. \\
+\bottomrule
+\end{tabular}
+
+\subsection*{Chapter 1: defining criminology without trapping it inside the law}
+Walklate's starting point, as represented by the lecture, is that criminology is broader than legal studies. A legal code can tell you what a state punishes; it does not automatically tell you what a culture fears, excuses, notices, ignores, or imagines as dangerous. That gap matters even more in antiquity, where what modern people call crimes were often handled as private matters.
+
+Read Chapter 1 as an argument against reducing crime to statute alone. Walklate is opening the field so that later chapters, and this course, can ask about criminal identities, social fears, and moral language rather than only about what a court formally punishes.
+
+\begin{tabular}{@{}p{0.16\linewidth}p{0.36\linewidth}p{0.38\linewidth}@{}}
+\toprule
+\textbf{Approach} & \textbf{Basic idea} & \textbf{How it reads ancient material} \\
+\midrule
+\textbf{Legal} & Crime is law-breaking. & Useful for Draco, Athenian procedure, and the question of what counts as homicide. \\
+\textbf{Moral} & Crime is what is wrong, even if law permits it. & Necessary for Socrates, who treats unjust rulers as criminals even when they control the law. \\
+\textbf{Social} & Crime is violation of shared norms and expectations. & Important in cultures where custom, shame, and status matter as much as formal rules. \\
+\textbf{Humanistic} & Crime is violation of human worth or basic rights. & Lets modern readers ask harder questions about slavery, exclusion, and violence in antiquity. \\
+\textbf{Social constructionist} & Crime and criminality are socially made, not timeless facts. & Central to the course's comparison between ancient and modern ideas of the criminal. \\
+\bottomrule
+\end{tabular}
+
+\mcqtrap{Do not treat these approaches as mutually exclusive in life but interchangeable on a test. A question may ask which approach a speaker is using in that moment. Socrates often sounds moral, Callicles social-constructionist, Polus legal or instrumental, and Lysias strategically mixes legal and moral claims.}
+
+\subsection*{Development of the field: positivism and its afterlife}
+The lecture's short history of criminology emphasizes \keyterm{positivism}: the effort to explain criminality by empirical causes. Even when old positivist claims are rejected, the habit of imagining criminals as a distinct type survives.
+
+\begin{tabular}{@{}p{0.16\linewidth}p{0.36\linewidth}p{0.38\linewidth}@{}}
+\toprule
+\textbf{Strand} & \textbf{Key figure or school} & \textbf{Takeaway for this course} \\
+\midrule
+Biological positivism & \keyterm{Cesare Lombroso} & The criminal was imagined as physically legible. The lecture treats this as historically important but wrong. \\
+Sociological positivism & \keyterm{Chicago School} & Crime is read through environment, urban structure, and social disorganization. \\
+Psychological reading & Modern behavioral models; lecture also reads ancient texts through psychology & The Furies can be read as externalized guilt or trauma, showing how ancient texts personify inner conflict. \\
+\bottomrule
+\end{tabular}
+
+\linkbox{The lecture explicitly connects this to the \textit{Oresteia}. Athena in Homer and the Furies in Aeschylus can be read as divine figures, but also as dramatic embodiments of mental conflict. That does not reduce the text to psychology; it shows that ancient literature often stages internally felt pressures as external agents.}
+
+\subsection*{Chapter 4: four explanatory models}
+The lecture highlights four of Walklate's explanatory models because they map especially well onto the ancient materials:
+
+The point is not that one model defeats all the others. Walklate gives you a set of lenses, and the course keeps shifting among them depending on whether the text emphasizes calculation, weak restraints, perceived deprivation, or gendered power.
+
+\begin{tabular}{@{}p{0.16\linewidth}p{0.36\linewidth}p{0.38\linewidth}@{}}
+\toprule
+\textbf{Model} & \textbf{What it asks} & \textbf{Best ancient fit} \\
+\midrule
+\keyterm{Rational Choice Theory} & What incentives, risks, and expected gains shape action? & Orestes calculating revenge, status, and divine obligation; Lysias presenting deterrence logic. \\
+\keyterm{Social Control Theory} & What bonds restrain people from wrongdoing? & Orestes as detached from ordinary family and civic bonds. \\
+\keyterm{Relative Deprivation} & What losses or exclusions feel unjust and provoke reaction? & Clytaemestra and Orestes both act from perceived deprivation, not simple poverty. \\
+\keyterm{Hegemonic Masculinity} & How do gender ideals shape violence and victimhood? & The whole House of Atreus, plus Athenian fixation on seduction, control, and male honor. \\
+\bottomrule
+\end{tabular}
+
+\subsection*{Chapter 5: victims and visibility}
+The lecture's key lesson from the victimology material is that societies do not recognize all victims and all perpetrators equally. Some people fit the expected image; some do not. That matters for antiquity because elite male texts often dominate the record and determine whose suffering counts as legible.
+
+Read this chapter as a warning about visibility. A society can punish real harms while still failing to see some people clearly as victims or offenders, and that matters a great deal when most surviving ancient texts were written by and for elite men.
+
+\begin{itemize}
+\item \keyterm{Criminological other}: someone who does not fit the expected image of the criminal.
+\item \keyterm{Victimological other}: someone who does not fit the expected image of the victim.
+\end{itemize}
+
+In the modern imagination, visible criminals are often imagined as poor or marginalized men. In the classical Athenian materials assigned here, the people most intensely discussed as criminals are often powerful men: tyrants, elite household heads, seducers, or politically important offenders. That inversion matters a great deal when you compare Walklate to Plato and Aeschylus.
+
+\linkbox{Walklate helps explain why Socrates in the \textit{Gorgias} focuses on kings, tyrants, and politicians as the gravest criminals, and why the lecture repeatedly says that ancient criminological attention falls on the powerful rather than the marginalized.}
+
+\subsection*{Reading logic to remember}
+\begin{itemize}
+\item Chapter 1 asks, ``What is crime, and what counts as criminology?''
+\item Chapter 4 asks, ``How do we explain criminal behavior?''
+\item Chapter 5 asks, ``Who gets seen, named, and believed as victim or criminal?''
+\end{itemize}
+
+\section{Aeschylus, \textit{Oresteia}}
+
+\subsection*{Five Things}
+\begin{tabular}{@{}p{0.24\linewidth}p{0.68\linewidth}@{}}
+\toprule
+\textbf{Category} & \textbf{What to know} \\
+\midrule
+Author & \keyterm{Aeschylus} \\
+Title & \textit{Oresteia}; the individual plays are \textit{Agamemnon}, \textit{The Libation Bearers}, and \textit{The Eumenides} \\
+Date & First produced in \textbf{458 BCE} \\
+Location & \textbf{Athens} \\
+Language & \textbf{Attic Greek} \\
+\bottomrule
+\end{tabular}
+
+\subsection*{What the trilogy is about in one sentence}
+The \textit{Oresteia} is a trilogy about a family trapped in retaliatory violence and about the transfer of justice from household revenge to civic adjudication.
+
+\subsection*{Cast and family map}
+\begin{tabular}{@{}p{0.24\linewidth}p{0.68\linewidth}@{}}
+\toprule
+\textbf{Name} & \textbf{Role in the revenge cycle} \\
+\midrule
+Atreus & Father of Agamemnon; earlier generation of atrocity in the family curse. \\
+Thyestes & Brother of Atreus; rival whose line continues through Aegisthus. \\
+Agamemnon & King returning from Troy; killed by Clytaemestra. \\
+Clytaemestra & Wife of Agamemnon; avenges Iphigeneia by killing her husband. \\
+Iphigeneia & Daughter sacrificed by Agamemnon before Troy. Her death drives Clytaemestra's revenge. \\
+Aegisthus & Son of Thyestes; ally and lover of Clytaemestra; killed by Orestes. \\
+Electra & Daughter of Agamemnon and Clytaemestra; aligns with Orestes. \\
+Orestes & Son of Agamemnon and Clytaemestra; avenges his father, then faces prosecution. \\
+Cassandra & Trojan captive and prophetess brought home by Agamemnon; foresees the murders. \\
+Furies / Eumenides & Ancient avengers of blood guilt; later incorporated into Athens under a new civic role. \\
+Apollo & Divine defender of Orestes. \\
+Athena & Creates the court and resolves the crisis politically. \\
+\bottomrule
+\end{tabular}
+
+\subsection*{Plot roadmap before the close reading}
+\begin{enumerate}
+\item \textbf{\textit{Agamemnon}}: Agamemnon returns from Troy after sacrificing Iphigeneia years earlier. Clytaemestra murders him and Cassandra.
+\item \textbf{\textit{The Libation Bearers}}: Orestes returns from exile, reunites with Electra, and kills Aegisthus and Clytaemestra.
+\item \textbf{\textit{The Eumenides}}: The Furies pursue Orestes for matricide; Apollo defends him; Athena creates a jury court at Athens and turns destructive vengeance into civic order.
+\end{enumerate}
+
+\mcqtrap{Do not flatten the trilogy into ``Agamemnon bad, Clytaemestra bad, Orestes good.'' The whole point is that every act of vengeance can be justified from inside the revenge cycle and still perpetuate it.}
+
+\subsection{\textit{Agamemnon}}
+
+\subsubsection*{What is happening in this play}
+The first play stages the return of a victorious king to a damaged house. Agamemnon comes home expecting triumph, but the audience already knows the house is morally unstable: he sacrificed his daughter Iphigeneia, he has been absent for ten years, and he returns with Cassandra as a captive concubine. Clytaemestra receives him with ceremony and kills him inside the palace. The play is about delayed consequence, gendered power, and the inability of the household to heal itself.
+
+\passagebox{\textit{Agamemnon} 146--159}{The Chorus of Argive elders.}{Early in the play, the chorus is giving the backstory of the expedition to Troy and the sacrifice of Iphigeneia.}{The passage frames the house as already infected by revenge. The child ``to be avenged'' is Iphigeneia, and the line prepares the audience to see Agamemnon's murder not as a sudden betrayal but as consequence returning home.}{The Week 4 lecture uses this passage to argue that the trilogy moves from vengeance inside the \textit{oikos} to punishment by the \textit{polis}.}
+
+\detailbox{Passage Snapshot}{The chorus says fear is not gone from the house but returns ``like sickness.'' The household still remembers the murdered child, and the anger over Iphigeneia is waiting for its avenger. The passage sounds less like a fresh crime scene than like a home already carrying unresolved blood debt.}
+
+This is the first point where the trilogy starts to look criminological rather than simply mythic. The issue is not whether violence has occurred; the issue is what sort of structure can stop retaliatory violence from reproducing itself. The chorus sees the household as a place where past violence stays alive.
+
+\passagebox{\textit{Agamemnon} 914--929}{Agamemnon, responding to Clytaemestra.}{Clytaemestra invites Agamemnon to walk on luxurious robes as he enters the palace. He resists, then gives in.}{The scene is about more than pride. The lecture reads it through gender and Orientalism: luxury, softness, and Eastern monarchy all become signs of dangerous excess. Agamemnon's decision to walk the robes dramatizes arrogance and failed self-restraint.}{The lecture links this to broader Greek stereotypes about East versus West, masculinity versus effeminacy, and the criminal danger of failing to govern oneself.}
+
+\detailbox{Passage Snapshot}{Agamemnon initially says such luxury is fit for gods or for the kind of eastern monarch he claims not to imitate. He treats robe-walking as a surrender to softness, excess, and vanity. Then he does it anyway. The passage therefore shows him recognizing the danger of overreaching at the very moment he chooses it.}
+
+The key point is that tragedy makes moral failure visible through gesture. Agamemnon's step onto the robes is not a legal crime, but it is a symbolic act that reveals the mindset that made earlier crimes possible. The lecture repeatedly treats lack of self-control as a major ancient way of imagining dangerous people.
+
+\passagebox{\textit{Agamemnon} 1275--1285}{Cassandra.}{Cassandra knows she and Agamemnon are about to die. She foretells the return of Orestes.}{The speech shows the split between divine and human justice. From the standpoint of divine necessity, Orestes is the avenger who must come. From the standpoint of current political reality, he is still an exile and potential outlaw.}{The lecture uses this to show how unjust rule can make a seemingly just avenger appear criminal, anticipating later questions in Lysias and Plato about law versus justice.}
+
+\detailbox{Passage Snapshot}{Cassandra says she and Agamemnon will die, but not unavenged. A son will return, kill his mother, and pay back his father's blood. She also describes him as an outlaw and wanderer, which matters because the future avenger already appears as someone marked by exile and danger rather than as a clean legal hero.}
+
+\passagebox{\textit{Agamemnon} 1372--1387}{Clytaemestra.}{Immediately after the murder, Clytaemestra stops pretending and explains that the killing was long planned.}{She presents herself not as a jealous wife acting in passion, but as an agent of necessary vengeance. That matters because the play gives her a serious justificatory voice. She does not sound irrational; she sounds purposeful, strategic, and morally convinced.}{The lecture stresses that ancient texts often let the criminal explain herself in morally coherent terms, which makes the cycle of vengeance harder to dismiss.}
+
+\detailbox{Passage Snapshot}{Clytaemestra says the deed was planned ``deep in time.'' She admits that her welcome speech was a trap, says she armed hate against hateful men, and describes the robes as a net that kept Agamemnon from escaping. She is not apologizing; she is claiming full authorship and presenting the murder as deliberate justice.}
+
+Clytaemestra's defense matters because it prevents a simplistic reading of her as merely monstrous. She has real grievances: a murdered daughter, a husband who leaves for a decade, sexual betrayal, and no effective institutional remedy. The lecture explicitly notes that she either had to submit or kill. That does not make her innocent; it explains why revenge can seem like justice inside a world lacking adequate public redress.
+
+\passagebox{\textit{Agamemnon} 1654--1661}{Clytaemestra, to Aegisthus.}{The chorus and Aegisthus are ready for more violence after Agamemnon's death. Clytaemestra tries to stop escalation.}{This is one of the trilogy's ironies. Clytaemestra thinks she has ended the cycle, but she has only paused it. The desire to stop violence remains trapped inside the same household mechanism that produced it.}{The lecture uses this moment to show that the cure cannot remain within the house.}
+
+\detailbox{Passage Snapshot}{Clytaemestra tells Aegisthus not to keep creating more bloodshed. She treats Agamemnon's death as sufficient repayment and imagines the house can now stop. The wording matters because it shows that even someone inside the revenge system can sincerely believe the cycle has been closed, just before the trilogy proves otherwise.}
+
+\subsubsection*{What to carry forward from Play 1}
+\begin{itemize}
+\item Violence inside the house feels morally compelled to the people committing it.
+\item Gender categories are unstable: Clytaemestra is repeatedly coded as masculine, Agamemnon as softened or feminized.
+\item The play treats household vengeance as understandable but politically inadequate.
+\end{itemize}
+
+\subsection{\textit{The Libation Bearers}}
+
+\subsubsection*{What is happening in this play}
+The second play intensifies the revenge logic. Orestes returns as the absent son who is both personally injured and religiously commanded to act. He meets Electra at Agamemnon's tomb, enters the palace by deception, kills Aegisthus, then kills Clytaemestra. The apparent restoration of justice collapses instantly when the Furies appear.
+
+\passagebox{\textit{The Libation Bearers} 117--122}{Electra and the chorus of libation bearers.}{Electra arrives to pour offerings at Agamemnon's tomb but turns the ritual toward vengeance instead.}{The scene turns mourning into mobilization. The dead father becomes the center of a new legal-moral claim: he must be avenged. Ritual does not calm violence; it authorizes it.}{The lecture presents this as the moment where the household itself demands its own cure, reinforcing the difference between private revenge and later civic justice.}
+
+\detailbox{Passage Snapshot}{Electra and the chorus do not simply perform a quiet funeral rite. They redirect the libation into a prayer that someone come to strike back for Agamemnon. The tomb becomes a place where grief is converted into a call for retaliatory justice.}
+
+\passagebox{\textit{The Libation Bearers} 924--930}{Orestes, confronting Clytaemestra.}{Orestes has trapped his mother in the palace and acknowledges that what he is about to do is terrible.}{This is an important moment because Orestes no longer sounds like a clean heroic avenger. He knows the act is wrong and still claims compulsion. The lecture treats necessity here not as an excuse but as a sign of how deeply revenge logic and psychological injury have fused.}{The Week 4 lecture explicitly asks whether everyone who commits a crime has a reason and whether necessity is really external or partly internal.}
+
+\detailbox{Passage Snapshot}{At this point Orestes is no longer speaking like a confident dispenser of justice. He frames the killing as something forced on him by prior wrong, by the house's pattern of blood-for-blood, and by the position his mother's own actions have created. The passage matters because he sounds both determined and morally strained.}
+
+\passagebox{\textit{The Libation Bearers} 980--990}{Orestes, after the murders.}{He displays the robes used in Agamemnon's murder as proof of Clytaemestra's guilt.}{The scene looks almost forensic. Orestes acts as if he is already preparing a legal defense, using physical evidence before an audience that resembles a jury. It marks a transition from simple vengeance toward argument about justice.}{The lecture ties this directly to later Athenian courtroom thinking and to the coming trial in \textit{The Eumenides}.}
+
+\detailbox{Passage Snapshot}{Orestes brings out the robe or net in which Agamemnon was trapped and effectively says: look at the murder weapon, look at the proof, look at what justified my response. The passage sounds like a staged evidentiary display. He is no longer just avenging; he is arguing his case.}
+
+\passagebox{\textit{The Libation Bearers} 980--990, especially the line about Aegisthus}{Orestes.}{After killing both Aegisthus and Clytaemestra, Orestes says he takes no account of Aegisthus' death because he suffered a seducer's penalty.}{This is crucial for the later legal material. Orestes is already making the same rhetorical move that Lysias will make: turning a homicide exception into something like an endorsed execution of the adulterer or seducer.}{The lecture explicitly says this anticipates the argument in \textit{Lysias 1} and helps explain why the death of Aegisthus does not become the central issue at Orestes' trial.}
+
+\detailbox{Passage Snapshot}{Orestes treats the death of Aegisthus as legally uncomplicated. In effect he says that Aegisthus, as the man sleeping with another man's wife and occupying another man's household, got exactly the fate such a seducer deserves. That compressed claim is doing a lot of legal work in very few words.}
+
+\mcqtrap{The law does not literally say ``seducers must be executed.'' In both Aeschylus and Lysias, the speaker rhetorically upgrades a homicide exception into a stronger claim than the law straightforwardly supports.}
+
+\passagebox{\textit{The Libation Bearers} 1025--1031}{Orestes.}{The murders are done, but Orestes still needs a final justification, so he appeals to Apollo's command.}{The speech shows that divine endorsement is not enough to settle guilt. Apollo will have to defend Orestes in argument, not merely by status. The new gods must submit vengeance claims to something like adjudication.}{The lecture uses this to mark the shift from older gods of revenge to newer divine powers that work through a court.}
+
+\detailbox{Passage Snapshot}{Orestes now shifts from personal grievance to divine authorization. He says Apollo ordered the act and implied terrible penalties if he failed to avenge his father. The passage therefore presents the matricide not as a free choice in isolation but as an act Orestes locates inside a divine command structure.}
+
+\subsubsection*{What to carry forward from Play 2}
+\begin{itemize}
+\item Orestes is never presented as simply carefree or purely triumphant.
+\item Revenge requires justification, evidence, and narrative framing.
+\item The appearance of the Furies makes guilt visible even after apparently successful vengeance.
+\end{itemize}
+
+\subsection{\textit{The Eumenides}}
+
+\subsubsection*{What is happening in this play}
+The final play asks whether any argument can actually end the cycle. Orestes flees to Delphi, Apollo purifies him, and the Furies refuse to accept that purification. The case moves to Athens, where Athena creates a jury and hears both sides. The vote ties, Athena acquits Orestes, and the Furies are transformed into protectors of civic order under a new name, the Eumenides.
+
+\passagebox{\textit{The Eumenides} 213--224}{Apollo.}{The Furies prosecute Orestes for matricide; Apollo argues in his defense.}{Apollo's core claim is that marriage also creates a serious bond and that the Furies are inconsistent if they avenge one kind of killing but ignore another. The point is not that Orestes is obviously innocent; it is that a world organized only by old revenge categories cannot handle competing claims fairly.}{The lecture links this to the need for a court and to the inadequacy of purely kin-based vengeance.}
+
+\detailbox{Passage Snapshot}{Apollo's argument is basically: if murder is murder, the Furies cannot care only about the mother's blood and ignore the husband's. He insists that marriage is not trivial, that Clytaemestra's killing matters too, and that Orestes acted in response to a prior unpunished crime. The defense is therefore an argument about inconsistency as much as innocence.}
+
+\passagebox{\textit{The Eumenides} 261--272}{The Furies.}{They explain the punishment they want for Orestes and the logic behind it.}{This is the old logic of blood for blood, with no easy substitution. Fine, persuasion, and ritual easing are not enough. The Furies embody the view that certain violent acts stain a person and must be answered by suffering.}{The lecture links this to \textit{miasma} and to the old religious seriousness of homicide.}
+
+\detailbox{Passage Snapshot}{The Furies say spilled blood must be answered with suffering, not talked away. They want Orestes weakened, haunted, dragged below, and made to pay among other grave sinners. The passage makes clear that they are not asking for a measured civic penalty; they want relentless retaliatory punishment.}
+
+\passagebox{\textit{The Eumenides} 470--489}{Athena.}{Athena hears the competing arguments and decides the case is too difficult for unilateral judgment.}{This is the key constitutional moment of the trilogy. Athena does not simply reveal the right answer. She institutionalizes uncertainty by creating a jury. The point is not omniscient justice but collective procedure.}{The Week 4 lecture treats this as Aeschylus' myth of the origin of democratic criminal adjudication.}
+
+\detailbox{Passage Snapshot}{Athena says the case is too weighty and too divided for one ruler simply to declare an answer. She therefore creates a standing court and puts the issue before a group of judges. What matters in the wording is the admission of ambiguity: even a goddess does not present this case as obvious.}
+
+\passagebox{\textit{The Eumenides} 734--743}{Athena.}{The jury is tied, and Athena casts the deciding vote for Orestes.}{The lecture stresses that Athena's reasoning is weak as a legal argument. Her pro-male bias and her claimed lack of attachment to motherhood expose how prejudice can shape judgment even in a foundational trial. The trilogy celebrates courts, but it does not pretend judges are pure.}{This links directly to the lecture's broader point that democratic procedure does not guarantee perfect justice.}
+
+\detailbox{Passage Snapshot}{Athena openly says she casts her ballot for Orestes and treats equal votes as enough to acquit him. Her stated reason is not a neutral legal principle but her own identification with the male side of the dispute. The passage therefore turns the foundation of the court into a lesson about the power of judicial bias.}
+
+\passagebox{\textit{The Eumenides} 858--866}{Athena.}{After acquittal, Athena redirects the Furies toward a civic function inside Athens.}{The crucial distinction here is between violence directed inward and violence directed outward. Internal violence is criminal and destructive; external violence can be re-coded as war in defense of the community.}{The lecture uses this passage to define a specifically ancient contrast between crime and warfare.}
+
+\detailbox{Passage Snapshot}{Athena asks for a city without civil bloodshed and with force directed against enemies rather than against kin and fellow citizens. The passage is where the trilogy most clearly says that inward violence is the problem to be criminalized, while outward violence can still be honored as collective defense.}
+
+\passagebox{\textit{The Eumenides} 976--986}{The transformed chorus, now the Eumenides.}{The former avengers are now incorporated into the city and bless Athens.}{This is not a disappearance of anger but its political harnessing. Civic order does not erase hostile power; it redirects it. The city survives not by abolishing force but by managing it.}{The lecture closes with this as the final move from private hatred to productive civic structure.}
+
+\detailbox{Passage Snapshot}{Now speaking as civic protectors rather than pure avengers, the Eumenides bless Athens with order, prosperity, and internal peace. Their goodwill depends on being honored and housed properly. The passage shows that the city does not destroy old forces of vengeance; it domesticates and repurposes them.}
+
+\subsubsection*{What the trilogy argues as a whole}
+\begin{itemize}
+\item \textbf{Crime begins as internal violence.} The house of Atreus is the site where violence folds inward.
+\item \textbf{Private vengeance reproduces itself.} Each avenger can tell a morally intelligible story.
+\item \textbf{The city intervenes not by erasing conflict but by formalizing it.} Trial replaces retaliation.
+\item \textbf{Civic justice is imperfect.} Athena's bias and the tied jury make that clear.
+\item \textbf{The criminal emerges as a public problem.} What starts as family injury becomes a matter for the community.
+\end{itemize}
+
+\linkbox{This is why the lecture calls the \textit{Oresteia} a kind of ancient criminology. It asks what makes violence criminal, how responsibility works inside damaged families, and what institutions are needed to stop repeated harm.}
+
+\section{Plato, \textit{Gorgias}}
+
+\subsection*{Five Things}
+\begin{tabular}{@{}p{0.24\linewidth}p{0.68\linewidth}@{}}
+\toprule
+\textbf{Category} & \textbf{What to know} \\
+\midrule
+Author & \keyterm{Plato} \\
+Title & \textit{Gorgias} \\
+Date & Usually placed in the early fourth century BCE; the lecture situates it broadly in Plato's classical Athenian context \\
+Location & \textbf{Athens} \\
+Language & \textbf{Attic Greek} \\
+\bottomrule
+\end{tabular}
+
+\subsection*{Why the dialogue belongs in this course}
+The \textit{Gorgias} is assigned not because it is a law-code dialogue, but because it stages competing understandings of wrongdoing, persuasion, punishment, happiness, and political power. The speakers do not agree on what counts as a criminal, whether punishment helps or harms, or whether justice is natural, conventional, moral, or divine.
+
+\subsection*{Socrates before the dialogue}
+The lecture spends time on Socrates because the ethical pressure of the dialogue depends on who he is:
+
+\begin{itemize}
+\item He opposed the illegal mass trial of the generals after \keyterm{Arginusae} in 406 BCE.
+\item He resisted the orders of the \keyterm{Thirty Tyrants} in 404 BCE.
+\item In Plato's \textit{Apology}, he presents himself as someone who would rather risk death than do wrong.
+\item At his own trial in 399 BCE, he was convicted on religious charges and famously refused to flatter the jury in the usual way.
+\end{itemize}
+
+\linkbox{The lecture uses the \textit{Apology} material to establish that Socrates is not merely abstractly moralizing. He is presented as someone who already chose justice over safety in political life, which makes his later claims about punishment and wrongdoing more than verbal tricks.}
+
+\subsection*{Dialogue map}
+\begin{tabular}{@{}p{0.16\linewidth}p{0.36\linewidth}p{0.38\linewidth}@{}}
+\toprule
+\textbf{Speaker} & \textbf{Main position} & \textbf{Criminological angle} \\
+\midrule
+Gorgias & Rhetoric is persuasion in public settings, including law-courts. & Focus on persuasive power, not truth. \\
+Polus & Power is attractive; punishment is what makes wrongdoing undesirable. & Deterrence and the ``happy criminal'' problem. \\
+Callicles & Justice is convention made by the weak to restrain the strong. & Social construction and raw power. \\
+Socrates & Wrongdoing harms the wrongdoer most; punishment can cure. & Moral crime, rehabilitation, and divine justice. \\
+\bottomrule
+\end{tabular}
+
+\subsection{Gorgias on rhetoric}
+
+\passagebox{\textit{Gorgias} 454b}{Gorgias.}{Socrates asks what rhetoric is and what domain it operates in.}{Gorgias says rhetoric persuades people in mass settings such as law-courts. That matters because the dialogue enters the field of crime and punishment through courtroom persuasion rather than through statute.}{The Week 8 lecture uses this as the reason the dialogue belongs in the course at all.}
+
+\detailbox{What Each Speaker Is Saying}{Gorgias defines rhetoric as the power to persuade crowds in public settings, especially courts and assemblies, about questions of right and wrong. Socrates' question matters because it forces Gorgias to say plainly that rhetoric works on public judgment rather than on private certainty or technical expertise.}
+
+\passagebox{\textit{Gorgias} 455a}{Gorgias, under Socratic questioning.}{Socrates presses the difference between persuasion and teaching.}{The point is that rhetoric may produce belief without producing knowledge. In a legal context, that means courts may be ruled by persuasive appearance rather than truth.}{The lecture links this directly back to Lysias, where courtroom success depends on narrative and character construction, not just legal precision.}
+
+\detailbox{What Each Speaker Is Saying}{Socrates pushes Gorgias to admit that rhetoric does not truly teach justice in the way a craft teaches its subject. Gorgias' short assent matters because he effectively concedes that rhetoric produces conviction without necessarily producing knowledge. That is exactly why it is so powerful and so dangerous in court.}
+
+At this stage, the dialogue is already about law even before anyone starts debating punishment. If rhetoric is the art that dominates courts and assemblies, then the problem of crime is inseparable from the problem of persuading communities what to believe about right and wrong.
+
+\subsection{Polus on power and punishment}
+
+\passagebox{\textit{Gorgias} 469d--e}{Polus.}{Polus takes over from Gorgias and treats rhetoric as the road to power.}{He assumes that the real problem with wrongdoing is the risk of punishment. This frames crime instrumentally: if the penalty can be avoided, the wrongdoer may still be flourishing.}{The lecture reads Polus through Rational Choice and deterrence.}
+
+\detailbox{What Each Speaker Is Saying}{Polus' move is simple: people avoid certain actions because those actions lead to punishment. Crime is therefore unattractive mainly because it carries consequences, not because injustice harms the soul. The passage makes punishment look like an external cost attached to wrongdoing.}
+
+\passagebox{\textit{Gorgias} 471a--b}{Polus, describing Archelaus.}{Polus uses the tyrant Archelaus as the test case of someone who gained power through murder.}{The test case matters because Archelaus may be legally secure while still morally compromised. Polus thinks power and success are the obvious proof of advantage; Socrates refuses that equation.}{The lecture uses this to separate legal success from moral condition.}
+
+\detailbox{Passage Snapshot}{Polus narrates Archelaus' rise in concrete terms: he lures in his uncle and cousin, gets them drunk, murders them, and disposes of their bodies. The point of the story is not subtlety but shock. Polus wants a case where terrible crime visibly produces political success.}
+
+\passagebox{\textit{Gorgias} 472d--e}{Socrates answering Polus.}{The dialogue asks whether an unjust person who escapes punishment is better off than one who suffers it.}{Socrates gives the radical answer: the criminal who escapes punishment is worse off. This is the turning point where punishment stops looking like pure harm and begins to look therapeutic.}{The lecture explicitly calls this a moral and religious approach to crime rather than a legal one.}
+
+\detailbox{What Each Speaker Is Saying}{Polus' side of the exchange is that punishment obviously makes a criminal miserable. Socrates replies that the unpunished criminal is in the worse condition, because he remains unjust and therefore wretched. The disagreement is no longer about what hurts; it is about what counts as real damage.}
+
+\passagebox{\textit{Gorgias} 476a}{Socrates.}{He reformulates the disagreement in exact terms.}{The issue is no longer whether criminals dislike punishment, but whether just punishment is good for them. Socrates turns the debate from fear to benefit.}{This anticipates modern rehabilitation language and links back to Walklate's explanation models.}
+
+\detailbox{Passage Snapshot}{Socrates restates the debate almost like a legal issue for decision: is there any difference between paying the penalty and being justly punished, and which condition is actually worse for the criminal? The passage matters because it turns vague moral disagreement into a precise question about the function of punishment.}
+
+\passagebox{\textit{Gorgias} 478e--479b and 479b--c}{Socrates.}{He develops the analogy between unjust souls and unhealthy bodies.}{Punishment is cast as medicine. People avoid it because they see only pain, not cure. The analogy matters because it reframes the state not as a mere avenger but as a potential healer.}{The lecture explicitly compares this to modern correctional ideals while noting that Socrates pushes the idea harder and more morally than a modern legal system usually does.}
+
+\detailbox{What Each Speaker Is Saying}{Polus grants enough of Socrates' analogy for Socrates to press the point home. Socrates says people who flee punishment are like sick people who fear surgery because they notice pain but not healing. They use money, friends, and persuasive speech to escape sentence, but what they are really escaping is the only treatment that could improve them.}
+
+\subsection{Callicles on nature, convention, and desire}
+
+\passagebox{\textit{Gorgias} 482e--483a}{Callicles.}{Callicles steps in after Polus and accuses Socrates of relying on convention instead of truth.}{This is the key statement of the \keyterm{physis} versus \keyterm{nomos} split. Callicles says convention is a social fabrication that weak people use to constrain stronger people.}{The lecture reads Callicles as the most social-constructionist speaker in the dialogue.}
+
+\detailbox{What Each Speaker Is Saying}{Callicles says Socrates pretends to seek truth but really falls back on conventional morality. He introduces the basic opposition between nature and convention and claims that ordinary ethical language belongs to convention, not to the way the world really works.}
+
+\passagebox{\textit{Gorgias} 483b--c}{Callicles.}{He explains who makes rules and why.}{Law and morality are instruments of the weak majority, not objective truths. This is one of the clearest attacks in the course on moral and legal language as power strategy.}{The lecture links this to social constructionism, but also warns that Callicles uses the insight to justify domination rather than to expose injustice compassionately.}
+
+\detailbox{Passage Snapshot}{Callicles says the many are weak, the few are strong, and the rules are written by the many for self-protection. Praise, blame, and law all become tools used by the weak to frighten stronger people out of taking more than an equal share.}
+
+\passagebox{\textit{Gorgias} 491e--492b}{Callicles.}{He develops his positive account of the best life.}{For Callicles, the good life is the unrestrained expansion and satisfaction of desire. Justice and self-discipline are excuses for the timid.}{The lecture contrasts this with Socrates' insistence that unrestrained appetite produces the life of a predatory outlaw.}
+
+\detailbox{Passage Snapshot}{Callicles says the truly natural life is one in which desires are allowed to grow as large as possible and are then satisfied by courage and cleverness. On this view, self-discipline is not a virtue but a story invented by weaker people who cannot satisfy their own appetites.}
+
+Callicles matters because he makes the strongest anti-moral case in the whole course. If justice is merely collective self-protection by the weak, then ``crime'' becomes a label the majority attaches to successful forms of taking. The dialogue has to defeat that view if it wants moral language about crime to mean anything.
+
+\subsection{Socrates on justice, cure, and community}
+
+\passagebox{\textit{Gorgias} 507c--e}{Socrates.}{Socrates responds to Callicles' praise of appetite and domination.}{He says happiness requires self-discipline and justice, and that the unrestrained person lives like a predatory outlaw who can never be on good terms with others. Crime here is not only a wrong act; it is a way of life incompatible with community.}{The lecture explicitly connects this to the \textit{Oresteia}'s concern with communal cohesion.}
+
+\detailbox{Passage Snapshot}{Socrates says happiness requires discipline and justice, both for the individual and for the community. If restraint is ever needed, it must be accepted rather than rejected. Otherwise life becomes endless appetite, endless dissatisfaction, and the social isolation of an outlaw who can never live on good terms with others.}
+
+\passagebox{\textit{Gorgias} 508d--e}{Socrates.}{Socrates pushes the claim further by comparing suffering wrong with doing wrong.}{His claim is stark: being victimized is less bad than becoming a wrongdoer. The wrongdoer damages his own soul and his relation to the community.}{The lecture identifies this as one of the most modern-feeling and most morally demanding claims in the dialogue.}
+
+\detailbox{Passage Snapshot}{Socrates lists concrete injuries like being beaten, stabbed, robbed, enslaved, or burgled, then says doing such things without just cause is worse than suffering them. The passage is specific on purpose: it refuses to let the reader hide behind abstraction and insists that the moral damage belongs more to the aggressor than to the victim.}
+
+\passagebox{\textit{Gorgias} 523a--b}{Socrates.}{After developing a moral account, Socrates turns back to myth and divine judgment.}{The afterlife court mirrors and perfects human justice. This matters because Socrates no longer relies only on logic about the good soul; he adds the deterrent force of inevitable divine judgment.}{The lecture sees this as both powerful and slightly unsatisfying, because Socrates starts to use persuasion about fear rather than pure teaching.}
+
+\detailbox{Passage Snapshot}{Socrates says god-fearing and moral people go to the Isles of the Blessed, while immoral and godless people go to Tartarus. He also says the old judging system was faulty because living judges were misled by outward appearances. The passage turns divine justice into a corrected version of the human court system.}
+
+\passagebox{\textit{Gorgias} 525b--c}{Socrates.}{He explains what punishment should do.}{Punishment has two possible functions: cure the curable offender, or serve as an example that deters others when the offender is incurable. This is one of the clearest statements in the course about rehabilitation and deterrence sitting side by side.}{The lecture flags this as a slight weakening of the pure ``punishment is always good for the punished'' position.}
+
+\detailbox{What Each Speaker Is Saying}{Socrates says justified punishment has two ends. Some people are curable, so punishment helps them by making them better. Others are incurable, so their punishment does not heal them but still serves a public function by terrifying later wrongdoers. This is where Socrates explicitly joins cure and deterrence in the same theory.}
+
+\passagebox{\textit{Gorgias} 526d--e}{Socrates.}{He returns to Archelaus and generalizes from him.}{The worst incurable offenders are powerful rulers and politicians, because power creates the capacity for deeper wrongdoing. This sharply contrasts with modern popular images of the criminal as poor and marginal.}{The lecture stresses this as a major ancient-modern inversion and explicitly mentions Thersites as the non-elite figure contrasted with kings.}
+
+\detailbox{Passage Snapshot}{Socrates says the greatest warning examples in the afterlife are dictators, kings, potentates, and politicians. His reason is simple: power gives people more scope to commit large crimes. By contrasting them with minor figures like Thersites, the passage insists that the gravest criminals are not the weak but the powerful.}
+
+\passagebox{\textit{Gorgias} 526e--527a}{Socrates.}{The dialogue closes with Socrates exhorting Callicles to live justly before the final judgment.}{Socrates ends by threatening a loss of status and power in the afterlife. The dialogue closes on persuasion rather than complete philosophical conversion. That is partly ironic: Socrates ends up using rhetoric against the rhetoricians.}{The lecture suggests that Plato may be doing this intentionally, showing how hard it is to teach justice without some appeal to fear.}
+
+\detailbox{Passage Snapshot}{Socrates says he will try to present the judge with a healthy soul and urges Callicles to live the same way. He then warns that at judgment Callicles will lose all present status and stand helpless before divine authority. The ending therefore sounds less like calm instruction and more like a final moral warning.}
+
+\subsection*{What the dialogue argues as a whole}
+\begin{itemize}
+\item Gorgias makes crime legible through rhetoric and persuasion.
+\item Polus treats punishment as a danger that makes wrongdoing unattractive.
+\item Callicles denies stable moral reality and treats justice as convention.
+\item Socrates argues that wrongdoing harms the doer, punishment can heal, and power makes the worst wrongdoing possible.
+\end{itemize}
+
+\section{Cross-Reading Synthesis}
+
+\begin{tabular}{@{}p{0.16\linewidth}p{0.24\linewidth}p{0.24\linewidth}p{0.24\linewidth}@{}}
+\toprule
+\textbf{Question} & \textbf{Walklate} & \textbf{\textit{Oresteia}} & \textbf{\textit{Gorgias}} \\
+\midrule
+What is crime? & Depends on approach: legal, moral, social, humanistic, constructionist. & Internal violent disorder inside the household and city. & Wrongdoing can be legal yet still deeply unjust. \\
+Why do people do wrong? & Multiple models: calculation, weak bonds, deprivation, gender pressure. & Revenge, grievance, family curse, status, and compulsion. & Desire for power, rhetorical success, refusal of self-restraint. \\
+What should punishment do? & Explanations vary; victim and offender categories matter. & Replace endless retaliation with civic resolution. & Cure the curable; deter through examples when necessary. \\
+Who looks most criminal? & Modern systems often spotlight the marginalized. & Elite family members and rulers dominate the narrative. & Kings, tyrants, and politicians are most capable of great crimes. \\
+\bottomrule
+\end{tabular}
+
+\subsection*{Likely comparison points}
+\begin{itemize}
+\item \textbf{Legal versus moral crime}: Walklate gives the framework; Socrates makes the distinction explicit; Lysias exploits the slippage.
+\item \textbf{Household versus city}: the \textit{Oresteia} moves from private revenge to public adjudication.
+\item \textbf{Persuasion versus truth}: \textit{Gorgias} and Lysias together show how legal settings can reward persuasion over knowledge.
+\item \textbf{Deterrence versus cure}: Polus emphasizes deterrence; Socrates emphasizes cure but partly returns to deterrence; the \textit{Oresteia} emphasizes communal pacification.
+\item \textbf{Power and criminality}: ancient texts keep returning to powerful male offenders rather than the socially marginal. This is one of the most important links back to Walklate.
+\end{itemize}
+
+\subsection*{Rapid review}
+\begin{itemize}
+\item \textbf{Walklate:} know the five approaches, positivism, and the four explanation models.
+\item \textbf{\textit{Oresteia}:} know the family sequence, the three plays, and the move from \textit{oikos} to \textit{polis}.
+\item \textbf{\textit{Gorgias}:} know each speaker's position and which passages express rhetoric, deterrence, social construction, cure, and divine judgment.
+\item \textbf{Across the unit:} know that ancient Greek texts often imagine the gravest criminals as powerful men.
+\end{itemize}
+
+\end{document}
+

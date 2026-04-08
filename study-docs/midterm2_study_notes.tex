@@ -1,0 +1,552 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+\microtypesetup{expansion=false}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{leftmargin=*, itemsep=0.2em, topsep=0.2em}
+\setlist[enumerate]{leftmargin=*, itemsep=0.2em, topsep=0.2em}
+\renewcommand{\arraystretch}{1.2}
+
+\definecolor{FiveThingsBg}{RGB}{236,244,255}
+\definecolor{KeyTermsBg}{RGB}{239,249,239}
+\definecolor{TrapBg}{RGB}{255,245,229}
+\definecolor{TrapBorder}{RGB}{191,108,0}
+\definecolor{TableStripe}{RGB}{248,248,248}
+
+
+\newcommand{\keyterm}[1]{\textbf{#1}}
+\newcommand{\fivebox}[1]{%
+    \par\noindent
+    \fcolorbox{black}{FiveThingsBg}{%
+        \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{Five Things. }#1}%
+    }%
+    \par\medskip
+}
+\newcommand{\legendbox}[2]{%
+    \noindent\fcolorbox{black}{#1}{\parbox[c][1.5em][c]{7em}{\centering\textbf{#2}}}
+}
+\newcommand{\mcqtrap}[1]{%
+    \par\noindent
+    \fcolorbox{TrapBorder}{TrapBg}{%
+        \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{MCQ Trap. }#1}%
+    }%
+    \par\medskip
+}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{CS2301 Midterm 2 Study Notes}}\\[0.4em]
+{\large Crime and Punishment in Ancient Greece and Rome}\\[0.2em]
+{\normalsize Greek unit only: Lectures 5--7 (the material the lecture scripts identify as ending with Midterm 2)}
+\end{center}
+
+\section*{How to Use This Guide}
+This handout is designed for multiple-choice review, not just for broad understanding. Read each section straight through once, then circle back to the tables, the named people, the Greek legal terms, and every \textbf{MCQ Trap}. If you can answer the study-question sheets using only these notes, you are covering the right ground.
+
+\section*{Roadmap of the Unit}
+\begin{itemize}
+\item \textbf{Lecture 5: Modern Criminology and Ancient Crime.} Walklate gives the conceptual tools: what crime is, how criminologists define it, what positivism is, and how modern models can be used to read ancient texts.
+\item \textbf{Lecture 6: Athens and Draco's Homicide Law.} Lysias 1 shows how Athenian law worked in practice, how courtroom rhetoric could twist the law, and how identity could matter more than legal technicality.
+\item \textbf{Lecture 7: Greek Philosophy of Crime: Plato's \textit{Gorgias}.} Plato stages a debate about rhetoric, justice, deterrence, punishment, moral responsibility, and whether criminals can really be happy.
+\item \textbf{Midterm scope note.} The Lecture 7 script explicitly says it is the \emph{last} week of material tested on the second midterm, so these notes stop there.
+\end{itemize}
+
+\section*{Legend}
+\legendbox{FiveThingsBg}{Five Things}\hspace{1em}
+\legendbox{KeyTermsBg}{Key Terms}\hspace{1em}
+\legendbox{TrapBg}{MCQ Trap}
+
+\begin{itemize}
+\item \textbf{Five Things} = the basic identification facts your professor repeatedly emphasizes: author, title, date, location, language.
+\item \textbf{Key Terms} appear in bold. Treat them as likely multiple-choice targets.
+\item \textbf{MCQ Trap} boxes mark easy confusions, especially where the lecture warns that the law, rhetoric, and moral perception do not line up.
+\end{itemize}
+
+\section{Modern Criminology and Ancient Crime}
+
+\fivebox{Know the field of criminology, the five approaches to defining crime, the major positivist strands, Walklate's four explanation models, and the difference between the \textit{criminological other} and the \textit{victimological other}.}
+
+\subsection*{What criminology is doing in this course}
+The lecture's main claim is that there was no discipline called ``criminology'' in antiquity, but ancient Greek and Roman texts still asked recognizably criminological questions: \emph{What is crime? What causes crime? How can it be prevented? What should happen after it occurs?} Walklate provides modern categories; the course then tests how well those categories illuminate ancient material.
+
+Criminology is presented as a \keyterm{flexible field}. That matters because your professor does \emph{not} want one rigid definition. Expect multiple-choice questions that ask which approach is being used, or which theory best matches a passage.
+
+\subsection*{Five approaches to defining crime}
+
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+\textbf{Approach} & \textbf{Definition of crime} & \textbf{Why it matters in this course} \\
+\midrule
+\textbf{Legal} & Crime is law-breaking behavior. & Necessary baseline, but too narrow by itself. Laws vary by time and place, so this approach is historically specific. Useful for things like Draco's homicide law. \\
+\textbf{Moral} & Crime is what is morally wrong, whether or not it is illegal. & Lets us call legally protected people or acts ``criminal'' in a moral sense. Socrates often argues this way. \\
+\textbf{Social} & Crime is behavior that violates social norms or custom. & Important in Greek contexts because \textit{nomos} can mean both law and custom. Ancient judges often appealed to custom and shared values. \\
+\textbf{Humanistic} & Crime is violation of basic human rights that transcend local custom. & Useful for asking hard questions about slavery and violence in antiquity, even when ancient law accepted them. \\
+\textbf{Social constructionist} & Crime is not natural or universal; societies create the category of crime and also define who counts as a criminal. & Central to this course. Ancient and modern societies do not construct criminality in the same way. \\
+\bottomrule
+\end{tabularx}
+
+\mcqtrap{Do not collapse \textbf{legal}, \textbf{moral}, and \textbf{social} into one idea. A behavior can be legal but immoral, illegal but not strongly condemned, or socially deviant without being formally illegal.}
+
+\subsection*{Why the social constructionist approach is so important}
+The lecture leans hard on \keyterm{social constructionism}. The point is not just that societies make laws. The deeper point is that societies make categories that \emph{feel} natural. Modern Western societies often treat sexuality and criminality as part of identity. Classical Athens did not organize sexuality by the same categories modern people use, and the lecture argues that criminality works similarly: cultures define not only criminal \emph{acts} but criminal \emph{persons}.
+
+Michel \keyterm{Foucault} matters here because he helps explain the shift from premodern punishment focused on repairing the community to modern punishment focused on correcting the individual. In the modern world, prisons are supposed to fix people. In the ancient world, punishments such as exile often mattered more for healing or purifying the community than for reforming the offender.
+
+\subsection*{Positivism and the development of modern criminology}
+\keyterm{Positivism} means seeking knowledge through empirical data. In criminology, positivist approaches look for measurable causes of criminality.
+
+
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+\textbf{Strand} & \textbf{Core idea} & \textbf{Key lecture details} \\
+\midrule
+\textbf{Biological positivism} & Criminals are physically different from other people. & \keyterm{Cesare Lombroso}, a nineteenth-century Italian prison psychiatrist, measured bodies and thought criminals had identifiable biological traits. The lecture treats this as wrong but historically important. \\
+\textbf{Sociological positivism} & Social environment and measurable social patterns shape criminality. & The \keyterm{Chicago School} focused on the ``zone of transition'' or ``inner city'' as a site of concentrated social problems, including crime. \\
+\textbf{Psychological positivism} & Internal mental or psychological traits explain criminal behavior. & The lecture links this to modern thinking and also to ancient texts, reading Athena in the \textit{Iliad} and the Furies in the \textit{Oresteia} as externalized psychology. \\
+\bottomrule
+\end{tabularx}
+
+The lecture also stresses that positivism leaves a residue in modern thinking even when specific old theories are rejected. People still imagine certain kinds of faces, classes, neighborhoods, races, or genders when they hear the word ``criminal.''
+
+\subsection*{Walklate's four explanation models}
+
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+\textbf{Theory} & \textbf{Basic claim} & \textbf{Lecture example or implication} \\
+\midrule
+\textbf{Rational Choice Theory} & People commit crimes after weighing benefits against risks. & Orestes can be read as calculating revenge, kingship, and divine consequences. Later, Lysias sounds almost modern when he argues deterrence. \\
+\textbf{Social Control Theory} & Crime becomes more likely when the factors that restrain people are weak. & \keyterm{Travis Hirschi}'s four factors are \textbf{attachment}, \textbf{commitment}, \textbf{involvement}, and \textbf{belief}. Orestes lacks several of these. \\
+\textbf{Relative Deprivation} & People may commit crime because they feel deprived of what should be theirs by right. & Clytaemestra and Orestes are both presented as feeling deprived, not merely poor. \\
+\textbf{Hegemonic Masculinity} & Gender expectations shape crime and victimhood. & Men are pressured toward violence; women are pressured toward submission. The \textit{Oresteia} dramatizes this through Orestes, Electra, and Clytaemestra. \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Victims, visibility, and ``the other''}
+Walklate's later chapter shifts from perpetrators to victims. The lecture stresses that public imagination is selective.
+
+\begin{itemize}
+\item The \keyterm{criminological other} is someone who does \emph{not} fit the usual social image of the criminal. The lecture's example is something like ``a little old lady'' as perpetrator.
+\item The \keyterm{victimological other} is someone who does \emph{not} fit the usual social image of the victim. The lecture's example is a man subjected to domestic violence.
+\end{itemize}
+
+One of the strongest lecture claims is comparative: in the modern imagination, visible criminals are often imagined as poor, young, urban, racially marked men, while in classical Athens the visible criminals of elite literature and courtroom discourse are often \emph{wealthy citizen men}. That difference is a major course theme.
+
+\mcqtrap{The lecture does \emph{not} say men are really the only criminals and women are really the only victims. It says societies \emph{associate} perpetration with masculinity and victimhood with femininity, which affects visibility and interpretation.}
+
+\subsection*{High-yield synthesis}
+\begin{itemize}
+\item Know that your professor explicitly says there are ``a lot of theories, and yes, you should know them.''
+\item The biggest conceptual divide is between approaches focused on \textbf{acts} and those focused on \textbf{criminal identity}.
+\item The lecture repeatedly moves between modern and ancient worlds to show both similarity and mismatch. Do not assume a modern category maps cleanly onto ancient Athens.
+\end{itemize}
+
+\section{Athens and Draco's Homicide Law / Lysias 1}
+
+\fivebox{Know the Five Things for Lysias 1, the difference between author and courtroom speaker, the relevant exception in Draco's homicide law, what the law really allowed, what Lysias falsely implies, and why ``seducer'' was such a hated category in Athens.}
+
+\subsection*{Five Things for the text}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+\textbf{Category} & \textbf{What to know} \\
+\midrule
+\textbf{Author} & \keyterm{Lysias}, an Athenian logographer (speechwriter), born in the mid-fifth century BCE, son of Cephalus, technically a \textit{metic} rather than a citizen. \\
+\textbf{Title} & \textit{Lysias 1}, also called \textit{On the Murder of Eratosthenes}. \\
+\textbf{Date} & Probably sometime between \textbf{403 BCE} (restoration of democracy) and \textbf{380 BCE} (approximate death of Lysias). \\
+\textbf{Location} & Athens. \\
+\textbf{Language} & Attic Greek. \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Who is who in the case}
+\begin{itemize}
+\item \textbf{Author of the speech:} Lysias.
+\item \textbf{Speaker delivering the defense:} \keyterm{Euphiletos}.
+\item \textbf{Defendant:} Euphiletos.
+\item \textbf{Murder victim:} \keyterm{Eratosthenes}.
+\item \textbf{Case posture:} a defense speech in a homicide case brought by the victim's family.
+\end{itemize}
+
+\mcqtrap{Lysias \emph{wrote} the speech, but \textbf{Euphiletos} is the one imagined as speaking in court. If a question asks ``who is on trial?'' or ``who speaks for the defense?'' the answer is not automatically Lysias.}
+
+\subsection*{Why this case matters}
+The lecture calls this ``Murder Week'' because the case is a window into real Athenian criminal law. It shows:
+\begin{itemize}
+\item how Draco's homicide law was understood,
+\item how rhetoric could shape legal interpretation,
+\item how a defendant could try to redefine himself as victim and the dead man as criminal,
+\item how criminality in Athens could function as a matter of \textbf{identity}, not just of technical law.
+\end{itemize}
+
+\subsection*{Draco's homicide law: the crucial exception}
+Draco's homicide law was famous because it was the oldest Athenian law still in force in the classical period and the only Draconian law Solon supposedly did not repeal. The relevant passage, preserved through Demosthenes, gives exceptions to exile for manslaughter, including killings in athletic contests, on the road, in battle, and when a man catches another man in sexual intercourse with certain women connected to his household.
+
+For exam purposes, the core point is this:
+\begin{itemize}
+\item \textbf{What the law actually does:} it creates an \textbf{exception} to homicide liability in certain circumstances.
+\item \textbf{What it does not do:} it does \emph{not} straightforwardly say, ``the punishment for adultery is death.''
+\end{itemize}
+
+
+\begin{tabularx}{\linewidth}{@{}XX@{}}
+\toprule
+\textbf{Actual legal logic} & \textbf{Lysias' courtroom spin} \\
+\midrule
+If a man kills under one of the listed exceptional circumstances, he is not treated as a manslayer who must go into exile. & The law positively \emph{demands} or at least authorizes the immediate execution of adulterers caught in the act. \\
+The law is about exempting certain killings from homicide consequences. & The law becomes, rhetorically, a public command to punish seducers by death. \\
+The emotional crisis of catching illicit sex seems to explain the exception. & Euphiletos presents himself as the agent of the city's justice, almost as if he were carrying out a formal sentence. \\
+\bottomrule
+\end{tabularx}
+
+\mcqtrap{The easiest mistake in this unit is confusing a \textbf{homicide exception} with a \textbf{statutory death penalty}. The lecture explicitly says Lysias blurs that line on purpose.}
+
+\subsection*{The Eleven, summary execution, and what Lysias is trying to imply}
+\keyterm{The Eleven} were Athenian officials connected with prisons and executions. They could summarily execute thieves who admitted guilt in certain circumstances. Lysias tries to make Euphiletos' act sound analogous: he caught a guilty adulterer, the adulterer confessed, and so the killing becomes an immediate execution carried out under the spirit of the law.
+
+But the lecture stresses that this is false or at least deeply misleading. If Euphiletos had taken Eratosthenes to the Eleven and asked them to execute him as an adulterer, they would not have done so. The legal penalty for adultery was not simply ``death.''
+
+\subsection*{Public versus private procedure: \textit{graphe} and \textit{dike}}
+
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+\textbf{Term} & \textbf{Basic meaning} & \textbf{Why it matters here} \\
+\midrule
+\textit{dike} & Private suit. & Homicide belongs here: Euphiletos is on trial in a private case. \\
+\textit{graphe} & Public action involving the community. & Lysias rhetorically makes the killing sound like public justice carried out on behalf of Athens. \\
+\bottomrule
+\end{tabularx}
+
+That move helps Euphiletos avoid personal responsibility. He becomes not a violent husband who tied up and killed an unarmed man, but an instrument of the city's will.
+
+\mcqtrap{If a question contrasts \textit{dike} and \textit{graphe}, remember the direction of the distortion: the real case is a \textbf{private homicide case}, but Lysias tries to make it feel like \textbf{public punishment}.}
+
+\subsection*{Why ``seducer'' is worse than it sounds}
+The lecture distinguishes between the \keyterm{action} and the \keyterm{identity category}.
+
+\begin{itemize}
+\item \textbf{Adultery} is the act.
+\item \textbf{Seducer} is a more loaded identity label, suggesting repeated behavior and corrupt character.
+\end{itemize}
+
+This matters because Euphiletos wants the jury to think not just ``Eratosthenes did one bad act,'' but ``Eratosthenes is the kind of man who preys on households.'' The speech even claims he had seduced many other women too. That turns him into a type of criminal person.
+
+\subsection*{Inheritance, legitimacy, and sexual anxiety}
+The lecture spends significant time on why Athenians cared so intensely about seduction. The key issue is not modern romantic jealousy. It is \textbf{paternity}, \textbf{inheritance}, and the household (\textit{oikos}).
+
+\begin{itemize}
+\item Greek poleis depended heavily on property-holding households.
+\item Legitimate heirs mattered for citizenship, inheritance, and family continuity.
+\item Because maternity is obvious but paternity is not, men policed women's sexuality much more anxiously than their own.
+\item Draco's wording includes a concubine ``kept for procreation of legitimate children,'' showing that the issue is not just sex but legitimate offspring.
+\end{itemize}
+
+This is why the category of \textbf{seducer} carried such emotional force. A seducer threatens not only a husband but the line of inheritance itself.
+
+\subsection*{Seduction versus rape}
+This is one of the strangest but most testable distinctions in the lecture.
+
+
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+\textbf{Category} & \textbf{What Lysias wants the jury to think} & \textbf{What the lecture says the law actually does} \\
+\midrule
+\textbf{Seduction} & The seducer deserves death because he corrupts the household and confuses paternity. & Death is \emph{not} the straightforward legal penalty. Lysias is exaggerating or lying about the law. \\
+\textbf{Rape} & Lysias implies rapists are punished less harshly than seducers. & The lecture says rape actually carries a harsher legal penalty: double damages. \\
+\bottomrule
+\end{tabularx}
+
+Lysias' rhetorical logic is that force creates hatred but seduction creates emotional attachment, making the wife more loyal to the seducer than to her husband and threatening the legitimacy of children. That logic helps him sell the idea that seducers are especially dangerous.
+
+\mcqtrap{The lecture explicitly says \textbf{the law is harsher on rape than on seduction}, but Lysias talks as if the reverse were true. This is deliberate rhetoric, not neutral legal explanation.}
+
+\subsection*{What Euphiletos actually did, and how he reframes it}
+According to the defense version, Euphiletos learned of the affair, arranged to be told when Eratosthenes was present, gathered neighbors as witnesses, burst in, caught him, tied him up, heard him confess, rejected monetary settlement, and killed him.
+
+The lecture wants you to notice how bad that sounds \emph{if you strip away the rhetoric}. Eratosthenes is tied up, unarmed, and begging for his life. Yet Lysias works hard to make the jury sympathize with Euphiletos because:
+\begin{itemize}
+\item Euphiletos is framed as a decent insider.
+\item Eratosthenes is framed as a predatory outsider.
+\item The act is reframed as punishment rather than revenge.
+\item Responsibility is shifted from Euphiletos to ``the law'' itself.
+\end{itemize}
+
+This is why the lecture says that identity and representation matter as much as technical legal content. The jurors are being asked to decide who \emph{really} counts as the criminal.
+
+\subsection*{Links back to modern criminology}
+This lecture directly reuses Lecture 5 concepts.
+
+\begin{itemize}
+\item It shows the limits of the \textbf{legal approach}: the courtroom argument does not simply track the law.
+\item It shows criminality as \textbf{identity}: Eratosthenes is made into a type.
+\item It shows community-based exclusion: violence against an outsider can be made to seem acceptable.
+\item It even introduces a version of \textbf{Rational Choice Theory}: near the end, Lysias argues that if seducers are not deterred by fear of severe punishment, they will keep offending.
+\end{itemize}
+
+\mcqtrap{Do not miss the switch in Lysias' argument. Sometimes he talks as if seducers deserve death because of who they are. Elsewhere he talks as if harsh punishment is needed to \textbf{deter} future seducers. Those are not the same theory.}
+
+\section{Greek Philosophy of Crime: Plato's \textit{Gorgias}}
+
+\fivebox{Know the Five Things for Plato's \textit{Gorgias}, the role of rhetoric, Socrates' legal and political background, and the positions of Gorgias, Polus, Callicles, and Socrates on crime, punishment, justice, and happiness.}
+
+\subsection*{Five Things for the text}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+\textbf{Category} & \textbf{What to know} \\
+\midrule
+\textbf{Author} & \keyterm{Plato}, an Athenian, approximately 429--347 BCE, follower of Socrates and founder of the Academy. \\
+\textbf{Title} & \textit{Gorgias}. Platonic dialogues are often named after one speaker. \\
+\textbf{Date} & After 399 BCE because Plato writes after Socrates' death; usually treated as an early or early-middle dialogue, probably closer to 399 than 347. \\
+\textbf{Location} & Athens. \\
+\textbf{Language} & Attic Greek. \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Main characters you should know}
+\begin{itemize}
+\item \textbf{Socrates}: philosopher, main questioner, defender of moral justice.
+\item \textbf{Gorgias}: famous sophist and rhetorician from Leontini in Sicily.
+\item \textbf{Polus}: student of Gorgias; interested in rhetoric as power.
+\item \textbf{Callicles}: more aggressive defender of power, nature, and desire.
+\item \textbf{Chaerephon}: minor speaker who helps begin the conversation.
+\end{itemize}
+
+\subsection*{Socrates' background in this lecture}
+The lecture does not treat Socrates as a detached abstract philosopher. It emphasizes him as a real Athenian citizen.
+
+\begin{itemize}
+\item He lived \textbf{469--399 BCE}.
+\item He fought in the Peloponnesian War.
+\item He was married to \keyterm{Xanthippe} and had two sons.
+\item In \textbf{406 BCE}, during the aftermath of the battle of \keyterm{Arginusae}, he served as \textit{epistates} and objected when the assembly wanted to try the generals \emph{en bloc} on a capital charge. His objection was that Athenians had a right to individual trials.
+\item In \textbf{404 BCE}, under the \keyterm{Thirty Tyrants}, he refused an order to arrest Leon of Salamis for execution.
+\item In \textbf{399 BCE}, he was tried for introducing new gods and corrupting young men.
+\end{itemize}
+
+The lecture also wants you to remember the penalty phase of Socrates' trial. The prosecution proposed death. Socrates, instead of soberly proposing exile, first suggested state-supported meals like an athletic victor, then later proposed a fine. The jury chose death.
+
+\mcqtrap{Socrates is not presented as simply anti-law. The lecture repeatedly says he respected law and legal procedure, even when he thought a particular decision was unjust.}
+
+\subsection*{Why rhetoric matters here}
+\keyterm{Rhetoric} is the art of persuasive speaking. In democratic Athens it was crucial because power in assembly and law courts depended on persuading crowds of citizens.
+
+The sophists taught rhetoric and often boasted that they could teach someone to argue either side of a case. That made rhetoric both powerful and dangerous:
+\begin{itemize}
+\item it could help law courts work,
+\item but it could also separate winning from truth.
+\end{itemize}
+
+That is why the \textit{Gorgias} belongs in this course. It is not just ``philosophy'' in the abstract. It is a text about how persuasion affects justice.
+
+\subsection*{Gorgias: rhetoric as persuasion}
+Gorgias defines rhetoric as the art that persuades people in mass settings, especially law courts, about right and wrong. Socrates accepts that this is what rhetoric \emph{does}, but then presses a sharp distinction:
+\begin{itemize}
+\item \textbf{Teaching} gives genuine understanding.
+\item \textbf{Persuasion} gets people to accept a view, whether or not they truly understand it.
+\end{itemize}
+
+This is a major course connection to Lysias. A courtroom speaker may win by persuasion rather than by genuine justice. The lecture even notes that Socrates' position is somewhat subversive because it implies jury verdicts do not automatically reveal truth.
+
+\mcqtrap{If asked for Socrates' criticism of rhetoric, do not say ``rhetoric is speaking in public.'' That is too neutral. His deeper complaint is that rhetoric \textbf{persuades without teaching}.}
+
+\subsection*{Polus: power, deterrence, and the ``happy criminal''}
+Polus thinks rhetoric is valuable because it gives power. When Socrates imagines having dictatorial power to kill at will, Polus answers that the problem is punishment: someone who does that sort of thing will be punished.
+
+That is why the lecture links Polus to modern \textbf{Rational Choice Theory} and \textbf{deterrence}. On this view:
+\begin{itemize}
+\item people avoid crime because punishment is a risk,
+\item a criminal who gets away with wrongdoing may still be happy,
+\item legal exposure, not moral corruption, is the real problem.
+\end{itemize}
+
+The test case is \keyterm{Archelaus}, the tyrant of Macedon. Because he has power, what he does may not count as illegal under his own regime. Socrates uses him to separate \textbf{illegal} from \textbf{unjust}. Polus thinks Archelaus can be both immoral and happy; Socrates denies that.
+
+\subsection*{Socrates against Polus: better to be punished than to escape}
+Socrates takes a \textbf{moral} and also a \textbf{religious} view of crime. For him:
+\begin{itemize}
+\item doing wrong damages the wrongdoer,
+\item a criminal who escapes punishment is worse off than one who pays the penalty,
+\item punishment can be \textbf{beneficial}, because it cures injustice the way medicine cures illness.
+\end{itemize}
+
+This is one of the most important exam points in the whole lecture. Socrates treats punishment not just as pain, but as something like treatment. A prison in modern terms would ideally be corrective, not merely frightening.
+
+
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+\textbf{Question} & \textbf{Polus} & \textbf{Socrates} \\
+\midrule
+Why avoid crime? & Because punishment is painful and should deter. & Because wrongdoing itself harms the soul and makes happiness impossible. \\
+Can a criminal be happy if unpunished? & Yes, at least in principle. & No. Unpunished wrongdoing leaves the criminal worse off. \\
+What is punishment for? & Mainly a negative consequence or deterrent. & Cure, correction, moral repair, and sometimes deterrence. \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Callicles: \textit{physis}, \textit{nomos}, and the rule of the strong}
+Callicles is more radical. He says Socrates is appealing to convention rather than nature.
+
+\begin{itemize}
+\item \keyterm{\textit{physis}} = nature.
+\item \keyterm{\textit{nomos}} = convention, custom, or law.
+\end{itemize}
+
+Callicles argues that the weak majority invents rules to restrain the naturally stronger few. Justice, in this view, is not eternal truth but social construction. The strong should enlarge their share, satisfy desire, and refuse the timid morality invented by the masses.
+
+This is why the lecture links Callicles to a kind of \textbf{social constructionism}. But unlike Walklate's careful analytical use of the term, Callicles uses it polemically: convention is fake, strength is real, and morality is a strategy of the weak.
+
+\mcqtrap{Polus and Callicles are not interchangeable. Polus is mostly about \textbf{power plus punishment as risk}. Callicles is about \textbf{nature versus convention}, the weak inventing morality, and the strong satisfying desire.}
+
+\subsection*{Socrates against Callicles: self-discipline, justice, and community}
+Socrates answers that limitless desire does not produce happiness. Desire always grows; satisfying one urge only creates another. Therefore:
+\begin{itemize}
+\item self-discipline is necessary,
+\item justice matters because human beings must live with others,
+\item the life of taking whatever one wants is the life of a predatory outlaw,
+\item it is better to suffer wrong than to do wrong.
+\end{itemize}
+
+This is where the lecture makes one of its most memorable claims: according to Socrates, it is \textbf{better to be the victim of crime than the perpetrator}. Being harmed is bad, but becoming an unjust person is worse. Wrongdoing isolates the criminal from community and friendship.
+
+\subsection*{Divine punishment and the afterlife}
+Socrates does not stop with human justice. He adds a religious dimension:
+\begin{itemize}
+\item god-fearing and moral people go to the Isles of the Blessed,
+\item immoral and godless people go to Tartarus,
+\item divine justice succeeds where human courts fail.
+\end{itemize}
+
+This matters because the lecture notes a tension in Socrates' argument. He begins by saying justice is good in itself, but he ends by warning that people who escape punishment in life will still face punishment after death. In other words, he partly returns to \textbf{deterrence}, though now on a divine scale.
+
+The lecture also emphasizes another important ancient/modern contrast: in the \textit{Gorgias}, the worst criminals are often \textbf{powerful rulers} -- kings, tyrants, politicians. That is the reverse of the modern popular image that crime mainly belongs to the poor or socially marginal.
+
+\subsection*{Mapping the speakers to criminological approaches}
+
+\begin{tabularx}{\linewidth}{@{}lXX@{}}
+\toprule
+\textbf{Speaker} & \textbf{Main position} & \textbf{Closest criminological link} \\
+\midrule
+\textbf{Gorgias} & Rhetoric persuades crowds in law courts and assemblies. & Focus on persuasion rather than an independent theory of crime; important for legal rhetoric. \\
+\textbf{Polus} & Power is attractive; punishment is what makes wrongdoing risky. & Rational choice and deterrence; largely legal framing. \\
+\textbf{Callicles} & Justice is convention invented by the weak; the strong should satisfy desire. & Social constructionist view pushed into anti-moral power politics. \\
+\textbf{Socrates} & Crime is moral wrong; punishment can cure; self-discipline creates happiness; divine justice completes human justice. & Moral approach, religious approach, rehabilitative punishment, and partial deterrence in the afterlife. \\
+\bottomrule
+\end{tabularx}
+
+\mcqtrap{Socrates is not simply ``anti-punishment.'' He thinks punishment can be good because it heals curable offenders. But he also says some incurable offenders function as terrible examples -- so deterrence never fully disappears.}
+
+\section{Cross-Lecture Synthesis and Rapid Review}
+
+\subsection*{One matrix of recurring contrasts}
+
+\begin{longtable}{@{}p{0.21\linewidth}p{0.24\linewidth}p{0.24\linewidth}p{0.24\linewidth}@{}}
+\toprule
+\textbf{Contrast} & \textbf{Lecture 5} & \textbf{Lecture 6} & \textbf{Lecture 7} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Contrast} & \textbf{Lecture 5} & \textbf{Lecture 6} & \textbf{Lecture 7} \\
+\midrule
+\endhead
+\textbf{Legal vs. moral crime} & Walklate presents both as distinct approaches. & The legal text and moral disgust do not line up; Lysias uses moral panic to override legal precision. & Socrates insists wrongdoing can exist beyond legality; tyrants can be immoral even if they make the laws. \\
+\textbf{Act vs. identity} & Social constructionism and positivism both care about who counts as a criminal. & Eratosthenes is framed not just as someone who seduced, but as a ``seducer'' by character. & Socrates debates whether unjust people can be happy; Callicles and Polus frame types of people differently. \\
+\textbf{Community vs. individual focus} & Foucault helps distinguish ancient community repair from modern correction of individuals. & Euphiletos presents himself as acting for the whole city, not just himself. & Socrates says wrongdoing damages community and friendship; justice helps people live together. \\
+\textbf{Persuasion vs. truth} & Criminology offers analytic categories, but categories can also shape perception. & Lysias wins by rhetorical framing, not by transparent legal accuracy. & Gorgias and Socrates directly debate persuasion versus teaching. \\
+\textbf{Deterrence vs. rehabilitation} & Rational choice and social control differ from cure models. & Lysias sometimes sounds deterrence-based: harsh treatment is needed so seducers will fear the consequences. & Polus emphasizes deterrence; Socrates emphasizes cure, but later keeps deterrence in the afterlife for incurables. \\
+\textbf{Powerful vs. marginalized criminal archetypes} & Modern imagination often centers marginalized men, but the lecture already warns against treating this as universal. & Athenian court focus remains on citizen male households. & Socrates says the worst criminals are often rulers, kings, tyrants, and politicians. \\
+\bottomrule
+\end{longtable}
+
+\subsection*{Rapid review: names and why they matter}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+\textbf{Name} & \textbf{What to remember} \\
+\midrule
+\textbf{Sandra Walklate} & Modern criminology textbook author used to build the conceptual framework for the course. \\
+\textbf{Cesare Lombroso} & Biological positivist; measured bodies and linked criminality to physical traits. \\
+\textbf{Foucault} & Social constructionist thinker used to explain modern punishment, identity, and the shift from community repair to individual correction. \\
+\textbf{Travis Hirschi} & Social Control Theory; four restraints: attachment, commitment, involvement, belief. \\
+\textbf{Lysias} & Speechwriter, not the defendant; author of \textit{Lysias 1}. \\
+\textbf{Euphiletos} & Speaker and defendant in the murder case. \\
+\textbf{Eratosthenes} & Murder victim whom the defense recasts as the ``real'' criminal. \\
+\textbf{Draco} & Associated with the old homicide law that provides the key legal exception. \\
+\textbf{Demosthenes} & Later Athenian orator who preserves the relevant wording of Draco's law. \\
+\textbf{Socrates} & Moral critic of rhetoric as mere persuasion; argues punishment can heal. \\
+\textbf{Gorgias} & Sophist; rhetoric specialist. \\
+\textbf{Polus} & Power and deterrence. \\
+\textbf{Callicles} & Nature versus convention; strength over morality. \\
+\textbf{Archelaus} & Tyrant used to test whether an unjust but powerful person can still be happy. \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Rapid review: dates and historical anchors}
+\begin{itemize}
+\item \textbf{431--404 BCE}: Peloponnesian War.
+\item \textbf{415 BCE}: Athenian involvement in Sicily contributes to Lysias' exile from Thurii.
+\item \textbf{404 BCE}: Athens falls; Thirty Tyrants rule; Socrates refuses an unjust order.
+\item \textbf{403 BCE}: Democracy restored at Athens; Lysias active as speechwriter afterward.
+\item \textbf{406 BCE}: Arginusae episode; Socrates objects to illegal collective trial.
+\item \textbf{399 BCE}: Trial and death of Socrates.
+\item \textbf{403--380 BCE}: probable date range for \textit{Lysias 1}.
+\item \textbf{429--347 BCE}: approximate lifespan of Plato.
+\item \textbf{469--399 BCE}: approximate lifespan of Socrates.
+\end{itemize}
+
+\subsection*{Rapid review: Greek terms}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\toprule
+\textbf{Term} & \textbf{Meaning and use} \\
+\midrule
+\textit{nomos} & Law, custom, convention. Important in both Lecture 5 and in Callicles' argument. \\
+\textit{physis} & Nature. Used by Callicles against convention. \\
+\textit{dike} & Private suit. Homicide case type relevant to Euphiletos. \\
+\textit{graphe} & Public action. Lysias makes the homicide feel like one of these. \\
+\textit{logographos} & Speechwriter. Lysias' professional role. \\
+\textit{metic} & Resident alien. Lysias' legal status despite his democratic service. \\
+\textit{oikos} & Household. Central to inheritance and legitimacy anxiety. \\
+\textit{epistates} & Daily foreman/presiding official; role Socrates happened to hold at Arginusae. \\
+\textit{prytaneis} & Presidents/executive committee of the council. \\
+\bottomrule
+\end{tabularx}
+
+\subsection*{Likely multiple-choice traps}
+\begin{itemize}
+\item \textbf{Lysias wrote the speech; Euphiletos speaks it.}
+\item \textbf{Draco's law creates a homicide exception; it does not straightforwardly impose a death sentence for adultery.}
+\item \textbf{The law is actually harsher on rape than on seduction, even though Lysias rhetorically reverses that impression.}
+\item \textbf{Lecture 5 is not just ``definitions.'' It also includes positivism, major theorists, Walklate's explanation models, and victimology.}
+\item \textbf{Polus and Callicles are different.} Polus is deterrence and power; Callicles is nature versus convention.
+\item \textbf{Socrates is not merely legalistic.} He is moral, and often religious.
+\item \textbf{Ancient Greek criminal focus in these lectures falls heavily on powerful men, not mainly on the poor or socially marginal.}
+\item \textbf{Rhetoric is persuasion, not necessarily truth.} That point links \textit{Gorgias} back to Lysias 1.
+\end{itemize}
+
+\section*{Final Checklist Against the Study Questions}
+You should now be able to answer all three study-question sheets:
+\begin{itemize}
+\item \textbf{Week 6 questions}: definition of criminology, approaches, development of the field, positivism, the three positivist branches, Walklate's four models, and the criminological/victimological other.
+\item \textbf{Week 7 questions}: the Five Things for Lysias 1, who is on trial, who the victim is, who speaks and who wrote the speech, Draco's law, the defense arguments, adultery penalties, why the defense might work, and how the speech connects to criminological theory.
+\item \textbf{Week 8 questions}: the Five Things for \textit{Gorgias}, the main speakers, rhetoric, Gorgias versus Socrates, Polus and Callicles, the criminological ideas embedded in the dialogue, and how those ideas relate back to Walklate and Lecture 5.
+\end{itemize}
+
+\end{document}
+

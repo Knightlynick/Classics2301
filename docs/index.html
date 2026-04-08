@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roman Crime Final Study App</title>
+  <meta name="theme-color" content="#8a3b22">
+  <meta name="description" content="Hostable final exam study app for Crime and Punishment in Ancient Greece and Rome.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./study-topics.js"></script>
+  <script defer src="./quiz-questions.js"></script>
+  <script defer src="./data.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <div class="backdrop"></div>
+  <div class="page-shell">
+    <header class="hero panel">
+      <div>
+        <p class="eyebrow">CS2301 final review</p>
+        <h1>Roman Crime Final Study App</h1>
+        <p class="hero-copy">Guide-first exam prep with a Roman-heavy mini exam, by-week practice, and quick review topics drawn from your course materials.</p>
+      </div>
+      <div class="hero-badges">
+        <span class="badge">Cumulative</span>
+        <span class="badge">Weeks 10-12 weighted</span>
+        <span class="badge">MCQ only</span>
+        <span class="badge">Hostable static app</span>
+      </div>
+    </header>
+
+    <nav class="view-nav panel" aria-label="Primary">
+      <button class="nav-btn is-active" data-view-target="dashboardView">Dashboard</button>
+      <button class="nav-btn" data-view-target="topicsView">Study Topics</button>
+      <button class="nav-btn" data-view-target="quizView">Mini Exam</button>
+    </nav>
+
+    <main>
+      <section id="dashboardView" class="view">
+        <div class="dashboard-grid">
+          <article class="panel control-panel">
+            <p class="section-kicker">Exam builder</p>
+            <h2>Start a quiz set</h2>
+
+            <label class="field">
+              <span>Mode</span>
+              <select id="modeSelect">
+                <option value="final_mix">Final Exam Mix</option>
+                <option value="cumulative">Cumulative Review</option>
+                <option value="week_practice">By-Week Practice</option>
+              </select>
+            </label>
+
+            <label class="field" id="weekField">
+              <span>Week</span>
+              <select id="weekSelect"></select>
+            </label>
+
+            <label class="field">
+              <span>Question count</span>
+              <select id="countSelect">
+                <option value="10">10 questions</option>
+                <option value="20">20 questions</option>
+                <option value="30">30 questions</option>
+              </select>
+            </label>
+
+            <button id="startQuizBtn" class="primary-btn">Start mini exam</button>
+            <p class="helper-text">Final Exam Mix weights Weeks 10-12 more heavily while keeping the exam cumulative.</p>
+          </article>
+
+          <article class="panel stats-panel">
+            <p class="section-kicker">Progress</p>
+            <h2>Your running stats</h2>
+            <div id="statsGrid" class="stats-grid"></div>
+            <div id="weekStats" class="week-stats"></div>
+          </article>
+        </div>
+
+        <div class="dashboard-grid lower">
+          <article class="panel">
+            <p class="section-kicker">Roman focus</p>
+            <h2>Highest-yield late-course topics</h2>
+            <div id="romanFocusList" class="focus-list"></div>
+          </article>
+
+          <article class="panel">
+            <p class="section-kicker">Recent work</p>
+            <h2>Latest quiz attempts</h2>
+            <div id="recentAttempts" class="attempt-list"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="topicsView" class="view is-hidden">
+        <div class="panel topics-toolbar">
+          <div>
+            <p class="section-kicker">Review bank</p>
+            <h2>Study topics</h2>
+          </div>
+          <label class="field compact">
+            <span>Filter</span>
+            <select id="topicFilter"></select>
+          </label>
+        </div>
+        <div id="topicsContainer" class="topics-grid"></div>
+      </section>
+
+      <section id="quizView" class="view is-hidden">
+        <article class="panel quiz-shell">
+          <div id="quizEmptyState" class="quiz-empty">
+            <p class="section-kicker">Mini exam</p>
+            <h2>No quiz running</h2>
+            <p>Start a set from the Dashboard, then answer one question at a time with explanations after each choice.</p>
+          </div>
+
+          <div id="quizActiveState" class="quiz-active is-hidden">
+            <div class="quiz-header">
+              <div>
+                <p id="quizModeLabel" class="section-kicker"></p>
+                <h2 id="quizTitle">Question</h2>
+              </div>
+              <div class="score-chip" id="scoreChip">0 / 0</div>
+            </div>
+
+            <div class="progress-rail">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+
+            <div id="questionMeta" class="question-meta"></div>
+            <h3 id="questionPrompt" class="question-prompt"></h3>
+            <div id="answerList" class="answer-list"></div>
+
+            <div id="feedbackBox" class="feedback-box is-hidden"></div>
+
+            <div class="quiz-actions">
+              <button id="nextBtn" class="primary-btn" disabled>Next question</button>
+              <button id="endBtn" class="secondary-btn">End set</button>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

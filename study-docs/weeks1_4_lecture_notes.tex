@@ -1,0 +1,488 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue
+}
+\microtypesetup{expansion=false}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.55em}
+\setlist[itemize]{leftmargin=*, itemsep=0.25em, topsep=0.25em}
+\setlist[enumerate]{leftmargin=*, itemsep=0.25em, topsep=0.25em}
+\renewcommand{\arraystretch}{1.18}
+
+\definecolor{WeekBg}{RGB}{236,244,255}
+\definecolor{TermBg}{RGB}{239,249,239}
+\definecolor{TrapBg}{RGB}{255,245,229}
+\definecolor{TrapBorder}{RGB}{191,108,0}
+\definecolor{SourceBg}{RGB}{248,248,248}
+
+\newcommand{\keyterm}[1]{\textbf{#1}}
+\newcommand{\weekbox}[2]{%
+    \par\noindent
+    \fcolorbox{black}{WeekBg}{%
+        \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{#1. }#2}%
+    }%
+    \par\medskip
+}
+\newcommand{\mcqtrap}[1]{%
+    \par\noindent
+    \fcolorbox{TrapBorder}{TrapBg}{%
+        \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{MCQ Trap. }#1}%
+    }%
+    \par\medskip
+}
+\newcommand{\sourcebox}[1]{%
+    \par\noindent
+    \fcolorbox{black}{SourceBg}{%
+        \parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\textbf{Source note. }#1}%
+    }%
+    \par\medskip
+}
+
+\begin{document}
+
+\begin{center}
+{\LARGE \textbf{CS2301 Weeks 1 to 4 Lecture Notes}}\\[0.4em]
+{\large Crime and Punishment in Ancient Greece and Rome}\\[0.2em]
+{\normalsize Lecture-focused study guide for the first four weeks}
+\end{center}
+
+\sourcebox{Weeks 1, 3, and 4 are based on the local lecture scripts. Week 2 is based on extracted slide text from the course PowerPoint because no local lecture script is present. The Week 2 section therefore stays close to chronology and avoids adding unsupported interpretive claims.}
+
+\section*{How to Use This Guide}
+This handout is lecture-driven, not reading-driven. Treat it as the place to master the professor's framing, recurring distinctions, high-yield dates, and Greek-law vocabulary. Every section includes core terms, testable contrasts, and at least one explicit trap note where the lecture warns against easy simplifications.
+
+\tableofcontents
+
+\section{Week 1: Introduction to Crime and Punishment in Ancient Greece and Rome}
+
+\weekbox{Week 1 focus}{What counts as crime, how ancient and modern systems differ, why the course cannot rely on a purely legal definition, and why the surviving evidence is uneven and elite-driven.}
+
+\subsection*{What the opening lecture is trying to teach}
+Week 1 is not just housekeeping. It establishes the course's method. The professor starts with modern examples to make an important point: when people say ``the justice system,'' they usually imagine courts, judges, police, prisons, and prosecutors. Ancient Greece and Rome had some of these things in partial form, but not in the same arrangement. If you carry a modern legal definition of crime straight into antiquity, you will misread the evidence.
+
+\subsection*{Modern examples used to frame the problem}
+\begin{tabular}{@{}p{0.18\linewidth}p{0.36\linewidth}p{0.38\linewidth}@{}}
+\toprule
+\textbf{Example} & \textbf{What it illustrates} & \textbf{Why it matters} \\
+\midrule
+Ned Stark in \textit{Game of Thrones} & Ruler imposes sentence and carries it out personally. & Shows a world where judgment and execution are not separated. \\
+Salem Witch Trials & Formal procedure can still be deeply unjust. & Warns against assuming that trials automatically produce truth. \\
+Omar Khadr & Criminal process plus civil suit. & Introduces the distinction between public prosecution and private legal redress. \\
+Mike Duffy / Senate expenses scandal & Criminal allegations plus later civil litigation. & Shows that one set of events can generate multiple legal frames. \\
+\bottomrule
+\end{tabular}
+
+The lecture's point is not that these cases are historically equivalent to ancient ones. The point is that even in the modern world, ``crime and punishment'' covers a wide range of institutional arrangements, political pressures, and public narratives.
+
+\subsection*{Ancient case study: Publius Claudius Pulcher and the sacred chickens}
+The Week 1 lecture's ancient example is deliberately strange. In 249 BCE, during the First Punic War, the Roman consul \keyterm{Publius Claudius Pulcher} allegedly ignored bird omens before naval battle, mocked the sacred chickens, lost disastrously, and was later prosecuted.
+
+\begin{tabular}{@{}p{0.26\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Element} & \textbf{What the lecture wants you to notice} \\
+\midrule
+Religious offense & The case is political and military, but also religious. \\
+Treason charge & Ancient states could prosecute military failure through civic mechanisms. \\
+Single-day trial rule & Procedure could matter as much as substance. \\
+Double jeopardy issue & Even acquittal or interruption on a technical ground shaped what could happen next. \\
+Fine after failed capital case & Punishment could be re-framed rather than disappearing entirely. \\
+\bottomrule
+\end{tabular}
+
+The point is comparative. Some features look familiar: treason, procedure, retrial limits, fines. Others do not: sacred chickens, omens, open-air political justice, and the lack of a modern separation between military and civilian jurisdiction.
+
+\subsection*{The course's big methodological claim}
+The professor states that the course is not primarily about reconstructing a complete ancient legal system. The evidence is too fragmentary, and too much of it survives only for elite men. Instead, the course is about how Greeks and Romans imagined crime, punishment, and criminals in law, literature, history, and philosophy.
+
+\begin{itemize}
+\item Ancient evidence is patchy.
+\item Most surviving sources center wealthy adult men.
+\item Women, children, enslaved people, and the poor are often visible only indirectly.
+\item Self-help and revenge mattered far more than they do in modern state systems.
+\end{itemize}
+
+\mcqtrap{The lecture does not say ancient people had no laws or no courts. It says the relationship between law, public authority, and private retaliation was very different from the modern one.}
+
+\subsection*{O.J. Simpson and the public/private distinction}
+The O.J. Simpson example lets the lecture explain one of the course's most important contrasts:
+
+\begin{tabular}{@{}p{0.18\linewidth}p{0.36\linewidth}p{0.38\linewidth}@{}}
+\toprule
+\textbf{Modern criminal case} & \textbf{Modern civil case} & \textbf{Ancient analogy} \\
+\midrule
+State prosecutes; punishment serves public order. & Private party sues for damages or redress. & Athens and Rome also distinguished public and private matters, but the match is imperfect. \\
+\bottomrule
+\end{tabular}
+
+The lecture then makes the provocative claim that in classical Athens \keyterm{murder was not a public crime}. Homicide was handled as a \keyterm{private} matter pursued by the victim's family. That does not mean murder was morally trivial. It means the ancient legal category does not map neatly onto the modern criminal category.
+
+\subsection*{Foucault and temporal distortion}
+Michel \keyterm{Foucault} appears in Week 1 to warn against easy continuity between ancient and modern worlds. His line ``We are much less Greeks than we believe'' is used to break the illusion that democracy, punishment, prison, and crime have stayed basically the same across time.
+
+\begin{itemize}
+\item Ancient prisons were generally temporary holding places, not long-term correctional institutions.
+\item Exile mattered much more in antiquity than imprisonment.
+\item Punishment often aimed at purifying or protecting the community rather than reforming the offender.
+\item Modern states imagine themselves as directly responsible for order through police, prosecutors, and prisons.
+\end{itemize}
+
+\subsection*{Roman parricide and the \textit{culleus}}
+The punishment of the \keyterm{\textit{culleus}} or ``sack'' is used to show how crime can carry ritual meaning. A parricide might be sewn into a sack with animals and thrown into running water. The lecture emphasizes:
+
+\begin{itemize}
+\item early Rome appears to treat parricide as a pollution problem as much as a legal one;
+\item later republican Romans seem to find the ritual meaning less compelling;
+\item later emperors could reactivate the penalty as spectacular deterrence.
+\end{itemize}
+
+The broad lesson is that attitudes toward crime and punishment change over time even within a single culture.
+
+\subsection*{Key terms and ideas to remember}
+\begin{itemize}
+\item \keyterm{public case} versus \keyterm{private case}
+\item \keyterm{self-help}
+\item \keyterm{double jeopardy}
+\item \keyterm{parricide}
+\item \keyterm{\textit{culleus}}
+\item \keyterm{Foucault}
+\end{itemize}
+
+\section{Week 2: Historical Background and Context}
+
+\weekbox{Week 2 focus}{Build the Greek and Roman historical timeline needed to place the later legal, tragic, and philosophical material.}
+
+\subsection*{Why this week matters}
+Week 2 is mostly a chronology lecture. That does not make it disposable. The later course assumes you can place Homer, Draco, Solon, Aeschylus, Plato, Alexander, the Roman Republic, and the imperial period in the right sequence. Many multiple-choice questions can be eliminated simply by knowing which event or author belongs to which period.
+
+\subsection*{Greek periods}
+\begin{tabular}{@{}p{0.26\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Period} & \textbf{Dates and core points from the slides} \\
+\midrule
+Neolithic & 6500--3000 BCE; earliest settled life in Greece. \\
+Bronze Age & 3000--1100 BCE; Minoan and Mycenaean civilizations. \\
+Dark Age & 1100--750 BCE; smaller communities after the collapse of Bronze Age palaces. \\
+Archaic Period & 750--480 BCE; polis formation, colonization, early lawgivers, hoplite warfare. \\
+Classical Period & 480--323 BCE; Persian Wars, tragedy, democracy, Socrates, Plato. \\
+Hellenistic Period & 323--30 BCE; begins after Alexander's death. \\
+\bottomrule
+\end{tabular}
+
+\subsection*{Roman periods}
+\begin{tabular}{@{}p{0.26\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Period} & \textbf{Dates and core points from the slides} \\
+\midrule
+Regal Period & 753--509 BCE; early Rome under kings. \\
+Republican Period & 509--27 BCE; aristocratic republican government and later civil wars. \\
+Imperial Period & 27 BCE--284 CE; Augustus and the empire. \\
+Later Roman Empire & 284--476 CE; increasing instability, Christian emperors, western collapse. \\
+\bottomrule
+\end{tabular}
+
+\subsection*{Greek timeline highlights}
+\begin{tabular}{@{}p{0.26\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Date or range} & \textbf{What the slide deck emphasizes} \\
+\midrule
+ca. 2000 BCE & New culture emerges on mainland Greece; possible Indo-European incursion. \\
+Middle Bronze Age & Minoan Crete strongly influences emerging Mycenaean culture. \\
+1400--1100 BCE & Height of Mycenaean domination in the Aegean. \\
+ca. 1250 / 1150 BCE & Troy VI destroyed by earthquake; Troy VIIa by invasion; linked to Trojan War debates. \\
+ca. 1200 BCE onward & Collapse of major eastern Mediterranean powers and palace systems. \\
+8th century BCE & Homer written down; Olympic tradition; polis formation; Greek colonization expands. \\
+7th century BCE & Hoplite phalanx, class conflict, tyrannies, early written law. \\
+594 BCE & Solon's reforms at Athens. \\
+508 BCE & Kleisthenes reforms Athens toward democracy. \\
+499--479 BCE & Ionian revolt and Persian Wars. \\
+431--404 BCE & Peloponnesian War. \\
+336--323 BCE & Philip II murdered; Alexander rules until his death. \\
+\bottomrule
+\end{tabular}
+
+\subsection*{Roman timeline highlights}
+\begin{tabular}{@{}p{0.26\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Date or range} & \textbf{What the slide deck emphasizes} \\
+\midrule
+753 BCE & Traditional foundation date of Rome. \\
+509 BCE & End of monarchy and start of republican government. \\
+280--272 BCE & Rome defeats Pyrrhus and completes conquest of Italy. \\
+240 BCE & Livius Andronicus stages the first regular Latin drama and translates the \textit{Odyssey}. \\
+218--201 BCE & Hannibal and the Second Punic War. \\
+149--146 BCE & Third Punic War; Carthage destroyed. \\
+133 BCE & Tiberius Gracchus killed; sign of republican turmoil. \\
+81 BCE & Sulla becomes dictator after civil war. \\
+31--27 BCE & Actium, fall of Antony and Cleopatra, rise of Augustus. \\
+212 CE & Caracalla extends citizenship to free inhabitants of the empire. \\
+476 CE & Western Roman Empire effectively ends. \\
+\bottomrule
+\end{tabular}
+
+\mcqtrap{Week 2 is about \textbf{sequence}. If two answers both look plausible, ask which belongs to the Bronze Age, which to the Archaic or Classical Greek world, and which to the Roman Republic or Empire.}
+
+\subsection*{Why this chronology matters later}
+\begin{itemize}
+\item Aeschylus belongs to the early \keyterm{Classical Period}, after the Persian Wars.
+\item Plato and Socrates belong later than Aeschylus, in the later fifth and fourth centuries BCE.
+\item Draco and Solon are \keyterm{Archaic}, earlier than classical tragedy and philosophy.
+\item Roman material later in the course belongs to a very different political and institutional world.
+\end{itemize}
+
+\section{Week 3: Introduction to Greek Law}
+
+\weekbox{Week 3 focus}{Origins of Greek law, the move from self-help to more formal procedure, the development of Athenian institutions, and the legal vocabulary needed for the rest of the Greek unit.}
+
+\subsection*{Why this lecture matters}
+The Week 3 script says directly that this is one of the densest lectures of the course and that the terms matter. This is where the course gives you the institutional framework needed for the \textit{Oresteia}, Lysias, and Plato.
+
+\subsection*{Earliest Greek law: the \textit{Iliad} and arbitration}
+The lecture starts with Homer's \textit{Iliad}, especially the shield of Achilles scene, to show that the earliest Greek legal thinking is not about a state monopoly on punishment. It is about disputes, compensation, vengeance, and arbitration.
+
+\begin{tabular}{@{}p{0.18\linewidth}p{0.36\linewidth}p{0.38\linewidth}@{}}
+\toprule
+\textbf{Concept} & \textbf{Meaning in the lecture} & \textbf{Why it matters} \\
+\midrule
+\keyterm{self-help} & A wronged person or family takes vengeance directly. & Core ancient alternative to state enforcement. \\
+\keyterm{arbitration} & Disputants accept a third party's judgment. & A bridge between raw vengeance and formal law. \\
+Blood money / compensation & Payment offered after killing. & Shows that early homicide disputes concern punishment and settlement, not just factual guilt. \\
+\bottomrule
+\end{tabular}
+
+The lecture's key interpretive point is that the issue in the Homeric scene is not whether a killing occurred, but what kind of settlement or punishment should follow it. That is a major pattern that continues into later Greek homicide law.
+
+\subsection*{Written law and the Archaic period}
+The Archaic period sees a move toward written law. The lecture stresses both the egalitarian promise and the limits of this change.
+
+\begin{itemize}
+\item Written law can reduce arbitrary judgment.
+\item Written law does not eliminate social inequality.
+\item Women, enslaved people, foreigners, and poorer people remain disadvantaged.
+\item Early written laws sometimes distinguish themselves from custom by using different vocabulary.
+\end{itemize}
+
+\begin{tabular}{@{}p{0.26\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Term} & \textbf{Lecture meaning} \\
+\midrule
+\keyterm{nomos} & Initially custom; later also law or statute. \\
+\keyterm{thesmos} & Early written law; distinguished from unwritten custom. \\
+\bottomrule
+\end{tabular}
+
+\mcqtrap{Do not overstate the distinction between \textit{nomos} and \textit{thesmos}. The lecture explains the contrast because it is useful, but also notes that the words later overlap heavily.}
+
+\subsection*{Draco and Solon}
+\begin{tabular}{@{}p{0.18\linewidth}p{0.36\linewidth}p{0.38\linewidth}@{}}
+\toprule
+\textbf{Figure} & \textbf{What the lecture emphasizes} & \textbf{Why it matters} \\
+\midrule
+\keyterm{Draco} & First Athenian lawgiver, 621 BCE, famous for severity. & His homicide law survives and becomes crucial later. \\
+\keyterm{Solon} & Reformed law and government in 594 BCE. & Reorganized Athens and shaped the legal world later Athenians inherited. \\
+\bottomrule
+\end{tabular}
+
+The lecture's important correction is that Draco may not have been ``draconian'' mainly because he imposed automatic death on everything. Instead, his law is better understood as formalizing and limiting vengeance while still allowing certain forms of lethal self-help.
+
+\subsection*{Political and legal institutions}
+\begin{tabular}{@{}p{0.26\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Institution or office} & \textbf{What you need to know} \\
+\midrule
+\keyterm{Areopagus} & Aristocratic council; later important homicide court. \\
+\keyterm{Archons} & Major magistrates of Athens. \\
+\keyterm{Archon Basileus} & Handles religious matters, homicide, and deliberate wounding. \\
+\keyterm{Ekklesia} & Assembly of citizen men. \\
+\keyterm{Boule} & Council of 500 that prepares business for the assembly. \\
+\keyterm{Heliaia} & The jury-court system or assembly functioning judicially. \\
+\bottomrule
+\end{tabular}
+
+The lecture explains that Solon's reforms gave citizens the right to appeal to the people, and that this democratic logic helped push Athens toward large jury courts rather than leaving decision-making entirely in magistrates' hands.
+
+\subsection*{Law, decree, and reinscription}
+Later Athens distinguishes between:
+
+\begin{itemize}
+\item \keyterm{nomoi}: laws
+\item \keyterm{psephismata}: decrees
+\end{itemize}
+
+The late fifth-century reinscription of the laws matters because Athens tries to make its law code coherent after war and political trauma. The lecture ties this directly to the Peloponnesian War, the Thirty Tyrants, and the restoration of democracy in 403 BCE.
+
+\subsection*{Private and public cases}
+\begin{tabular}{@{}p{0.18\linewidth}p{0.36\linewidth}p{0.38\linewidth}@{}}
+\toprule
+\textbf{Type} & \textbf{Greek term} & \textbf{Key procedural difference} \\
+\midrule
+Private case & \keyterm{dike} & Must be brought by the wronged party or, in homicide, the victim's relatives. \\
+Public case & \keyterm{graphe} & Can be brought by a volunteer prosecutor on behalf of the community. \\
+\bottomrule
+\end{tabular}
+
+This distinction is one of the most important in the entire Greek unit. The lecture insists that it does not line up perfectly with modern civil versus criminal categories, because some actions modern people think of as crimes were still private actions in Athens.
+
+\mcqtrap{\textit{dike} does not simply equal ``civil'' and \textit{graphe} does not simply equal ``criminal.'' Those translations are only rough approximations.}
+
+\subsection*{Key procedures and courtroom realities}
+\begin{itemize}
+\item Citizens often represented themselves rather than using speaking lawyers.
+\item A \keyterm{logographos} could write a speech for a litigant.
+\item Witnesses, written statements, and procedural challenges mattered.
+\item \keyterm{paragraphe} allowed defendants to challenge the legality of the prosecution itself.
+\item Volunteer prosecutors could receive financial incentives in public cases.
+\end{itemize}
+
+\subsection*{Homicide and theft as high-yield examples}
+\begin{tabular}{@{}p{0.26\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Topic} & \textbf{Lecture emphasis} \\
+\midrule
+Homicide & Religious matter, tied to \keyterm{miasma}, presided over by the \keyterm{Archon Basileus}; still a private action. \\
+Theft & Some cases handled summarily by \keyterm{The Eleven}, especially where the accused lacked a plausible defense. \\
+\bottomrule
+\end{tabular}
+
+The Week 3 lecture uses these examples to show how Athenian law does not fit modern expectations. Homicide can be religious and socially dangerous without becoming a public prosecution, while a theft case can combine private compensation and state-oriented penalty in the same procedure.
+
+\section{Week 4: Greek Tragedy of Crime -- Aeschylus' \textit{Oresteia}}
+
+\weekbox{Week 4 focus}{The \textit{Oresteia} as a tragedy of crime, the Five Things for Aeschylus and the trilogy, and the lecture's main claim that the trilogy imagines a movement from household vengeance to civic justice.}
+
+\subsection*{The Five Things}
+\begin{tabular}{@{}p{0.26\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Category} & \textbf{What to know} \\
+\midrule
+Author & \keyterm{Aeschylus} \\
+Titles & \textit{Oresteia}, \textit{Agamemnon}, \textit{The Libation Bearers}, \textit{The Eumenides} \\
+Date & \textbf{458 BCE} \\
+Location & \textbf{Athens} \\
+Language & \textbf{Attic Greek} \\
+\bottomrule
+\end{tabular}
+
+\mcqtrap{Know the title conventions. The full trilogy is \textit{Oresteia}, but the second and third plays include ``The'' because their titles derive from the chorus.}
+
+\subsection*{Background on Aeschylus and tragedy}
+The Week 4 lecture wants you to know that Aeschylus was an early and highly important tragedian, a veteran of the Persian Wars, and a writer who helped shape tragedy as a form. The \textit{Oresteia} is a \textbf{connected trilogy}, not just three loosely related plays.
+
+\begin{itemize}
+\item Aeschylus was born around 525/4 BCE.
+\item He fought at Marathon and probably Salamis.
+\item He first produced the \textit{Oresteia} in 458 BCE.
+\item The connected trilogy format matters because the three plays build one argument about violence and justice.
+\end{itemize}
+
+\subsection*{Lecture overview of the story}
+The Week 4 lecture gives the family history because the tragedy only makes sense once you see the pattern of inherited violence:
+
+\begin{itemize}
+\item Atreus and Thyestes establish the family curse.
+\item Agamemnon sacrifices Iphigeneia.
+\item Clytaemestra and Aegisthus kill Agamemnon.
+\item Orestes returns and kills both of them.
+\item The Furies pursue Orestes until Athena institutes trial in Athens.
+\end{itemize}
+
+\subsection*{The lecture's main argument}
+The professor's strongest claim is that the \textit{Oresteia} is about the invention, or at least ideological justification, of a justice system. The trilogy does not say violence disappears. It says that violence within the community cannot remain a private household matter.
+
+\begin{tabular}{@{}p{0.18\linewidth}p{0.36\linewidth}p{0.38\linewidth}@{}}
+\toprule
+\textbf{Contrast} & \textbf{Earlier part of trilogy} & \textbf{End of trilogy} \\
+\midrule
+Where justice happens & Inside the \keyterm{oikos} or household & In the \keyterm{polis} through public institutions \\
+How wrongs are answered & Revenge and reciprocal bloodshed & Adjudication and punishment \\
+What guilt looks like & Curse, blood feud, divine anger, psychological pressure & Publicly contested responsibility before a court \\
+\bottomrule
+\end{tabular}
+
+\subsection*{Passages and themes the lecture stresses}
+\begin{itemize}
+\item \textit{Agamemnon} 146--159: the chorus frames the house as still haunted by Iphigeneia's death.
+\item \textit{Agamemnon} 914--929: robes, luxury, and failed self-control.
+\item \textit{Agamemnon} 1372--1387: Clytaemestra's explicit justification of the murder.
+\item \textit{The Libation Bearers} 980--990: Orestes displays evidence and minimizes Aegisthus' death as a seducer's penalty.
+\item \textit{The Eumenides} 470--489: Athena creates the jury.
+\item \textit{The Eumenides} 734--743: tie vote and Athena's deciding ballot.
+\item \textit{The Eumenides} 858--866: violence inward is criminal; violence outward can be war.
+\end{itemize}
+
+\subsection*{Themes emphasized in the lecture}
+\begin{tabular}{@{}p{0.26\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Theme} & \textbf{Lecture emphasis} \\
+\midrule
+\keyterm{oikos} versus \keyterm{polis} & The core movement of the trilogy. \\
+Gender & Clytaemestra and Agamemnon are repeatedly coded in unstable masculine/feminine terms. \\
+Orientalism & Agamemnon's robe scene invokes Greek stereotypes about Asia, luxury, and softness. \\
+\keyterm{miasma} and vengeance & Homicide pollutes and spreads. \\
+Court versus revenge & Aeschylus justifies the civic court as the mechanism that halts endless retaliation. \\
+\bottomrule
+\end{tabular}
+
+\mcqtrap{The lecture does not celebrate the court as perfectly objective. Athena's reasoning is openly biased, which means the trilogy supports civic procedure while also showing that judgment still carries prejudice.}
+
+\subsection*{Week 4 links back to Week 3}
+\begin{itemize}
+\item The Areopagus matters because homicide is both legal and religious.
+\item The movement from revenge to court echoes Week 3's discussion of self-help versus formal procedure.
+\item Orestes' claim about Aegisthus anticipates the later lecture on Draco and Lysias.
+\end{itemize}
+
+\section{Rapid Review for Weeks 1 to 4}
+
+\subsection*{Names and terms}
+\begin{itemize}
+\item \keyterm{Foucault}: warns against assuming ancient and modern crime work the same way.
+\item \keyterm{Draco}: early Athenian lawgiver; homicide law is crucial.
+\item \keyterm{Solon}: reformer of Athenian law and government.
+\item \keyterm{Areopagus}: homicide court and aristocratic council.
+\item \keyterm{Archon Basileus}: magistrate for religion and homicide.
+\item \keyterm{dike}: private action.
+\item \keyterm{graphe}: public action.
+\item \keyterm{miasma}: pollution caused by wrongdoing, especially homicide.
+\item \keyterm{The Eleven}: officials associated with prisons, executions, and summary handling of some thefts.
+\end{itemize}
+
+\subsection*{Dates to keep straight}
+\begin{itemize}
+\item 621 BCE: Draco
+\item 594 BCE: Solon
+\item 508 BCE: Kleisthenes
+\item 480--323 BCE: Classical Greek period
+\item 458 BCE: \textit{Oresteia}
+\item 509--27 BCE: Roman Republic
+\item 27 BCE: Augustus begins principate
+\end{itemize}
+
+\subsection*{Big distinctions}
+\begin{tabular}{@{}p{0.26\linewidth}p{0.66\linewidth}@{}}
+\toprule
+\textbf{Distinction} & \textbf{What to remember} \\
+\midrule
+Ancient versus modern criminal law & Ancient systems rely far more on private initiative and self-help. \\
+Public versus private case & Not the same as modern criminal versus civil law, though related. \\
+Self-help versus arbitration versus court & A developmental sequence, but with overlap. \\
+Household versus city & Central to the \textit{Oresteia}'s treatment of violence. \\
+\bottomrule
+\end{tabular}
+
+\end{document}
+
