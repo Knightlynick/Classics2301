@@ -1,4 +1,4 @@
-const STORAGE_KEY = "roman-crime-study-state-v1";
+const STORAGE_KEY = "roman-crime-study-state-v2";
 const { studyTopics, quizQuestions } = window.STUDY_DATA;
 
 const appState = loadState();
@@ -9,10 +9,12 @@ const runtime = {
 const elements = {
   modeSelect: document.querySelector("#modeSelect"),
   weekSelect: document.querySelector("#weekSelect"),
+  glossaryScopeSelect: document.querySelector("#glossaryScopeSelect"),
   countSelect: document.querySelector("#countSelect"),
   startQuizBtn: document.querySelector("#startQuizBtn"),
   topicFilter: document.querySelector("#topicFilter"),
   weekField: document.querySelector("#weekField"),
+  glossaryScopeField: document.querySelector("#glossaryScopeField"),
   statsGrid: document.querySelector("#statsGrid"),
   weekStats: document.querySelector("#weekStats"),
   recentAttempts: document.querySelector("#recentAttempts"),
@@ -40,7 +42,7 @@ function init() {
   populateWeekOptions();
   bindEvents();
   syncControlsFromState();
-  toggleWeekField();
+  toggleQuizFields();
   renderDashboard();
   renderTopics();
   renderQuizState();
@@ -56,6 +58,7 @@ function loadState() {
       settings: {
         mode: parsed?.settings?.mode || "final_mix",
         week: parsed?.settings?.week || "Week 10",
+        glossaryScope: parsed?.settings?.glossaryScope || "mixed",
         count: parsed?.settings?.count || 10,
         topicFilter: parsed?.settings?.topicFilter || "All weeks"
       }
@@ -66,6 +69,7 @@ function loadState() {
       settings: {
         mode: "final_mix",
         week: "Week 10",
+        glossaryScope: "mixed",
         count: 10,
         topicFilter: "All weeks"
       }
@@ -88,12 +92,17 @@ function bindEvents() {
 
   elements.modeSelect.addEventListener("change", () => {
     appState.settings.mode = elements.modeSelect.value;
-    toggleWeekField();
+    toggleQuizFields();
     saveState();
   });
 
   elements.weekSelect.addEventListener("change", () => {
     appState.settings.week = elements.weekSelect.value;
+    saveState();
+  });
+
+  elements.glossaryScopeSelect.addEventListener("change", () => {
+    appState.settings.glossaryScope = elements.glossaryScopeSelect.value;
     saveState();
   });
 
@@ -129,13 +138,16 @@ function populateWeekOptions() {
 function syncControlsFromState() {
   elements.modeSelect.value = appState.settings.mode;
   elements.weekSelect.value = appState.settings.week;
+  elements.glossaryScopeSelect.value = appState.settings.glossaryScope;
   elements.countSelect.value = String(appState.settings.count);
   elements.topicFilter.value = appState.settings.topicFilter;
 }
 
-function toggleWeekField() {
+function toggleQuizFields() {
   const isWeekPractice = elements.modeSelect.value === "week_practice";
+  const isGlossaryDrill = elements.modeSelect.value === "glossary_drill";
   elements.weekField.style.display = isWeekPractice ? "grid" : "none";
+  elements.glossaryScopeField.style.display = isGlossaryDrill ? "grid" : "none";
 }
 
 function getWeekList() {
@@ -283,56 +295,169 @@ function renderTopics() {
 }
 
 function renderTopicCard(topic) {
+  const argumentMarkup = topic.argument
+    ? `<div class="subpanel"><h4>What This Topic Is Arguing</h4><p>${escapeHtml(topic.argument)}</p></div>`
+    : "";
+
+  const whyMattersMarkup = topic.whyItMatters
+    ? `<div class="subpanel"><h4>Why It Matters</h4><p>${escapeHtml(topic.whyItMatters)}</p></div>`
+    : "";
+
   const eventsMarkup = topic.events.length
-    ? `<div class="subpanel"><h4>Chronology</h4><ul>${topic.events.map((item) => `<li>${item}</li>`).join("")}</ul></div>`
+    ? `<div class="subpanel"><h4>Chronology</h4><ul>${topic.events.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>`
     : "";
 
   const questionsMarkup = topic.studyQuestions.length
-    ? `<div class="subpanel"><h4>Study Questions</h4><ul>${topic.studyQuestions.map((item) => `<li>${item}</li>`).join("")}</ul></div>`
-    : "";
-
-  const passagesMarkup = topic.passages.length
-    ? topic.passages
-        .map(
-          (passage) => `
-            <div class="passage-card">
-              <strong>${passage.citation}</strong>
-              <p>${passage.excerpt}</p>
-              <p class="muted">${passage.note}</p>
-            </div>
-          `
-        )
-        .join("")
+    ? `<div class="subpanel"><h4>Study Questions</h4><ul>${topic.studyQuestions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>`
     : "";
 
   return `
     <article class="topic-card">
       <div class="topic-head">
         <div>
-          <p class="section-kicker">${topic.week}</p>
-          <h3>${topic.title}</h3>
-          <p class="topic-summary">${topic.summary}</p>
+          <p class="section-kicker">${escapeHtml(topic.week)}</p>
+          <h3>${escapeHtml(topic.title)}</h3>
+          <p class="topic-summary">${escapeHtml(topic.summary)}</p>
         </div>
-        <span class="priority-pill ${topic.priority}">${topic.priority}</span>
+        <span class="priority-pill ${topic.priority}">${escapeHtml(topic.priority)}</span>
       </div>
 
       <div class="chip-row">
-        ${topic.terms.map((term) => `<span class="term-chip">${term}</span>`).join("")}
+        ${topic.terms.map((term) => `<span class="term-chip">${escapeHtml(term)}</span>`).join("")}
       </div>
 
       <div class="split-grid">
+        ${argumentMarkup}
+        ${whyMattersMarkup}
         ${eventsMarkup}
         ${questionsMarkup}
       </div>
 
-      ${passagesMarkup}
+      ${renderConceptsSection(topic.concepts || [])}
+      ${renderComparisonsSection(topic.comparisons || [])}
+      ${renderPassagesSection(topic.passages || [])}
+      ${renderPitfallsSection(topic.pitfalls || [])}
     </article>
   `;
+}
+
+function renderConceptsSection(concepts) {
+  if (!concepts.length) {
+    return "";
+  }
+
+  return `
+    <details class="detail-panel" open>
+      <summary>Concept Bubbles</summary>
+      <div class="detail-body mini-grid">
+        ${concepts
+          .map(
+            (concept) => `
+              <article class="mini-card">
+                <h4>${escapeHtml(concept.term)}</h4>
+                <p><strong>Meaning:</strong> ${escapeHtml(concept.meaning)}</p>
+                <p><strong>What it does:</strong> ${escapeHtml(concept.function)}</p>
+                <p><strong>Why it matters:</strong> ${escapeHtml(concept.significance)}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+    </details>
+  `;
+}
+
+function renderComparisonsSection(comparisons) {
+  if (!comparisons.length) {
+    return "";
+  }
+
+  return `
+    <details class="detail-panel">
+      <summary>Ancient vs Modern</summary>
+      <div class="detail-body comparison-grid">
+        ${comparisons
+          .map(
+            (comparison) => `
+              <article class="comparison-card">
+                <p><strong>Ancient frame:</strong> ${escapeHtml(comparison.ancient)}</p>
+                <p><strong>Modern frame:</strong> ${escapeHtml(comparison.modern)}</p>
+                <p><strong>Why the difference matters:</strong> ${escapeHtml(comparison.significance)}</p>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+    </details>
+  `;
+}
+
+function renderPassagesSection(passages) {
+  if (!passages.length) {
+    return "";
+  }
+
+  return `
+    <details class="detail-panel" open>
+      <summary>Passage Context</summary>
+      <div class="detail-body">
+        ${passages.map(renderPassageCard).join("")}
+      </div>
+    </details>
+  `;
+}
+
+function renderPassageCard(passage) {
+  const quote = passage.quote || passage.excerpt || "";
+  const analysis = passage.analysis || passage.note || "";
+  const meta = [
+    passage.speaker ? `<span><strong>Speaker:</strong> ${escapeHtml(passage.speaker)}</span>` : "",
+    passage.audience ? `<span><strong>Audience:</strong> ${escapeHtml(passage.audience)}</span>` : "",
+    passage.setting ? `<span><strong>Setting:</strong> ${escapeHtml(passage.setting)}</span>` : ""
+  ]
+    .filter(Boolean)
+    .join("");
+
+  return `
+    <article class="passage-card">
+      <strong>${escapeHtml(passage.citation)}</strong>
+      ${meta ? `<div class="passage-meta">${meta}</div>` : ""}
+      ${quote ? `<p>${escapeHtml(quote)}</p>` : ""}
+      ${passage.context ? `<p><strong>Context:</strong> ${escapeHtml(passage.context)}</p>` : ""}
+      ${analysis ? `<p><strong>Analysis:</strong> ${escapeHtml(analysis)}</p>` : ""}
+      ${passage.modernParallel ? `<p><strong>Modern parallel:</strong> ${escapeHtml(passage.modernParallel)}</p>` : ""}
+    </article>
+  `;
+}
+
+function renderPitfallsSection(pitfalls) {
+  if (!pitfalls.length) {
+    return "";
+  }
+
+  return `
+    <details class="detail-panel">
+      <summary>Exam Traps</summary>
+      <div class="detail-body">
+        <ul class="pitfall-list">${pitfalls.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+      </div>
+    </details>
+  `;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/\"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function startQuiz() {
   appState.settings.mode = elements.modeSelect.value;
   appState.settings.week = elements.weekSelect.value;
+  appState.settings.glossaryScope = elements.glossaryScopeSelect.value;
   appState.settings.count = Number(elements.countSelect.value);
   saveState();
 
@@ -356,17 +481,37 @@ function buildQuiz(settings) {
   let pool = [];
 
   if (settings.mode === "week_practice") {
-    pool = quizQuestions.filter((question) => question.week === settings.week);
-    return shuffle(pool).slice(0, Math.min(settings.count, pool.length));
+    pool = quizQuestions.filter((question) => question.bank === "core" && question.week === settings.week);
+    return shuffle(pool)
+      .slice(0, Math.min(settings.count, pool.length))
+      .map(prepareQuestion);
+  }
+
+  if (settings.mode === "glossary_drill") {
+    pool = quizQuestions.filter((question) => {
+      if (question.bank !== "glossary") {
+        return false;
+      }
+      if (settings.glossaryScope === "mixed") {
+        return true;
+      }
+      return question.family === settings.glossaryScope;
+    });
+
+    return shuffle(pool)
+      .slice(0, Math.min(settings.count, pool.length))
+      .map(prepareQuestion);
   }
 
   if (settings.mode === "cumulative") {
-    pool = [...quizQuestions];
-    return shuffle(pool).slice(0, Math.min(settings.count, pool.length));
+    pool = quizQuestions.filter((question) => question.bank === "core");
+    return shuffle(pool)
+      .slice(0, Math.min(settings.count, pool.length))
+      .map(prepareQuestion);
   }
 
-  pool = [...quizQuestions];
-  return weightedSelection(pool, Math.min(settings.count, pool.length));
+  pool = quizQuestions.filter((question) => question.bank === "core");
+  return weightedSelection(pool, Math.min(settings.count, pool.length)).map(prepareQuestion);
 }
 
 function weightedSelection(items, count) {
@@ -389,6 +534,20 @@ function shuffle(items) {
   return copy;
 }
 
+function prepareQuestion(question) {
+  const choices = question.choices.map((choice, index) => ({
+    choice,
+    isCorrect: index === question.correctIndex
+  }));
+  const shuffled = shuffle(choices);
+
+  return {
+    ...question,
+    choices: shuffled.map((entry) => entry.choice),
+    correctIndex: shuffled.findIndex((entry) => entry.isCorrect)
+  };
+}
+
 function renderQuizState() {
   const quiz = runtime.currentQuiz;
 
@@ -408,14 +567,14 @@ function renderQuizState() {
   elements.quizTitle.textContent = `Question ${quiz.index + 1} of ${quiz.questions.length}`;
   elements.scoreChip.textContent = `${quiz.score} correct`;
   elements.progressBar.style.width = `${Math.max(progress, 4)}%`;
-  elements.questionMeta.textContent = `${question.week} · ${question.topic} · ${question.sourceRef}`;
+  elements.questionMeta.textContent = `${question.week} - ${question.topic} - ${question.sourceRef}`;
   elements.questionPrompt.textContent = question.prompt;
 
   elements.answerList.innerHTML = question.choices
     .map(
       (choice, index) => `
         <button class="answer-btn" data-answer-index="${index}">
-          <strong>${String.fromCharCode(65 + index)}.</strong> ${choice}
+          <strong>${String.fromCharCode(65 + index)}.</strong> ${escapeHtml(choice)}
         </button>
       `
     )
@@ -465,9 +624,9 @@ function answerQuestion(selectedIndex) {
   elements.feedbackBox.className = `feedback-box ${isCorrect ? "correct" : "wrong"}`;
   elements.feedbackBox.innerHTML = `
     <strong>${isCorrect ? "Correct." : "Not quite."}</strong>
-    <p>${question.explanation}</p>
-    <p><strong>Correct answer:</strong> ${question.choices[question.correctIndex]}</p>
-    <p class="muted">${question.sourceRef}</p>
+    <p>${escapeHtml(question.explanation)}</p>
+    <p><strong>Correct answer:</strong> ${escapeHtml(question.choices[question.correctIndex])}</p>
+    <p class="muted">${escapeHtml(question.sourceRef)}</p>
   `;
   elements.nextBtn.disabled = false;
 }
@@ -543,6 +702,15 @@ function finishQuiz(endedEarly = false) {
 function modeLabel(settings) {
   if (settings.mode === "week_practice") {
     return `${settings.week} practice`;
+  }
+  if (settings.mode === "glossary_drill") {
+    if (settings.glossaryScope === "greek") {
+      return "Greek glossary drill";
+    }
+    if (settings.glossaryScope === "roman") {
+      return "Roman glossary drill";
+    }
+    return "Mixed glossary drill";
   }
   if (settings.mode === "cumulative") {
     return "Cumulative review";

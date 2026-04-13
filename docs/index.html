@@ -21,12 +21,13 @@
       <div>
         <p class="eyebrow">CS2301 final review</p>
         <h1>Roman Crime Final Study App</h1>
-        <p class="hero-copy">Guide-first exam prep with a Roman-heavy mini exam, by-week practice, and quick review topics drawn from your course materials.</p>
+        <p class="hero-copy">Guide-first exam prep with a Roman-heavy mini exam, a dedicated glossary drill, by-week practice, and quick review topics drawn from your course materials.</p>
       </div>
       <div class="hero-badges">
         <span class="badge">Cumulative</span>
         <span class="badge">Weeks 10-12 weighted</span>
         <span class="badge">MCQ only</span>
+        <span class="badge">Glossary drill</span>
         <span class="badge">Hostable static app</span>
       </div>
     </header>
@@ -50,12 +51,22 @@
                 <option value="final_mix">Final Exam Mix</option>
                 <option value="cumulative">Cumulative Review</option>
                 <option value="week_practice">By-Week Practice</option>
+                <option value="glossary_drill">Glossary Drill</option>
               </select>
             </label>
 
             <label class="field" id="weekField">
               <span>Week</span>
               <select id="weekSelect"></select>
+            </label>
+
+            <label class="field" id="glossaryScopeField" style="display: none;">
+              <span>Glossary scope</span>
+              <select id="glossaryScopeSelect">
+                <option value="mixed">Mixed</option>
+                <option value="greek">Greek</option>
+                <option value="roman">Roman</option>
+              </select>
             </label>
 
             <label class="field">
@@ -68,7 +79,7 @@
             </label>
 
             <button id="startQuizBtn" class="primary-btn">Start mini exam</button>
-            <p class="helper-text">Final Exam Mix weights Weeks 10-12 more heavily while keeping the exam cumulative.</p>
+            <p class="helper-text">Final Exam Mix weights Weeks 10-12 more heavily while keeping the exam cumulative. Glossary Drill isolates the full Greek and Roman term bank.</p>
           </article>
 
           <article class="panel stats-panel">

@@ -1,4 +1,4 @@
-window.QUIZ_QUESTIONS = [
+const coreQuestions = [
   {
     id: "q01",
     week: "Week 1",
@@ -576,3 +576,870 @@ window.QUIZ_QUESTIONS = [
     sourceRef: "Week 12 Lecture Script and Riggsby excerpt"
   }
 ];
+
+// START GENERATED GLOSSARY BANK
+const greekGlossaryEntries = [
+  {
+    term: "Agon",
+    definition: "Formal dispute scene in Greek tragedy or comedy."
+  },
+  {
+    term: "Anakrisis",
+    definition: "Pre-trial hearing where the magistrate read the complaint and asked for admission or denial."
+  },
+  {
+    term: "Apagoge",
+    definition: "The procedure by which the volunteer prosecutor arrests the defendant first and then brings him to the competent official."
+  },
+  {
+    term: "Apagoge, ephegesis, endeixis, apographe, eisangelia, probole, dokimasia, euthynai",
+    definition: "Types of public cases that volunteer prosecutors could bring, often called \"summary procedures.\"."
+  },
+  {
+    term: "Apographe",
+    definition: "The procedure by which the volunteer prosecutor lists property that is wrongfully held by the defendant, property that rightfully belongs to the State."
+  },
+  {
+    term: "Apotumpansimos",
+    definition: "The act of exposing the convicted individual by securing his neck, wrists, and ankles to a vertical wooden plank (another form of the death penalty)."
+  },
+  {
+    term: "Archon",
+    definition: "Chief magistrate at Athens."
+  },
+  {
+    term: "Archon Basileus",
+    definition: "Archon responsible for religion, homicide, and deliberate wounding cases."
+  },
+  {
+    term: "Archon Eponymous",
+    definition: "Archon responsible for property, family matters, and key festivals; the year was named after him."
+  },
+  {
+    term: "Archon Polemarchus",
+    definition: "Archon responsible for cases involving non-Athenians."
+  },
+  {
+    term: "Areopagus",
+    definition: "Aristocratic council and court for intentional homicide and other grave offenses."
+  },
+  {
+    term: "Barathon",
+    definition: "The pit into which the convicted individual would be hurled (for death penalties)."
+  },
+  {
+    term: "Boedromion & Mounikhion",
+    definition: "Certain actions/cases could only be brought out between specific months."
+  },
+  {
+    term: "Boule",
+    definition: "Council of 500 citizens that prepared business for the assembly."
+  },
+  {
+    term: "De novo",
+    definition: "A Latin expression meaning \"from scratch\", \"from the beginning\"."
+  },
+  {
+    term: "Delphinion",
+    definition: "Homicide cases were tried in this court when the defendant was asserting an affirmative defense (arguing that the homicide was excused on a grounds of assumption of risk, self-defense, defense of property, etc.)."
+  },
+  {
+    term: "Diamartyria",
+    definition: "Literally \"on the account of a testimony\", \"through testimony\"."
+  },
+  {
+    term: "Dikai emporikai",
+    definition: "Mercantile cases that applied to both citizens and non-citizens and could only be initiated if the dispute at issue pertained to an alleged breach of a written contract that either: had been concluded in the Athenian..."
+  },
+  {
+    term: "Dikastai/dikastes",
+    definition: "Jurors."
+  },
+  {
+    term: "Dikastic oath",
+    definition: "An oath that each dikastes (juror) was required to swear in order to be eligible to serve as a juror."
+  },
+  {
+    term: "Dike",
+    definition: "Private suit or case brought by the wronged individual."
+  },
+  {
+    term: "Dike aikeias",
+    definition: "A charge of assault or battery (the Athenians didn't distinguish between the two)."
+  },
+  {
+    term: "Dike biaien",
+    definition: "A cause of action for theft by force."
+  },
+  {
+    term: "Dike blabes",
+    definition: "A case for damage to property or breach of contract; a cause of action used to rectify/correct a variety of civil wrongs, e.g."
+  },
+  {
+    term: "Dike exoules",
+    definition: "An additional fine paid by the defendant to the state if the defendant failed to pay the plaintiff what was due."
+  },
+  {
+    term: "Dike heirgmou",
+    definition: "A charge for false imprisonment/confinement."
+  },
+  {
+    term: "Dike kakegorias",
+    definition: "An action brought out for slander/defamation."
+  },
+  {
+    term: "Dike klopes",
+    definition: "A cause of action for simple theft."
+  },
+  {
+    term: "Dokimasia",
+    definition: "A hearing where a candidate might be qualified from citizenship, public office or speaking in the Ekklesia."
+  },
+  {
+    term: "Eisagogeis",
+    definition: "Monetary cases related to loans and banking."
+  },
+  {
+    term: "Eisangelia",
+    definition: "Public denunciation procedure used for treason, betrayal, and other injuries to the state."
+  },
+  {
+    term: "Ek pronoias",
+    definition: "The Greek term meaning \"intentionally,\" \"with forethought,\" \"with design,\" \"purposely.\" A homicide that could be described by this term was punishable by death and the confiscation of the murderer's property."
+  },
+  {
+    term: "Ekklesia",
+    definition: "Assembly of Athenian citizens."
+  },
+  {
+    term: "Endeixis",
+    definition: "The procedure by which the volunteer prosecutor first explains the charge to the magistrate and is then authorized to make the arrest."
+  },
+  {
+    term: "Ephegesis",
+    definition: "The procedure by which the volunteer prosecutor leads the magistrate to the defendant for arrest."
+  },
+  {
+    term: "Ephetai",
+    definition: "A special court of 51 men over the age of 50 who tried homicide cases in four distinct courts: the Delphinion; the Palladion; the Prytaneion; the Phreatto."
+  },
+  {
+    term: "Epimeletai tou emporiou",
+    definition: "Cases involving the sale of grain in the whole sale market that was conducted in the Athenian port, the Piraeus, at the Emporion."
+  },
+  {
+    term: "Euthynai",
+    definition: "Review of performance in public office."
+  },
+  {
+    term: "Exegetai",
+    definition: "(=\"expounders\") Religious officials who memorized sacred laws so that they could advise others about the laws."
+  },
+  {
+    term: "Graphe",
+    definition: "Public action brought on behalf of the community."
+  },
+  {
+    term: "Graphe moicheias",
+    definition: "A private case against a rapist."
+  },
+  {
+    term: "Graphe paranomon",
+    definition: "A \"prosecution for illegalities\" used to block decrees that contradicted or conflicted with established laws."
+  },
+  {
+    term: "Heken",
+    definition: "This term also means \"intentionally.\" A homicide that could be described by this term was punishable by death and the confiscation of the murderer's property."
+  },
+  {
+    term: "Hekousios",
+    definition: "This term also means \"intentionally,\" or \"voluntarily.\" A homicide that could be described by this term was punishable by death and the confiscation of the murderer's property."
+  },
+  {
+    term: "Heliaia",
+    definition: "Judicial sitting of the Athenian assembly or people's court."
+  },
+  {
+    term: "Hierosylia",
+    definition: "The act of robbing from a temple (which could be punished by death)."
+  },
+  {
+    term: "Hubris",
+    definition: "Abusive, arrogant, degrading conduct that could ground prosecution."
+  },
+  {
+    term: "Kakourgoi",
+    definition: "A cause of action for serious theft, e.g. thieves who stole at night, stole from a gymnasium, stole more than 10 drachmas from a harbor or stole more than 50 drachmas from anywhere else."
+  },
+  {
+    term: "Klepsydra",
+    definition: "A water clock that kept track of the time allotted for each speech."
+  },
+  {
+    term: "Kleroterion",
+    definition: "An allotment machine used to sort black and white balls for jury selection."
+  },
+  {
+    term: "Kyrios",
+    definition: "Legally responsible adult male guardian of a woman or child."
+  },
+  {
+    term: "Lex",
+    definition: "The Latin term for law or statute."
+  },
+  {
+    term: "Lex talionis",
+    definition: "(Latin) Law of retribution; an eye for an eye; follow for follow or rather, retaliatory retribution."
+  },
+  {
+    term: "Logographoi",
+    definition: "Speechwriters who composed court speeches for litigants."
+  },
+  {
+    term: "Martyria",
+    definition: "A testimony."
+  },
+  {
+    term: "Miasma",
+    definition: "Pollution caused by homicide that could spread through the community."
+  },
+  {
+    term: "Nautodikai",
+    definition: "Judge of sailors who handled cases involving Athenians who either lived overseas or sailed as mariners or merchants."
+  },
+  {
+    term: "Nomos/Nomoi",
+    definition: "Greek law or custom; later also written statute."
+  },
+  {
+    term: "Nomothetai",
+    definition: "Lawgivers or legislators who approved laws after assembly votes."
+  },
+  {
+    term: "Palladion",
+    definition: "Court used for unintentional homicides or when the victim was either a slave or foreigner."
+  },
+  {
+    term: "Paragraphe",
+    definition: "A procedural challenge; \"prosecution in opposition\", \"counter prosecution\"; a technical legal mechanism employed by defendants."
+  },
+  {
+    term: "Phreatto",
+    definition: "Where cases were heard when the accused had already been convicted and exiled for a prior homicide."
+  },
+  {
+    term: "Pinakion",
+    definition: "A wooden or bronze \"ticket\" that had each juror's name on it and one of the first ten letters of the alphabet."
+  },
+  {
+    term: "Poine",
+    definition: "A payment."
+  },
+  {
+    term: "Polis",
+    definition: "Greek city-state understood as a political community, not just a place."
+  },
+  {
+    term: "Probole",
+    definition: "A preliminary hearing at the Ekklesia regarding official misconduct."
+  },
+  {
+    term: "Prodikasiai",
+    definition: "Pre-trial conferences; a procedural stage for homicide trials."
+  },
+  {
+    term: "Prodosia",
+    definition: "A public-wrong charge used against generals for losing ships, troops, or territory."
+  },
+  {
+    term: "Prosklesis",
+    definition: "A summons or \"call to court\"; the summons had to alert the defendant to three facts: 1."
+  },
+  {
+    term: "Prytaneia",
+    definition: "A filing fee which the plaintiff/prosecutor had to pay."
+  },
+  {
+    term: "Prytaneion",
+    definition: "Court used for cases where death was caused by an unknown person (i.e."
+  },
+  {
+    term: "Pseudomartyrion",
+    definition: "A false testimony or perjury. A dike pseudomartyrion is a charge/prosecution for bearing false testimony."
+  },
+  {
+    term: "Strategoi",
+    definition: "Board of generals with military jurisdiction."
+  },
+  {
+    term: "Sychophants",
+    definition: "Volunteer prosecutors who brought cases for profit, prestige, or leverage."
+  },
+  {
+    term: "Synegroi",
+    definition: "(=\"supporting speakers\") Public prosecutors who brought actions against men who were acting in an official capacity."
+  },
+  {
+    term: "The Eleven",
+    definition: "Dealt with suits involving kakourgoi and cases that required the defendant to be incarcerated while awaiting trial."
+  },
+  {
+    term: "The Forty",
+    definition: "Judges who heard majority of the private cases brought by means of a dike (except under the jurisdiction of the Archon, Thesmothetai, or some other specialized court)."
+  },
+  {
+    term: "Thesmothetai",
+    definition: "Officials responsible for many graphe and dike cases."
+  },
+  {
+    term: "Trauma ek pronoias",
+    definition: "Wounding with intent to kill; deliberate armed battery."
+  },
+  {
+    term: "Xenodikai",
+    definition: "Judges of foreigners (Abolished around 350 BCE)."
+  }
+];
+
+const romanGlossaryEntries = [
+  {
+    term: "Abigeatus",
+    definition: "Rustling; a specific subspecies of theft."
+  },
+  {
+    term: "Absolvo",
+    definition: "Acquittal."
+  },
+  {
+    term: "Actio de posito et suspenso",
+    definition: "\"an action relating to something that has been placed or hung out\"."
+  },
+  {
+    term: "Actio de rebus effusis vel deiectis",
+    definition: "\"an action relating to things which have been thrown out\" This action was carried out against the owner of the property from which things were thrown or poured onto a street."
+  },
+  {
+    term: "Actio servi corrupti",
+    definition: "This action concerned situations where a person influenced another's slave in a negative manner."
+  },
+  {
+    term: "Actus reus",
+    definition: "Criminal act; an essential element for a crime in Roman law."
+  },
+  {
+    term: "Ad agendum",
+    definition: "To prepare a case for the court (Latin meaning: agere is the verb used to plead a case before the court)."
+  },
+  {
+    term: "Ad cavendum",
+    definition: "To draft documents; the process of drafting written formulae for lawsuits or business transactions."
+  },
+  {
+    term: "Ad respondendum",
+    definition: "To answer legal questions and give legal advice; the private function of a lawyer to explanation to a praetor, aedile, judge, or layperson what a particular law meant."
+  },
+  {
+    term: "Aedile",
+    definition: "Roman magistrate who supervised archives, public works, streets, and the marketplace."
+  },
+  {
+    term: "Ambitus",
+    definition: "Criminal conduct related to elections such as bribery and other types of electoral corruption."
+  },
+  {
+    term: "Apud iudicem",
+    definition: "The time a case would be heard by a judge."
+  },
+  {
+    term: "Augurs",
+    definition: "Augurs were in charge of the auspices and augury. They had the power to delay or prohibit public business."
+  },
+  {
+    term: "Calumnia",
+    definition: "Bringing false criminal charges as an accuser."
+  },
+  {
+    term: "Censor",
+    definition: "Magistrate who ran the census and assessed the social and moral standing of Roman citizens."
+  },
+  {
+    term: "Centumviri (100 men)",
+    definition: "Large juries used for disputes involving inheritance of large estates of nobles or the rich."
+  },
+  {
+    term: "Civis",
+    definition: "Latin for citizen."
+  },
+  {
+    term: "Cognitio extraordinario / Cognitio extra ordinem",
+    definition: "Extraordinary post-classical procedure in which one official heard the whole case instead of splitting it into separate phases."
+  },
+  {
+    term: "Comitia",
+    definition: "An assembly."
+  },
+  {
+    term: "Comitia centuriata",
+    definition: "The assembly compromising all Roman citizens organized into \"centuries\". It was organized by wealth."
+  },
+  {
+    term: "Comitia curiata",
+    definition: "During the Republic it served mostly to witness and perhaps authorize wills and adoptions. It operated in the Monarchy but we don't know the details."
+  },
+  {
+    term: "Comitia tributa",
+    definition: "The comitia tributa was organized by the location of residence and they vote in an order determined by lot."
+  },
+  {
+    term: "Concilium plebis",
+    definition: "An assembly of all plebeians organized by tribe and presided over by the tribunes of the plebs."
+  },
+  {
+    term: "Condemnatio",
+    definition: "This is another part of the typical formula. It is the instruction to judge to either find the defendant liable or not based upon an application of the formula to his findings of fact."
+  },
+  {
+    term: "Condemno",
+    definition: "A conviction."
+  },
+  {
+    term: "Contiones",
+    definition: "Public meetings Where debating and public discussion took place."
+  },
+  {
+    term: "Cursus honorum",
+    definition: "A regular order of elected offices which was established after the Second Punic War."
+  },
+  {
+    term: "Damnum iniuria datum",
+    definition: "Property damage."
+  },
+  {
+    term: "De residuis",
+    definition: "Embezzlement of entrusted money."
+  },
+  {
+    term: "Decreta",
+    definition: "Legal decisions rendered by the emperor in any given case that had been brought before him."
+  },
+  {
+    term: "Delictum",
+    definition: "Crime or unintentional tort."
+  },
+  {
+    term: "Dolus",
+    definition: "Criminal intent."
+  },
+  {
+    term: "Edictum perpetuum",
+    definition: "Julianus, the jurist under the reign of Emperor Hadrian (117-138 CE) put the praetorian and aedilician edicts into their final forms. Later classical Roman jurists referred to Julianus' frozen version of the..."
+  },
+  {
+    term: "Effractores",
+    definition: "Burglars who broke into apartments."
+  },
+  {
+    term: "Equites (singular: eques )",
+    definition: "They bid on contracts with the senate or with magistrates to carryout public business like the collection of taxes (publicani)."
+  },
+  {
+    term: "Exceptio",
+    definition: "An exceptio is an example of one of the legal institutions that Roman praetors created. It is a method of protecting rights kind of like a defense to an action."
+  },
+  {
+    term: "Expilatores",
+    definition: "Thieves who ransacked homes in the countryside."
+  },
+  {
+    term: "Falsum",
+    definition: "Forgery."
+  },
+  {
+    term: "Flagrante delicto",
+    definition: "(literally,\"in blazing offence\"); caught red handed."
+  },
+  {
+    term: "Furtum manifestum",
+    definition: "The thief is caught in the action. The penalty was to be beaten and then the perpetrator was handed over to the victim of the theft as a slave or bondsman."
+  },
+  {
+    term: "Furtum nec manifestum",
+    definition: "The thief is not caught in the action."
+  },
+  {
+    term: "Glossa",
+    definition: "Comments and laws."
+  },
+  {
+    term: "Honestiores",
+    definition: "More privileged citizens (for example army veterans)."
+  },
+  {
+    term: "Imperium",
+    definition: "The power to command held by senior Roman magistrates."
+  },
+  {
+    term: "In iure",
+    definition: "The first phase of Roman procedure, conducted before the praetor."
+  },
+  {
+    term: "Iniuria",
+    definition: "Personal injury to reputation, dignity, honor, or bodily integrity."
+  },
+  {
+    term: "Inscriptio",
+    definition: "The court president wrote down an inscriptio for the prosecutor to sign."
+  },
+  {
+    term: "Institutiones",
+    definition: "An official textbook on Roman law and a functional code that could be consulted for subsequent decisions."
+  },
+  {
+    term: "Intentio",
+    definition: "This is another part of the typical formula (written instruction). It is the statement of the plaintiff's claim and the most important section of every formula."
+  },
+  {
+    term: "Intercessio",
+    definition: "Veto power used against magistrates of equal or lower status."
+  },
+  {
+    term: "Interdictio aquae et ignis",
+    definition: "Banishment/exile; literally \"prohibition of water and fire\"."
+  },
+  {
+    term: "Iudex",
+    definition: "Latin for \"judge\". One of the most important officials involved in the development of the legis actiones system."
+  },
+  {
+    term: "Iudex qui litem suam fecit",
+    definition: "\"a judge who has made a case his own\". One of the quasi-delicts."
+  },
+  {
+    term: "Iudicis nominatio",
+    definition: "This is one part of the typical formula which nominates a judge."
+  },
+  {
+    term: "Ius Aelianum",
+    definition: "A collection of judicial formulae for lawsuits, dating to ca. 200 BCE."
+  },
+  {
+    term: "Ius Flavianum",
+    definition: "A collection of formulae for lawsuits, dating to ca. 300 BCE."
+  },
+  {
+    term: "Ius gentium",
+    definition: "Literally, \"law of the peoples/nations\". The praetor peregrinus used this law between a Roman citizen and a foreigner or between two foreigners who were involved in a dispute on Roman soil."
+  },
+  {
+    term: "Ius honorarium",
+    definition: "The law that resulted from the praetors' edicts. It was used to distinguish law based on the praetor's edict from more formal legislation."
+  },
+  {
+    term: "Ius occidendi",
+    definition: "The right of killing; stems from the power of the paterfamilias over members of his family."
+  },
+  {
+    term: "Ius privatum",
+    definition: "Included rules of property, succession, contracts, and laws relating to the family; deals with the interests of separate persons (according to the Roman Jurist Ulpian)."
+  },
+  {
+    term: "Ius publicum",
+    definition: "A body of laws that deals with interests of the entire community (according to Roman Jurist Ulpian)."
+  },
+  {
+    term: "Ius respondendi ex auctoritate principis",
+    definition: "(sometimes referred to simply as the ius respondendi ); the law of responding from the authority of the princeps (emperor)."
+  },
+  {
+    term: "Ius vocatio",
+    definition: "The act of bringing a defendant before the praetor by a formal summons initiated in the in iure phase."
+  },
+  {
+    term: "Laudatores",
+    definition: "Character witnesses."
+  },
+  {
+    term: "Leges",
+    definition: "Statutes adopted by the populus romanus; designed to honour the honour the mos maiorum."
+  },
+  {
+    term: "Legis actiones",
+    definition: "The early form of civil procedure; \"suits/actions of law\"."
+  },
+  {
+    term: "Lenocinium",
+    definition: "Any conduct that facilitated sexual crime."
+  },
+  {
+    term: "Lex Aquilia",
+    definition: "Plebiscite governing wrongful damage to property, especially injury to another person's slaves or animals."
+  },
+  {
+    term: "Lex Calpurnia",
+    definition: "Law of 149 BCE that created the first permanent jury court and helped launch the quaestiones perpetuae."
+  },
+  {
+    term: "Lex Canuleia",
+    definition: "A law passed in 445 BCE which gave plebeians the right of intermarriage with the patricians."
+  },
+  {
+    term: "Lex Cornelia de iniuriis",
+    definition: "A law that created what amounted to a criminal cause of action against persons for hittng others or for forcefully breaking into another's home."
+  },
+  {
+    term: "Lex Cornelia nummaria",
+    definition: "The earliest Roman law to criminalize the counterfeiting of money."
+  },
+  {
+    term: "Lex Fabia",
+    definition: "A law that criminalized the sale of a Roman citizen, freedman, or slave who belonged to someone else."
+  },
+  {
+    term: "Lex Hortensia",
+    definition: "Law of 287 BCE making plebiscites binding on all Roman citizens."
+  },
+  {
+    term: "Lex Iulia de adulteriis coercendis",
+    definition: "Augustan law punishing adultery and giving the paterfamilias limited rights in flagrante delicto."
+  },
+  {
+    term: "Lex Ogulnia",
+    definition: "(300 BCE) The law that allowed plebeians to be pontifices."
+  },
+  {
+    term: "Lex Pompeia",
+    definition: "(55 BCE) The first statute that criminalized parricide as an offense distinct from ordinary murder."
+  },
+  {
+    term: "Lex talionis",
+    definition: "A law on retribution; essentially the equivalent of \"an eye for an eye\"."
+  },
+  {
+    term: "Licinian Sextian law",
+    definition: "(367 BCE) this law allowed one of the two consuls elected every year had to be a plebeian."
+  },
+  {
+    term: "Litis contestatio",
+    definition: "The appearance of parties before the praetor to initiate a suit."
+  },
+  {
+    term: "Maiestas",
+    definition: "Treason--Maiestas included a number of illegal activities: armed assault on the State; gathering soldiers or conducting warfare without the State's permission; desertion."
+  },
+  {
+    term: "Maius imperium",
+    definition: "The \"greater power to command\", held by a more senior magistrate (i.e."
+  },
+  {
+    term: "Mancipatio",
+    definition: "The act of transferring res mancipi e.g. land, slaves, cattle, horses, mules, donkeys."
+  },
+  {
+    term: "Mens rea",
+    definition: "\"a guilty mind\"."
+  },
+  {
+    term: "Mos maiorum",
+    definition: "Customs of their (Romans') ancestors."
+  },
+  {
+    term: "Nominis delatio",
+    definition: "=(denunciation of the name) The trial began with a nominis delatio attended by both prosecutor and defendant."
+  },
+  {
+    term: "Novella",
+    definition: "New laws that were adopted after the Corpus Iuris had been written."
+  },
+  {
+    term: "Obligatio/obligationes",
+    definition: "This entailed some relationship between two persons in which one was a creditor and the other debtor."
+  },
+  {
+    term: "Paterfamilias",
+    definition: "The father of the family; the head of the household."
+  },
+  {
+    term: "Peculatus",
+    definition: "A kind of embezzlement; any wrongful appropriation, diversion, or conversion of sacred, religious, or public funds."
+  },
+  {
+    term: "Per formulam",
+    definition: "The formulary procedure which replaced the legis actiones in the beginning of the 2nd century B.C."
+  },
+  {
+    term: "Perduellio",
+    definition: "This term also refers to treasonous conduct but it was used more in the earlier Republic."
+  },
+  {
+    term: "Plagium",
+    definition: "Kidnapping."
+  },
+  {
+    term: "Plebiscita (singular: plebiscitum )",
+    definition: "Enactments of the concilium plebis that became binding on all Rome after the lex Hortensia."
+  },
+  {
+    term: "Pontifices",
+    definition: "Pontiffs (priests) had access to the archives containing the specialized legal forms and phrases that were necessary to conduct a law suit."
+  },
+  {
+    term: "Populus Romanus",
+    definition: "The Roman people."
+  },
+  {
+    term: "Praefectus vigilum",
+    definition: "Prefect of the Night Watch."
+  },
+  {
+    term: "Praescriptio",
+    definition: "A general comment concerning the wrong."
+  },
+  {
+    term: "Praetor",
+    definition: "Roman magistrate responsible for the judiciary, annual edicts, and legal formulae."
+  },
+  {
+    term: "Praetor peregrinus",
+    definition: "Praetor who handled disputes involving foreigners."
+  },
+  {
+    term: "Praetor urbanus",
+    definition: "Praetor who handled disputes involving Roman citizens."
+  },
+  {
+    term: "Praevaricatio",
+    definition: "A criminal offence for an accuser to hide legitimate charges."
+  },
+  {
+    term: "Provocatio",
+    definition: "Right to appeal a magistrate's summary judgment to the Roman people."
+  },
+  {
+    term: "Quaestio de repetundiis",
+    definition: "Court for extortion by provincial governors."
+  },
+  {
+    term: "Quaestiones perpetuae",
+    definition: "Permanent Roman criminal courts for recurring categories of public wrong."
+  },
+  {
+    term: "Quaestors",
+    definition: "Financial officials."
+  },
+  {
+    term: "Rapina",
+    definition: "Robbery with violence."
+  },
+  {
+    term: "Recuperatores",
+    definition: "Recoverers three to five judges instead of a single iudex."
+  },
+  {
+    term: "Repetundae",
+    definition: "Provincial extortion and abuse of office for private gain."
+  },
+  {
+    term: "Restitutio",
+    definition: "One of the legal institutions created by the Roman praetors."
+  },
+  {
+    term: "Saccularii",
+    definition: "Thieves who slit pockets and purses to empty their contents."
+  },
+  {
+    term: "Sanctio",
+    definition: "The negative consequences which resulted from a person's violation of the praescriptio."
+  },
+  {
+    term: "Sciens dolo malo",
+    definition: "\"knowingly and with malicious intent\"."
+  },
+  {
+    term: "Senatus Consulta",
+    definition: "Advice or resolutions issued by the Senate."
+  },
+  {
+    term: "Sententia",
+    definition: "The opinion of the judge ( iudex )."
+  },
+  {
+    term: "Stellionatus",
+    definition: "Any conduct that was dishonest or fraudulent and did not fit neatly into another defined criminal category could be dealt as stellionatus."
+  },
+  {
+    term: "Stipulatio",
+    definition: "A face to face contract that originally required one party to ask \"Do you promise\" and the other to respond \"I promise\"."
+  },
+  {
+    term: "Stuprum",
+    definition: "An illegal crime which occurred when a man acting sciens dolo malo had sexual relations with a \"respectable\" unmarried girl or woman or boy."
+  },
+  {
+    term: "Tergiversatio",
+    definition: "A criminal offence for an accuser to abandon charges once formally begun."
+  },
+  {
+    term: "Tresviri capitalis",
+    definition: "Handled cases involving theft."
+  },
+  {
+    term: "Tripertitia",
+    definition: "A major work published by Sextus Aelius Paetus. It was the first attempt at a systematic treatment of Roman law."
+  },
+  {
+    term: "Vis",
+    definition: "Force or violence treated as a public crime, often punished by exile or death."
+  }
+];
+
+function glossarySourceRef(family) {
+  return family === "greek" ? "Greek Law Wiki Glossary" : "Roman Law Wiki Glossary";
+}
+
+function glossaryWeekLabel(family) {
+  return family === "greek" ? "Greek Glossary" : "Roman Glossary";
+}
+
+function glossaryTopicLabel(family) {
+  return family === "greek" ? "Greek Glossary Drill" : "Roman Glossary Drill";
+}
+
+function pickGlossaryDistractors(entries, index) {
+  const offsets = [1, 2, 5, 8, 13, 21, 34];
+  const distractors = [];
+  for (const offset of offsets) {
+    const candidate = entries[(index + offset) % entries.length];
+    if (!candidate || distractors.some((entry) => entry.term === candidate.term)) continue;
+    distractors.push(candidate);
+    if (distractors.length === 3) break;
+  }
+  return distractors;
+}
+
+function buildGlossaryQuestions(entries, family) {
+  return entries.map((entry, index) => ({
+    id: "g-" + family + "-" + String(index + 1).padStart(3, "0"),
+    week: glossaryWeekLabel(family),
+    topic: glossaryTopicLabel(family),
+    priority: "glossary",
+    weight: 1,
+    bank: "glossary",
+    family,
+    prompt: "Given the definition, what is the correct " + family + " term? \"" + entry.definition + "\"",
+    choices: [entry.term, ...pickGlossaryDistractors(entries, index).map((candidate) => candidate.term)],
+    correctIndex: 0,
+    explanation: entry.term + " means " + entry.definition,
+    sourceRef: glossarySourceRef(family)
+  }));
+}
+
+window.QUIZ_QUESTIONS = [
+  ...coreQuestions.map((question) => ({
+    ...question,
+    bank: "core",
+    family: question.family || null
+  })),
+  ...buildGlossaryQuestions(greekGlossaryEntries, "greek"),
+  ...buildGlossaryQuestions(romanGlossaryEntries, "roman")
+];
+// END GENERATED GLOSSARY BANK
