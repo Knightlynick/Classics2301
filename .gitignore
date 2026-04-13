@@ -7,3 +7,6 @@ study-docs/latex-build/*
 !study-docs/latex-build/.gitkeep
 Thumbs.db
 .DS_Store
+node_modules/
+test-results/
+playwright-report/

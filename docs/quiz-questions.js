@@ -1550,7 +1550,26 @@ function buildGlossaryQuestions(entries, family) {
   });
 }
 
-window.QUIZ_QUESTIONS = [
+function toQuestionAuthoringShape(question) {
+  const correctAnswer = question.correctAnswer || question.choices[question.correctIndex];
+  return {
+    id: question.id,
+    bank: question.bank,
+    family: question.family || null,
+    week: question.week,
+    topic: question.topic,
+    priority: question.priority,
+    weight: question.weight || 1,
+    prompt: question.prompt,
+    correctAnswer,
+    distractors: question.distractors || question.choices.filter((choice, index) => index !== question.correctIndex),
+    explanation: question.explanation,
+    sourceRef: question.sourceRef,
+    studyNote: question.studyNote || null
+  };
+}
+
+window.QUIZ_QUESTION_BANK = [
   ...coreQuestions.map((question) => ({
     ...question,
     bank: "core",
@@ -1560,4 +1579,5 @@ window.QUIZ_QUESTIONS = [
   ...buildGlossaryQuestions(greekGlossaryEntries, "greek"),
   ...buildGlossaryQuestions(romanGlossaryEntries, "roman")
 ];
+window.QUIZ_QUESTIONS = window.QUIZ_QUESTION_BANK.map(toQuestionAuthoringShape);
 // END GENERATED GLOSSARY BANK

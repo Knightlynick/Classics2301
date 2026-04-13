@@ -1,4 +1,4 @@
-const CACHE_NAME = "roman-crime-study-v1";
+const CACHE_NAME = "cs2301-study-app-v2";
 const APP_ASSETS = [
   "./",
   "./index.html",
@@ -6,6 +6,7 @@ const APP_ASSETS = [
   "./app.js",
   "./study-topics.js",
   "./quiz-questions.js",
+  "./study-guide-content.js",
   "./data.js",
   "./manifest.webmanifest",
   "./icon.svg"
