@@ -391,23 +391,100 @@ body {
   font-size: 1.05rem;
 }
 
+.subpanel p {
+  margin: 0;
+  line-height: 1.6;
+}
+
 .subpanel ul {
   margin: 0;
   padding-left: 1.1rem;
   line-height: 1.55;
 }
 
-.passage-card {
+.detail-panel {
   margin-top: 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.56);
+  border: 1px solid rgba(31, 44, 56, 0.07);
+  overflow: hidden;
+}
+
+.detail-panel summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 0.95rem 1rem;
+  font-family: Baskerville, "Palatino Linotype", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.detail-panel summary::-webkit-details-marker {
+  display: none;
+}
+
+.detail-body {
+  padding: 1rem;
+}
+
+.mini-grid,
+.comparison-grid {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mini-card,
+.comparison-card {
+  padding: 0.95rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(31, 44, 56, 0.06);
+}
+
+.mini-card h4 {
+  margin: 0 0 0.65rem;
+  font-family: Baskerville, "Palatino Linotype", serif;
+  font-size: 1.05rem;
+}
+
+.mini-card p,
+.comparison-card p {
+  margin: 0.45rem 0 0;
+  line-height: 1.55;
+}
+
+.passage-card {
+  margin-top: 0.9rem;
   padding: 1rem;
   border-left: 5px solid var(--accent-soft);
   border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.55);
 }
 
+.passage-card:first-child {
+  margin-top: 0;
+}
+
 .passage-card p {
   margin: 0.4rem 0 0;
   line-height: 1.55;
+}
+
+.passage-meta {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.pitfall-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  line-height: 1.6;
 }
 
 .quiz-shell {
@@ -509,6 +586,34 @@ body {
   border-color: rgba(139, 42, 42, 0.26);
 }
 
+.study-note-card {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(31, 44, 56, 0.08);
+}
+
+.study-note-card h4 {
+  margin: 0 0 0.8rem;
+  font-family: Baskerville, "Palatino Linotype", serif;
+  font-size: 1.05rem;
+}
+
+.study-note-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.study-note-section {
+  padding: 0.85rem 0.9rem;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid rgba(31, 44, 56, 0.06);
+}
+
+.study-note-section p {
+  margin: 0.35rem 0 0;
+}
+
 .feedback-box.is-hidden {
   display: none;
 }
@@ -537,7 +642,9 @@ body {
 
 @media (max-width: 900px) {
   .dashboard-grid,
-  .split-grid {
+  .split-grid,
+  .mini-grid,
+  .comparison-grid {
     grid-template-columns: 1fr;
   }
 
