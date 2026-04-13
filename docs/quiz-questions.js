@@ -1404,6 +1404,107 @@ function glossaryTopicLabel(family) {
   return family === "greek" ? "Greek Glossary Drill" : "Roman Glossary Drill";
 }
 
+const studyTopicIndex = new Map((window.STUDY_TOPICS || []).map((topic) => [topic.id, topic]));
+
+const coreQuestionTopicById = {
+  q01: "w1-method",
+  q02: "w1-method",
+  q03: "w1-method",
+  q04: "w2-chronology",
+  q05: "w2-chronology",
+  q06: "w2-chronology",
+  q07: "w3-procedure",
+  q08: "w3-greek-law",
+  q09: "w3-greek-law",
+  q10: "w3-procedure",
+  q11: "w4-oresteia",
+  q12: "w4-court",
+  q13: "w4-court",
+  q14: "w6-definitions",
+  q15: "w6-positivism",
+  q16: "w6-positivism",
+  q17: "w6-positivism",
+  q18: "w6-positivism",
+  q19: "w7-lysias-law",
+  q20: "w7-lysias-law",
+  q21: "w7-lysias-law",
+  q22: "w7-lysias-rhetoric",
+  q23: "w7-lysias-rhetoric",
+  q24: "w8-punishment",
+  q25: "w8-punishment",
+  q26: "w8-punishment",
+  q27: "w8-rhetoric",
+  q28: "w10-origins",
+  q29: "w10-origins",
+  q30: "w10-magistrates",
+  q31: "w10-magistrates",
+  q32: "w10-magistrates",
+  q33: "w10-jurists",
+  q34: "w10-jurists",
+  q35: "w10-jurists",
+  q36: "w10-criminal",
+  q37: "w10-criminal",
+  q38: "w10-criminal",
+  q39: "w11-chronology",
+  q40: "w11-chronology",
+  q41: "w11-debate",
+  q42: "w11-debate",
+  q43: "w11-debate",
+  q44: "w11-debate",
+  q45: "w12-background",
+  q46: "w12-strategy",
+  q47: "w12-criminality",
+  q48: "w12-criminality"
+};
+
+function formatConceptSentence(concept) {
+  const meaning = String(concept.meaning || "").replace(/\.$/, "").toLowerCase();
+  const significance = String(concept.significance || "").replace(/\.$/, "").toLowerCase();
+  return `${concept.term} means ${meaning}. It matters because ${significance}.`;
+}
+
+function buildCoreStudyNote(question) {
+  const topicId = coreQuestionTopicById[question.id];
+  const topic = studyTopicIndex.get(topicId);
+  const correctChoice = question.choices[question.correctIndex];
+  const conceptText = (topic?.concepts || [])
+    .slice(0, 2)
+    .map(formatConceptSentence)
+    .join(" ");
+
+  const contextParts = [
+    topic?.summary,
+    topic?.argument,
+    topic?.whyItMatters,
+    conceptText
+  ].filter(Boolean);
+
+  return {
+    context: contextParts.join(" "),
+    whyCorrect: `${correctChoice} is right because ${question.explanation}`,
+    howToSolve: buildCoreHowToSolve(question, topic, correctChoice),
+    trap: buildCoreTrap(topic)
+  };
+}
+
+function buildCoreHowToSolve(question, topic, correctChoice) {
+  const keyTerms = (topic?.terms || []).slice(0, 4).join(", ");
+  const topicName = topic?.title || question.topic;
+  if (keyTerms) {
+    return `Anchor the question to ${question.week} and the lecture focus on ${topicName}. Then choose the answer that matches the lecture's key terms or institutional function (${keyTerms}) rather than the option that sounds more modern or more generic. Here that points to ${correctChoice}.`;
+  }
+
+  return `Anchor the question to ${question.week} and the specific topic "${topicName}". Then choose the option that matches the lecture's exact function, chronology, or category rather than a familiar modern-sounding distractor. Here that points to ${correctChoice}.`;
+}
+
+function buildCoreTrap(topic) {
+  if (topic?.pitfalls?.length) {
+    return topic.pitfalls[0];
+  }
+
+  return "Do not choose the answer that sounds most familiar in modern legal language unless the lecture explicitly tells you the ancient material works the same way.";
+}
+
 function pickGlossaryDistractors(entries, index) {
   const offsets = [1, 2, 5, 8, 13, 21, 34];
   const distractors = [];
@@ -1416,28 +1517,45 @@ function pickGlossaryDistractors(entries, index) {
   return distractors;
 }
 
+function buildGlossaryStudyNote(entry, family, distractors) {
+  const label = family === "greek" ? "Greek" : "Roman";
+  const distractorTerms = distractors.slice(0, 3).map((candidate) => candidate.term).join(", ");
+
+  return {
+    context: `${label} glossary questions test whether you can connect a definition to the right legal, institutional, or rhetorical term rather than simply recognize a familiar word.`,
+    whyCorrect: `${entry.term} means ${entry.definition}`,
+    howToSolve: `Start with the function in the definition and then eliminate same-domain distractors. The correct choice is the term that directly matches ${entry.definition.toLowerCase()}${distractorTerms ? `, not nearby terms such as ${distractorTerms}` : ""}.`,
+    trap: `The usual trap is choosing a related ${family} term from the same cluster because it looks familiar. Match the definition's function and context, not just the most recognizable label.`
+  };
+}
+
 function buildGlossaryQuestions(entries, family) {
-  return entries.map((entry, index) => ({
-    id: "g-" + family + "-" + String(index + 1).padStart(3, "0"),
-    week: glossaryWeekLabel(family),
-    topic: glossaryTopicLabel(family),
-    priority: "glossary",
-    weight: 1,
-    bank: "glossary",
-    family,
-    prompt: "Given the definition, what is the correct " + family + " term? \"" + entry.definition + "\"",
-    choices: [entry.term, ...pickGlossaryDistractors(entries, index).map((candidate) => candidate.term)],
-    correctIndex: 0,
-    explanation: entry.term + " means " + entry.definition,
-    sourceRef: glossarySourceRef(family)
-  }));
+  return entries.map((entry, index) => {
+    const distractors = pickGlossaryDistractors(entries, index);
+    return {
+      id: "g-" + family + "-" + String(index + 1).padStart(3, "0"),
+      week: glossaryWeekLabel(family),
+      topic: glossaryTopicLabel(family),
+      priority: "glossary",
+      weight: 1,
+      bank: "glossary",
+      family,
+      prompt: "Given the definition, what is the correct " + family + " term? \"" + entry.definition + "\"",
+      choices: [entry.term, ...distractors.map((candidate) => candidate.term)],
+      correctIndex: 0,
+      explanation: entry.term + " means " + entry.definition,
+      sourceRef: glossarySourceRef(family),
+      studyNote: buildGlossaryStudyNote(entry, family, distractors)
+    };
+  });
 }
 
 window.QUIZ_QUESTIONS = [
   ...coreQuestions.map((question) => ({
     ...question,
     bank: "core",
-    family: question.family || null
+    family: question.family || null,
+    studyNote: question.studyNote || buildCoreStudyNote(question)
   })),
   ...buildGlossaryQuestions(greekGlossaryEntries, "greek"),
   ...buildGlossaryQuestions(romanGlossaryEntries, "roman")

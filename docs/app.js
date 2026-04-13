@@ -626,9 +626,45 @@ function answerQuestion(selectedIndex) {
     <strong>${isCorrect ? "Correct." : "Not quite."}</strong>
     <p>${escapeHtml(question.explanation)}</p>
     <p><strong>Correct answer:</strong> ${escapeHtml(question.choices[question.correctIndex])}</p>
+    ${!isCorrect ? renderStudyNoteCard(question.studyNote) : ""}
     <p class="muted">${escapeHtml(question.sourceRef)}</p>
   `;
   elements.nextBtn.disabled = false;
+}
+
+function renderStudyNoteCard(studyNote) {
+  if (!studyNote) {
+    return "";
+  }
+
+  const sections = [
+    { label: "Context", value: studyNote.context },
+    { label: "Why This Is Right", value: studyNote.whyCorrect },
+    { label: "How To Get It Next Time", value: studyNote.howToSolve },
+    { label: "Common Trap", value: studyNote.trap }
+  ].filter((section) => section.value);
+
+  if (!sections.length) {
+    return "";
+  }
+
+  return `
+    <div class="study-note-card">
+      <h4>Study Note</h4>
+      <div class="study-note-grid">
+        ${sections
+          .map(
+            (section) => `
+              <div class="study-note-section">
+                <strong>${escapeHtml(section.label)}</strong>
+                <p>${escapeHtml(section.value)}</p>
+              </div>
+            `
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
 }
 
 function nextQuestion() {
