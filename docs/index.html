@@ -3,48 +3,213 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Roman Crime Final Study App</title>
-  <meta name="theme-color" content="#8a3b22">
-  <meta name="description" content="Hostable final exam study app for Crime and Punishment in Ancient Greece and Rome.">
+  <title>CS2301 Crime and Punishment Study App</title>
+  <meta name="theme-color" content="#67261d">
+  <meta
+    name="description"
+    content="Comprehensive static study app for Crime and Punishment in Ancient Greece and Rome, with guided study, reading dossiers, glossary overlays, quiz review, and the full guide."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
   <script defer src="./study-topics.js"></script>
   <script defer src="./quiz-questions.js"></script>
+  <script defer src="./study-guide-content.js"></script>
   <script defer src="./data.js"></script>
   <script defer src="./app.js"></script>
 </head>
 <body>
-  <div class="backdrop"></div>
+  <div class="page-backdrop" aria-hidden="true"></div>
+
   <div class="page-shell">
-    <header class="hero panel">
-      <div>
-        <p class="eyebrow">CS2301 final review</p>
-        <h1>Roman Crime Final Study App</h1>
-        <p class="hero-copy">Guide-first exam prep with a Roman-heavy mini exam, a dedicated glossary drill, by-week practice, and quick review topics drawn from your course materials.</p>
+    <header class="site-header">
+      <div class="hero-panel">
+        <div class="hero-copy">
+          <p class="eyebrow">Classics 2301 final review</p>
+          <h1>Crime, Punishment, and the Ancient Courtroom</h1>
+          <p class="hero-text">
+            A full static study app for Greek and Roman crime: guided orientation, lecture-by-lecture modules,
+            reading dossiers, glossary overlays, quiz review, and the complete final guide in one place.
+          </p>
+        </div>
+
+        <div class="hero-actions">
+          <button class="primary-btn" data-action="switch-view" data-target="startView">Start Here</button>
+          <button class="secondary-btn" data-action="switch-view" data-target="quizView">Take a Quiz</button>
+        </div>
+
+        <div id="heroStats" class="hero-stats"></div>
       </div>
-      <div class="hero-badges">
-        <span class="badge">Cumulative</span>
-        <span class="badge">Weeks 10-12 weighted</span>
-        <span class="badge">MCQ only</span>
-        <span class="badge">Glossary drill</span>
-        <span class="badge">Hostable static app</span>
-      </div>
+
+      <nav class="primary-nav" aria-label="Primary">
+        <button class="nav-btn is-active" data-action="switch-view" data-target="startView">Start Here</button>
+        <button class="nav-btn" data-action="switch-view" data-target="weeksView">Weeks</button>
+        <button class="nav-btn" data-action="switch-view" data-target="readingsView">Readings</button>
+        <button class="nav-btn" data-action="switch-view" data-target="glossaryView">Glossary</button>
+        <button class="nav-btn" data-action="switch-view" data-target="quizView">Quiz</button>
+        <button class="nav-btn" data-action="switch-view" data-target="guideView">Full Guide</button>
+      </nav>
     </header>
 
-    <nav class="view-nav panel" aria-label="Primary">
-      <button class="nav-btn is-active" data-view-target="dashboardView">Dashboard</button>
-      <button class="nav-btn" data-view-target="topicsView">Study Topics</button>
-      <button class="nav-btn" data-view-target="quizView">Mini Exam</button>
-    </nav>
+    <main class="app-main">
+      <section id="startView" class="view-panel">
+        <div class="view-header">
+          <div>
+            <p class="section-kicker">Orientation</p>
+            <h2>Start Here</h2>
+          </div>
+          <p class="view-summary">
+            Learn the course logic first, then move into the Roman spine, the reading dossiers, and targeted quiz review.
+          </p>
+        </div>
 
-    <main>
-      <section id="dashboardView" class="view">
-        <div class="dashboard-grid">
-          <article class="panel control-panel">
-            <p class="section-kicker">Exam builder</p>
-            <h2>Start a quiz set</h2>
+        <div class="start-grid">
+          <article class="surface">
+            <p class="section-kicker">Study Path</p>
+            <div id="studyPath" class="stack-list"></div>
+          </article>
 
+          <article class="surface">
+            <p class="section-kicker">Exam Priorities</p>
+            <div id="priorityDeck" class="stack-list"></div>
+          </article>
+        </div>
+
+        <div class="start-grid">
+          <article class="surface">
+            <p class="section-kicker">Core Themes</p>
+            <div id="coreThemes" class="theme-grid"></div>
+          </article>
+
+          <article class="surface">
+            <p class="section-kicker">Archive Notes</p>
+            <div id="archiveNotes" class="stack-list"></div>
+          </article>
+        </div>
+
+        <article class="surface">
+          <div class="surface-header">
+            <div>
+              <p class="section-kicker">Timeline</p>
+              <h3>Clickable Master Timeline</h3>
+            </div>
+          </div>
+          <div id="timelineRail" class="timeline-rail"></div>
+        </article>
+
+        <div class="start-grid">
+          <article class="surface">
+            <p class="section-kicker">Bookmarks</p>
+            <div id="bookmarkList" class="stack-list"></div>
+          </article>
+
+          <article class="surface">
+            <p class="section-kicker">Recent Quiz Work</p>
+            <div id="recentAttempts" class="stack-list"></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="weeksView" class="view-panel is-hidden">
+        <div class="view-header">
+          <div>
+            <p class="section-kicker">Lecture Modules</p>
+            <h2>Week-by-Week Study</h2>
+          </div>
+          <p class="view-summary">
+            Expand the lecture weeks, lock the thesis, and use self-check prompts before moving into the readings.
+          </p>
+        </div>
+
+        <div class="toolbar surface">
+          <label class="field">
+            <span>Focus</span>
+            <select id="weekFilterSelect"></select>
+          </label>
+          <label class="field">
+            <span>Priority</span>
+            <select id="weekPrioritySelect"></select>
+          </label>
+        </div>
+
+        <div id="weekModules" class="stack-list"></div>
+      </section>
+
+      <section id="readingsView" class="view-panel is-hidden">
+        <div class="view-header">
+          <div>
+            <p class="section-kicker">Reading Dossiers</p>
+            <h2>Readings</h2>
+          </div>
+          <p class="view-summary">
+            Every major reading gets context, excerpts, passage analysis, and direct links back to the lecture weeks.
+          </p>
+        </div>
+
+        <div class="reading-layout">
+          <aside class="surface">
+            <label class="field">
+              <span>Corpus</span>
+              <select id="readingFilterSelect"></select>
+            </label>
+            <div id="readingIndex" class="stack-list"></div>
+          </aside>
+
+          <article id="readingDetail" class="surface reading-detail"></article>
+        </div>
+      </section>
+
+      <section id="glossaryView" class="view-panel is-hidden">
+        <div class="view-header">
+          <div>
+            <p class="section-kicker">Term Bank</p>
+            <h2>Glossary</h2>
+          </div>
+          <p class="view-summary">
+            Search Greek and Roman terms, then jump directly to the modules and readings that use them.
+          </p>
+        </div>
+
+        <div class="glossary-layout">
+          <div class="surface">
+            <div class="toolbar glossary-toolbar">
+              <label class="field search-field">
+                <span>Search</span>
+                <input id="glossarySearchInput" type="search" placeholder="Search term or definition">
+              </label>
+              <label class="field">
+                <span>Family</span>
+                <select id="glossaryFamilySelect"></select>
+              </label>
+            </div>
+
+            <div id="glossaryList" class="glossary-list"></div>
+          </div>
+
+          <aside id="glossaryInspector" class="surface glossary-inspector"></aside>
+        </div>
+      </section>
+
+      <section id="quizView" class="view-panel is-hidden">
+        <div class="view-header">
+          <div>
+            <p class="section-kicker">Assessment</p>
+            <h2>Quiz Studio</h2>
+          </div>
+          <p class="view-summary">
+            The answer order is reshuffled every attempt, and every miss links back into the relevant study material.
+          </p>
+        </div>
+
+        <div class="quiz-layout">
+          <article class="surface quiz-builder">
+            <p class="section-kicker">Build A Set</p>
             <label class="field">
               <span>Mode</span>
               <select id="modeSelect">
@@ -60,8 +225,8 @@
               <select id="weekSelect"></select>
             </label>
 
-            <label class="field" id="glossaryScopeField" style="display: none;">
-              <span>Glossary scope</span>
+            <label class="field" id="glossaryScopeField">
+              <span>Glossary Scope</span>
               <select id="glossaryScopeSelect">
                 <option value="mixed">Mixed</option>
                 <option value="greek">Greek</option>
@@ -70,90 +235,54 @@
             </label>
 
             <label class="field">
-              <span>Question count</span>
+              <span>Question Count</span>
               <select id="countSelect">
                 <option value="10">10 questions</option>
                 <option value="20">20 questions</option>
                 <option value="30">30 questions</option>
+                <option value="40">40 questions</option>
               </select>
             </label>
 
-            <button id="startQuizBtn" class="primary-btn">Start mini exam</button>
-            <p class="helper-text">Final Exam Mix weights Weeks 10-12 more heavily while keeping the exam cumulative. Glossary Drill isolates the full Greek and Roman term bank.</p>
+            <button id="startQuizBtn" class="primary-btn" type="button">Start Quiz</button>
+            <div id="quizStats" class="hero-stats compact"></div>
           </article>
 
-          <article class="panel stats-panel">
-            <p class="section-kicker">Progress</p>
-            <h2>Your running stats</h2>
-            <div id="statsGrid" class="stats-grid"></div>
-            <div id="weekStats" class="week-stats"></div>
-          </article>
-        </div>
-
-        <div class="dashboard-grid lower">
-          <article class="panel">
-            <p class="section-kicker">Roman focus</p>
-            <h2>Highest-yield late-course topics</h2>
-            <div id="romanFocusList" class="focus-list"></div>
-          </article>
-
-          <article class="panel">
-            <p class="section-kicker">Recent work</p>
-            <h2>Latest quiz attempts</h2>
-            <div id="recentAttempts" class="attempt-list"></div>
+          <article class="surface quiz-surface">
+            <div id="quizContent"></div>
           </article>
         </div>
       </section>
 
-      <section id="topicsView" class="view is-hidden">
-        <div class="panel topics-toolbar">
+      <section id="guideView" class="view-panel is-hidden">
+        <div class="view-header">
           <div>
-            <p class="section-kicker">Review bank</p>
-            <h2>Study topics</h2>
+            <p class="section-kicker">Reference Copy</p>
+            <h2>Full Guide</h2>
           </div>
-          <label class="field compact">
-            <span>Filter</span>
-            <select id="topicFilter"></select>
-          </label>
+          <p class="view-summary">
+            Search or jump through the full final guide without leaving the app.
+          </p>
         </div>
-        <div id="topicsContainer" class="topics-grid"></div>
-      </section>
 
-      <section id="quizView" class="view is-hidden">
-        <article class="panel quiz-shell">
-          <div id="quizEmptyState" class="quiz-empty">
-            <p class="section-kicker">Mini exam</p>
-            <h2>No quiz running</h2>
-            <p>Start a set from the Dashboard, then answer one question at a time with explanations after each choice.</p>
-          </div>
+        <div class="guide-layout">
+          <aside class="surface guide-sidebar">
+            <label class="field search-field">
+              <span>Jump Search</span>
+              <input id="guideSearchInput" type="search" placeholder="Search section titles or previews">
+            </label>
+            <div id="guideSearchResults" class="stack-list"></div>
+            <div id="guideOutline" class="guide-outline"></div>
+          </aside>
 
-          <div id="quizActiveState" class="quiz-active is-hidden">
-            <div class="quiz-header">
-              <div>
-                <p id="quizModeLabel" class="section-kicker"></p>
-                <h2 id="quizTitle">Question</h2>
-              </div>
-              <div class="score-chip" id="scoreChip">0 / 0</div>
-            </div>
-
-            <div class="progress-rail">
-              <div id="progressBar" class="progress-bar"></div>
-            </div>
-
-            <div id="questionMeta" class="question-meta"></div>
-            <h3 id="questionPrompt" class="question-prompt"></h3>
-            <div id="answerList" class="answer-list"></div>
-
-            <div id="feedbackBox" class="feedback-box is-hidden"></div>
-
-            <div class="quiz-actions">
-              <button id="nextBtn" class="primary-btn" disabled>Next question</button>
-              <button id="endBtn" class="secondary-btn">End set</button>
-            </div>
-          </div>
-        </article>
+          <article class="surface guide-content-shell">
+            <div id="guideContent" class="guide-content"></div>
+          </article>
+        </div>
       </section>
     </main>
   </div>
+
+  <div id="glossaryHoverCard" class="glossary-hover-card is-hidden" role="dialog" aria-live="polite"></div>
 </body>
 </html>
