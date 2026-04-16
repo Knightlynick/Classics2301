@@ -19,8 +19,10 @@
   <link rel="icon" href="./icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="./styles.css">
   <script defer src="./study-topics.js"></script>
+  <script defer src="./generated-core-questions.js"></script>
   <script defer src="./quiz-questions.js"></script>
   <script defer src="./study-guide-content.js"></script>
+  <script defer src="./timeline-events.js"></script>
   <script defer src="./data.js"></script>
   <script defer src="./app.js"></script>
 </head>
@@ -34,13 +36,13 @@
           <p class="eyebrow">Classics 2301 final review</p>
           <h1>Crime, Punishment, and the Ancient Courtroom</h1>
           <p class="hero-text">
-            A full static study app for Greek and Roman crime: guided orientation, lecture-by-lecture modules,
-            reading dossiers, glossary overlays, quiz review, and the complete final guide in one place.
+            A guided final-exam workspace for Greek and Roman crime: interactive chronology, chapterized study reading,
+            reading dossiers, glossary cross-links, smarter quiz drilling, and a calmer Roman-first review flow.
           </p>
         </div>
 
         <div class="hero-actions">
-          <button class="primary-btn" data-action="switch-view" data-target="startView">Start Here</button>
+          <button class="primary-btn" data-action="switch-view" data-target="startView">Open Timeline</button>
           <button class="secondary-btn" data-action="switch-view" data-target="quizView">Take a Quiz</button>
         </div>
 
@@ -62,26 +64,66 @@
         <div class="view-header">
           <div>
             <p class="section-kicker">Orientation</p>
-            <h2>Start Here</h2>
+            <h2>Timeline Workspace</h2>
           </div>
           <p class="view-summary">
-            Learn the course logic first, then move into the Roman spine, the reading dossiers, and targeted quiz review.
+            Start with chronology, move through the laws and crises that reshape the course, then drill into the linked weeks, readings, and reader chapters.
           </p>
         </div>
 
-        <div class="start-grid">
-          <article class="surface">
-            <p class="section-kicker">Study Path</p>
+        <div class="timeline-workspace">
+          <aside class="surface timeline-sidebar">
+            <div class="surface-header">
+              <div>
+                <p class="section-kicker">Study Path</p>
+                <h3>How To Use This</h3>
+              </div>
+            </div>
             <div id="studyPath" class="stack-list"></div>
-          </article>
 
-          <article class="surface">
-            <p class="section-kicker">Exam Priorities</p>
+            <div class="surface-header timeline-subhead">
+              <div>
+                <p class="section-kicker">Exam Priorities</p>
+                <h3>Roman Spine First</h3>
+              </div>
+            </div>
             <div id="priorityDeck" class="stack-list"></div>
-          </article>
+          </aside>
+
+          <section class="surface timeline-stage">
+            <div class="surface-header">
+              <div>
+                <p class="section-kicker">Course Chronology</p>
+                <h3>Laws, Crimes, and Turning Points</h3>
+              </div>
+              <p class="muted timeline-stage-copy">
+                Filter by era and category, then open a card to see the laws, crimes, punishments, people, and study links tied to that moment.
+              </p>
+            </div>
+
+            <div class="toolbar timeline-toolbar">
+              <label class="field">
+                <span>Era</span>
+                <select id="timelineEraSelect"></select>
+              </label>
+              <label class="field">
+                <span>Category</span>
+                <select id="timelineCategorySelect"></select>
+              </label>
+              <label class="field">
+                <span>Focus</span>
+                <select id="timelineFocusSelect"></select>
+              </label>
+            </div>
+
+            <div id="timelineNavigator" class="timeline-jump-row"></div>
+            <div id="timelineEventList" class="timeline-list"></div>
+          </section>
+
+          <aside id="timelineDetail" class="surface timeline-detail"></aside>
         </div>
 
-        <div class="start-grid">
+        <div class="support-grid">
           <article class="surface">
             <p class="section-kicker">Core Themes</p>
             <div id="coreThemes" class="theme-grid"></div>
@@ -93,17 +135,7 @@
           </article>
         </div>
 
-        <article class="surface">
-          <div class="surface-header">
-            <div>
-              <p class="section-kicker">Timeline</p>
-              <h3>Clickable Master Timeline</h3>
-            </div>
-          </div>
-          <div id="timelineRail" class="timeline-rail"></div>
-        </article>
-
-        <div class="start-grid">
+        <div class="support-grid">
           <article class="surface">
             <p class="section-kicker">Bookmarks</p>
             <div id="bookmarkList" class="stack-list"></div>
@@ -203,7 +235,7 @@
             <h2>Quiz Studio</h2>
           </div>
           <p class="view-summary">
-            The answer order is reshuffled every attempt, and every miss links back into the relevant study material.
+            Larger banks, stronger answer shuffling, fewer repeated variants, and feedback that links misses back to the right study surface.
           </p>
         </div>
 
@@ -237,10 +269,10 @@
             <label class="field">
               <span>Question Count</span>
               <select id="countSelect">
-                <option value="10">10 questions</option>
-                <option value="20">20 questions</option>
+                <option value="15">15 questions</option>
                 <option value="30">30 questions</option>
-                <option value="40">40 questions</option>
+                <option value="45">45 questions</option>
+                <option value="60">60 questions</option>
               </select>
             </label>
 
@@ -257,11 +289,11 @@
       <section id="guideView" class="view-panel is-hidden">
         <div class="view-header">
           <div>
-            <p class="section-kicker">Reference Copy</p>
-            <h2>Full Guide</h2>
+            <p class="section-kicker">Guided Reader</p>
+            <h2>Study Reader</h2>
           </div>
           <p class="view-summary">
-            Search or jump through the full final guide without leaving the app.
+            Read the guide as chapters instead of one giant scroll, then jump directly to linked weeks and timeline moments.
           </p>
         </div>
 

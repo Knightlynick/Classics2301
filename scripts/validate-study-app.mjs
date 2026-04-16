@@ -5,8 +5,10 @@ import vm from "node:vm";
 const rootDir = resolve(import.meta.dirname, "..");
 const files = [
   "docs/study-topics.js",
+  "docs/generated-core-questions.js",
   "docs/quiz-questions.js",
   "docs/study-guide-content.js",
+  "docs/timeline-events.js",
   "docs/data.js"
 ];
 
@@ -57,10 +59,17 @@ async function main() {
   const readingIds = new Set(data.readingDossiers.map((reading) => reading.id));
   const glossaryIds = new Set(data.glossaryIndex.map((entry) => entry.id));
   const guideSectionIds = new Set(data.guideSections.topLevelSections.map((section) => section.id));
+  const coreQuestions = data.quizQuestions.filter((question) => question.bank === "core");
+  const weekQuestionCounts = coreQuestions.reduce((accumulator, question) => {
+    accumulator[question.week] = (accumulator[question.week] || 0) + 1;
+    return accumulator;
+  }, {});
+  const promptSet = new Set();
 
   assert(data.weekModules.length === 12, "Expected 12 week modules including archive gaps.");
   assert(data.noLectureWeeks.includes("week-5"), "Week 5 archive note is missing.");
   assert(data.noLectureWeeks.includes("week-9"), "Week 9 archive note is missing.");
+  assert(Array.isArray(data.timeline) && data.timeline.length >= 20, "Structured timeline events are missing.");
 
   data.weekModules.forEach((module) => {
     if (module.guideSectionId) {
@@ -106,9 +115,14 @@ async function main() {
 
   data.quizQuestions.forEach((question) => {
     assert(question.correctAnswer, `Question ${question.id} is missing correctAnswer.`);
-    assert(Array.isArray(question.distractors) && question.distractors.length >= 1, `Question ${question.id} is missing distractors.`);
+    assert(Array.isArray(question.distractors) && question.distractors.length >= 3, `Question ${question.id} needs at least three distractors.`);
     assert(!question.distractors.includes(question.correctAnswer), `Question ${question.id} includes the correct answer in distractors.`);
     assert(new Set(question.distractors).size === question.distractors.length, `Question ${question.id} has duplicate distractors.`);
+    assert(question.difficulty, `Question ${question.id} is missing difficulty.`);
+    assert(Array.isArray(question.tags), `Question ${question.id} is missing tags.`);
+    assert(question.variantGroup, `Question ${question.id} is missing variantGroup.`);
+    assert(!promptSet.has(question.prompt), `Duplicate quiz prompt detected: ${question.prompt}`);
+    promptSet.add(question.prompt);
 
     if (question.studyRef?.type === "week") {
       assert(weekIds.has(question.studyRef.moduleId), `Question ${question.id} points to missing week ${question.studyRef.moduleId}.`);
@@ -138,6 +152,25 @@ async function main() {
     }
   });
 
+  assert(coreQuestions.length >= 260, `Expected at least 260 core questions, found ${coreQuestions.length}.`);
+
+  const weekFloors = {
+    "Week 1": 10,
+    "Week 2": 10,
+    "Week 3": 18,
+    "Week 4": 18,
+    "Week 6": 18,
+    "Week 7": 18,
+    "Week 8": 18,
+    "Week 10": 30,
+    "Week 11": 20,
+    "Week 12": 24
+  };
+
+  Object.entries(weekFloors).forEach(([week, floor]) => {
+    assert((weekQuestionCounts[week] || 0) >= floor, `Expected at least ${floor} core questions for ${week}.`);
+  });
+
   const answerCounts = [0, 0, 0, 0];
   for (let round = 0; round < 20; round += 1) {
     data.quizQuestions.slice(0, 200).forEach((question) => {
@@ -159,6 +192,7 @@ async function main() {
         readings: data.readingDossiers.length,
         glossaryTerms: data.glossaryIndex.length,
         quizQuestions: data.quizQuestions.length,
+        coreQuestions: coreQuestions.length,
         answerDistribution: {
           A: answerCounts[0],
           B: answerCounts[1],

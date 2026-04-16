@@ -6,7 +6,7 @@ This repository packages the course guide and static study app as one exam-prep 
 
 - `study-docs/`: the editorial Markdown guide, generated LaTeX source, compiled PDF, and supporting notes
 - `course-materials/`: the local course archive used to build the guide and app data
-- `docs/`: the static web app for GitHub Pages, desktop browsers, and phones
+- `docs/`: the static web app for GitHub Pages, desktop browsers, and phones, now centered on a timeline workspace, guided reader, and expanded quiz engine
 - `scripts/`: content generation, validation, smoke testing, and PR screenshot tooling
 
 ## Study workflow
@@ -24,7 +24,7 @@ Install the dev tooling once:
 npm install
 ```
 
-Regenerate the app guide data and LaTeX output from the Markdown source:
+Regenerate the app guide data, guided-reader content, LaTeX output, and generated core question bank from the Markdown source:
 
 ```powershell
 npm run generate:guide

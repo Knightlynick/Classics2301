@@ -1,5 +1,6 @@
 const rawStudyTopics = window.STUDY_TOPICS || [];
 const rawQuizBank = window.QUIZ_QUESTIONS || [];
+const rawTimelineEvents = window.TIMELINE_EVENTS || [];
 const guideSource = window.STUDY_GUIDE_CONTENT || {
   generatedFrom: "",
   generatedOn: "",
@@ -95,6 +96,22 @@ function extractFirstSubsection(markdown, headings) {
   }
 
   return "";
+}
+
+function normalizeTimelineEvents(events) {
+  return (events || [])
+    .map((event) => ({
+      ...event,
+      id: event.id || slugify(`${event.era}-${event.dateLabel}-${event.title}`),
+      laws: dedupeStrings(event.laws || []),
+      crimes: dedupeStrings(event.crimes || []),
+      punishments: dedupeStrings(event.punishments || []),
+      people: dedupeStrings(event.people || []),
+      moduleIds: dedupeStrings(event.moduleIds || []),
+      readingIds: dedupeStrings(event.readingIds || []),
+      category: event.category || "context"
+    }))
+    .sort((left, right) => left.sortYear - right.sortYear);
 }
 
 function buildGuideSections(source) {
@@ -1360,6 +1377,7 @@ function buildWeekModules(topics, sections, readings) {
         bridgeSummary: bridgeSummary,
         comparisonTakeaways: [],
         keyTerms: [],
+        keyInstitutions: [],
         chronology: [],
         selfCheck: dedupeStrings(
           extractFirstSubsection(section?.markdown, ["Bridge checklist"])
@@ -1381,6 +1399,15 @@ function buildWeekModules(topics, sections, readings) {
         passages: [],
         comparisons: [],
         pitfalls: examTrap ? [examTrap] : [],
+        narrativeIntro:
+          bridgeSummary ||
+          "Use this bridge week to connect the surrounding units instead of treating the archive gap as missing knowledge.",
+        likelyQuestionAngles: dedupeStrings(
+          extractFirstSubsection(section?.markdown, ["Bridge checklist"])
+            .split(/\r?\n/)
+            .map((line) => line.replace(/^\d+\.\s*/, "").trim())
+        ).slice(0, 4),
+        relatedTimelineIds: [],
         guideSectionId: section?.id || null,
         guidePreview: section?.preview || "",
         relatedReadingIds,
@@ -1434,6 +1461,10 @@ function buildWeekModules(topics, sections, readings) {
       comparisonTakeaways: moduleTopics.flatMap((topic) => topic.comparisons || []).slice(0, 4),
       examTrap,
       keyTerms: dedupeStrings(moduleTopics.flatMap((topic) => topic.terms || [])),
+      keyInstitutions: dedupeStrings([
+        ...moduleTopics.flatMap((topic) => (topic.concepts || []).map((concept) => concept.term)),
+        ...moduleTopics.flatMap((topic) => topic.terms || [])
+      ]).slice(0, 8),
       chronology: dedupeStrings(moduleTopics.flatMap((topic) => topic.events || [])),
       selfCheck: dedupeStrings(moduleTopics.flatMap((topic) => topic.studyQuestions || [])),
       concepts: moduleTopics.flatMap((topic) => topic.concepts || []).slice(0, 8),
@@ -1441,6 +1472,14 @@ function buildWeekModules(topics, sections, readings) {
       comparisons: moduleTopics.flatMap((topic) => topic.comparisons || []).slice(0, 4),
       pitfalls: dedupeStrings(moduleTopics.flatMap((topic) => topic.pitfalls || [])),
       topics: moduleTopics,
+      narrativeIntro: dedupeStrings([
+        section?.preview,
+        moduleTopics[0]?.summary,
+        moduleTopics[0]?.argument,
+        moduleTopics[0]?.whyItMatters
+      ]).join(" "),
+      likelyQuestionAngles: dedupeStrings(moduleTopics.flatMap((topic) => topic.studyQuestions || [])).slice(0, 5),
+      relatedTimelineIds: [],
       guideSectionId: section?.id || null,
       guidePreview: section?.preview || "",
       relatedReadingIds,
@@ -1515,6 +1554,10 @@ function inferReadingLocation(question) {
 }
 
 function buildStudyRef(question) {
+  if (question.studyRef) {
+    return question.studyRef;
+  }
+
   if (question.bank === "glossary") {
     return {
       type: "glossary",
@@ -1545,6 +1588,9 @@ function normalizeQuizQuestion(question) {
     topic: question.topic,
     priority: question.priority,
     weight: question.weight || 1,
+    difficulty: question.difficulty || "medium",
+    tags: dedupeStrings(question.tags || []),
+    variantGroup: question.variantGroup || question.id,
     prompt: question.prompt,
     correctAnswer,
     distractors: dedupeStrings(distractors),
@@ -1669,7 +1715,26 @@ function buildGlossaryIndex(quizQuestions, weekModules, readingRecords) {
     .sort((left, right) => left.term.localeCompare(right.term));
 }
 
-const weekModules = buildWeekModules(rawStudyTopics, guideSections.weekSections, readingDossiers);
+function attachTimelineEventsToModules(weekModules, timelineEvents) {
+  const timelineIdsByModule = timelineEvents.reduce((accumulator, event) => {
+    event.moduleIds.forEach((moduleId) => {
+      accumulator[moduleId] = accumulator[moduleId] || [];
+      accumulator[moduleId].push(event.id);
+    });
+    return accumulator;
+  }, {});
+
+  return weekModules.map((module) => ({
+    ...module,
+    relatedTimelineIds: dedupeStrings([...(module.relatedTimelineIds || []), ...(timelineIdsByModule[module.id] || [])])
+  }));
+}
+
+const timeline = rawTimelineEvents.length ? normalizeTimelineEvents(rawTimelineEvents) : parseTimeline(guideSections.timelineSection);
+const weekModules = attachTimelineEventsToModules(
+  buildWeekModules(rawStudyTopics, guideSections.weekSections, readingDossiers),
+  timeline
+);
 const quizQuestions = rawQuizBank.map(normalizeQuizQuestion);
 const glossaryIndex = buildGlossaryIndex(quizQuestions, weekModules, readingDossiers);
 
@@ -1725,7 +1790,6 @@ const priorityDeck = [
   }
 ];
 const noLectureWeeks = weekModules.filter((module) => !module.hasLectureContent).map((module) => module.id);
-const timeline = parseTimeline(guideSections.timelineSection);
 
 window.STUDY_DATA = Object.freeze({
   generatedFrom: guideSource.generatedFrom,

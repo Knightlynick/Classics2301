@@ -11,6 +11,8 @@ test("study app renders each surface and core interactions", async ({ page }) =>
 
   await page.goto("/");
   await expect(page.locator("#heroStats .stat-chip")).toHaveCount(4);
+  await expect(page.locator("#timelineEventList .timeline-event-card").first()).toBeVisible();
+  await expect(page.locator("#timelineDetail h3").first()).toBeVisible();
 
   const views = [
     ["startView", "Start Here"],
@@ -53,14 +55,46 @@ test("study app renders each surface and core interactions", async ({ page }) =>
   await page.click('.nav-btn[data-target="quizView"]');
   await page.click("#startQuizBtn");
   await expect(page.locator(".question-title")).toBeVisible();
+  const firstPrompt = await page.locator(".question-title").textContent();
+  const firstChoices = await page.locator(".answer-btn").allTextContents();
   await page.locator(".answer-btn").first().click();
   await expect(page.locator(".feedback-box")).toBeVisible();
   await expect(page.locator('.feedback-box .ghost-btn').first()).toBeVisible();
+  await page.click('[data-action="end-quiz"]');
+  await page.click("#startQuizBtn");
+  await expect(page.locator(".question-title")).toBeVisible();
+  const secondPrompt = await page.locator(".question-title").textContent();
+  const secondChoices = await page.locator(".answer-btn").allTextContents();
+  expect(
+    firstPrompt !== secondPrompt || JSON.stringify(firstChoices) !== JSON.stringify(secondChoices)
+  ).toBeTruthy();
 
   await page.click('.nav-btn[data-target="guideView"]');
-  await expect(page.locator("#guideContent .guide-section").first()).toBeVisible();
+  await expect(page.locator(".guide-reader")).toBeVisible();
   await page.fill("#guideSearchInput", "Cicero");
   await expect(page.locator("#guideSearchResults .index-card").first()).toBeVisible();
+
+  expect(issues).toEqual([]);
+});
+
+test("study app remains usable on a phone-sized viewport", async ({ page }) => {
+  const issues = [];
+  page.on("pageerror", (error) => issues.push(`pageerror: ${error.message}`));
+  page.on("console", (message) => {
+    if (message.type() === "error") {
+      issues.push(`console: ${message.text()}`);
+    }
+  });
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/");
+
+  await expect(page.locator("#timelineEventList .timeline-event-card").first()).toBeVisible();
+  await page.click('.nav-btn[data-target="quizView"]');
+  await page.click("#startQuizBtn");
+  await expect(page.locator(".question-title")).toBeVisible();
+  await page.click('.nav-btn[data-target="guideView"]');
+  await expect(page.locator(".guide-reader")).toBeVisible();
 
   expect(issues).toEqual([]);
 });
