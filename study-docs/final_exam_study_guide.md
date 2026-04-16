@@ -20,6 +20,14 @@ This final guide now follows the same general logic as the midterm notes: it is 
 
 Use the weekly sections in two passes. On the first pass, read the lecture frame paragraphs and the concept explanations so you understand what the week is trying to prove. On the second pass, use the study questions, passage dossiers, glossary, and trap callouts to test whether you can recognize the right answer quickly under exam conditions.
 
+## Reading Corpus and Source Strategy
+
+The course still needs to be studied course-first. That means the lecture scripts remain the primary interpretive frame for this guide, because the final exam is testing the professor's framing of the material, not an abstract encyclopedia of antiquity. At the same time, the app and this guide now treat the assigned readings more explicitly as reading corpora rather than as a few isolated quotations. Where safe public-domain translations exist, the app points you to those source texts and organizes them into section-level passage maps. Where the assigned translation is modern and the rights position is unclear, the guide keeps to short quotations, paraphrase, and commentary rather than reproducing the whole translation.
+
+The most important practical consequence is that each reading should now be studied in three layers. First, know the Five Things and the large argument of the text. Second, know the internal structure of the reading well enough that you can move from one major section to another without getting lost. Third, know which individual passages the lecture uses as proof and why those passages matter for crime, punishment, rhetoric, character, or state violence. If you study that way, the readings stop being intimidating blocks of text and become usable exam evidence.
+
+The app's reading workspace is designed to support that method. Each reading is now broken into a section map, with clickable passage notes that explain what happens in the passage, why the lecture cares about it, and which weekly arguments it supports. Treat those notes as a bridge between the full reading and the course's preferred interpretation of it.
+
 ## Core Themes You Should See Everywhere
 
 ### 1. Crime is not the same thing in antiquity and modernity
@@ -424,7 +432,23 @@ Do not say Athena simply proves Orestes innocent in a factual sense. The play is
 
 ## Week 5
 
-There is no lecture-content week in this local course folder. The cumulative guide therefore moves from Week 4 to Week 6.
+### Why this bridge week still matters
+There is no lecture-script file for Week 5 in the preserved local course archive, but that does not make Week 5 empty from a studying perspective. In the structure of the semester, this is the point where you need to consolidate the Greek-law vocabulary from Weeks 1-4 before the course shifts into criminological theory in Week 6 and then into the major Greek reading weeks. The function of this bridge week is therefore review, synthesis, and transition rather than new lecture material.
+
+### What to review in this gap week
+You should use this week to make sure three earlier claims are secure. First, Week 1 established that ancient crime and punishment do not map neatly onto modern categories. Second, Week 3 gave you the institutional vocabulary of Greek law, especially the distinction between public and private actions, the role of magistrates, and the continuing importance of self-help. Third, Week 4 showed that tragedy imagines the move from vendetta to civic justice without pretending that older emotions and kin obligations simply disappear.
+
+### Bridge thesis
+The real value of Week 5 is that it lets you connect Greek legal institutions to Greek ways of imagining criminality. If you cannot explain how Week 3's legal vocabulary and Week 4's tragic imagination fit together, then Week 7 will look like a strange murder case rather than a case study in lawful self-help, household order, and rhetorical manipulation. Think of this week as the hinge between legal structure and cultural representation.
+
+### Bridge checklist
+1. Can you explain why homicide in Athens is legally serious without calling it a fully modern public crime?
+2. Can you define `dike`, `graphe`, `Areopagus`, and lawful self-help without confusing them?
+3. Can you explain why the `Oresteia` matters for the later Lysias week?
+4. Can you describe the difference between revenge being eliminated and revenge being redirected into civic procedure?
+
+### Exam trap
+Do not treat the lack of a lecture script as permission to skip the gap entirely. In practice, this is the ideal review point for the Greek half of the course before the theoretical and rhetorical material intensifies.
 
 ## Week 6: Modern Criminology and Ancient Crime
 
@@ -752,6 +776,29 @@ The lecture explicitly compares rhetoric to advertising, social-media persuasion
 
 #### Exam trap
 Do not reduce Socrates, Polus, and Callicles to three neat modern theories and stop there. The point is the clash between rival visions of power, happiness, and punishment, not a one-to-one labeling exercise.
+
+## Week 9: Bridge from Greek Rhetoric to Roman Law
+
+### Why this bridge week matters
+There is no lecture-script file for Week 9 in the preserved archive, but the course logic clearly requires a transition here. Up to this point the course has spent several weeks showing how Greeks think about wrongdoing through tragedy, law, rhetorical self-fashioning, and philosophy. Week 10 then opens Roman law with a heavy institutional lecture. This bridge week is therefore the place to convert Greek themes into comparison tools so that Roman law does not feel like a disconnected new subject.
+
+### What this bridge is doing
+The key transition is from Greek argument about justice to Roman argument about institutions. Greek material repeatedly asks what crime is, who counts as the real offender, whether persuasion distorts justice, and how law coexists with private retaliation. Roman material keeps those problems, but it places much greater weight on magistracies, assemblies, formal categories, public order, and the slow centralization of force. The course is not moving from "ideas" to "facts." It is moving from one style of legal imagination to another.
+
+### What to carry forward into Week 10
+Bring four Greek lessons with you. First, legal categories are historically unstable. Second, rhetoric does not merely decorate law; it helps produce legal reality. Third, ancient communities often respond to wrongdoing through status, kinship, and social identity rather than through a neutral state alone. Fourth, punishment can be explained in more than one way at once: vengeance, deterrence, civic order, moral repair, and symbolic performance can all overlap.
+
+### Roman preview
+Once you enter Week 10, look for Roman versions of those same issues. The Roman state is more institutionally elaborate than Athens in the material covered here, but it is not yet a modern criminal state. Roman law still depends on hierarchy, office, political conflict, and unequal access to protection. That is why the Roman weeks still belong to the same course rather than to a totally different one.
+
+### Bridge checklist
+1. Can you compare Greek lawful self-help to Roman patronage and magistrate coercion without collapsing them into the same thing?
+2. Can you explain how Plato's suspicion of rhetoric prepares you to read Sallust and Cicero?
+3. Can you describe one important continuity and one important difference between Greek and Roman approaches to crime?
+4. Can you explain why the Roman law lecture must be read as political history as well as legal history?
+
+### Exam trap
+Do not enter the Roman weeks thinking that Rome is simply "more advanced" and therefore easier to map onto modern law. The course keeps warning against that teleological shortcut.
 
 ## Week 10: Introduction to Roman Law
 

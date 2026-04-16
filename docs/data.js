@@ -86,6 +86,17 @@ function extractSubsection(markdown, headingText) {
   return collected.join("\n").trim();
 }
 
+function extractFirstSubsection(markdown, headings) {
+  for (const heading of headings) {
+    const value = extractSubsection(markdown, heading);
+    if (value) {
+      return value;
+    }
+  }
+
+  return "";
+}
+
 function buildGuideSections(source) {
   const topLevelSections = (source.sections || []).map((section) => ({
     ...section,
@@ -253,6 +264,129 @@ const readingDossiers = [
     themes: ["vengeance", "pollution", "court", "insider-outsider violence"],
     relatedTerms: ["Furies", "Eumenides", "pollution", "Athena", "Areopagus"],
     relatedWeekIds: ["week-4"],
+    fullTextAvailable: true,
+    readerNote:
+      "Use the public-domain translation for full-text lookup, but keep the lecture's emphasis on the move from vendetta to civic adjudication at the center of your studying.",
+    sourceProvenance: [
+      {
+        label: "Perseus Catalog - Eumenides (Smyth translation, public domain)",
+        url: "https://catalog.perseus.org/catalog/urn%3Acts%3AgreekLit%3Atlg0085.tlg007.perseus-eng1",
+        note: "Safe public-domain source for reading the trial book in full."
+      },
+      {
+        label: "Week 4 lecture script",
+        note: "Primary course framing for why the trilogy matters to crime and punishment."
+      }
+    ],
+    sections: [
+      {
+        id: "oresteia-house-curse",
+        label: "House of Atreus Background",
+        span: "Agamemnon / Libation Bearers setup",
+        summary:
+          "Before the courtroom exists, the trilogy presents a chain of reciprocal violence inside one family: sacrifice, betrayal, revenge, and counter-revenge.",
+        note:
+          "This is the narrative ground for the whole course argument that legal institutions do not emerge in a vacuum. They emerge because unregulated blood vengeance is socially unsustainable.",
+        whyItMatters:
+          "You need this background so that Orestes' later trial looks like a political solution to a structural problem rather than a one-off mythic scene.",
+        relatedWeekIds: ["week-4"],
+        relatedTerms: ["pollution", "house of Atreus", "vengeance"],
+        passages: [
+          {
+            id: "oresteia-oath-of-blood",
+            citation: "Course framing on the House of Atreus",
+            quote: "The house is trapped in inherited blood-guilt long before Athena appears.",
+            context:
+              "The lecture treats the backstory as a running demonstration that crimes generate obligations and memory, not just isolated legal incidents.",
+            analysis:
+              "Study this as the pre-legal world the trilogy must somehow domesticate."
+          }
+        ]
+      },
+      {
+        id: "oresteia-seducer-logic",
+        label: "Aegisthus, Seduction, and Retaliation",
+        span: "Libation Bearers",
+        summary:
+          "Orestes dismisses the killing of Aegisthus as the punishment of a seducer, a move that anticipates the later legal rhetoric of Lysias 1.",
+        note:
+          "This is one of the strongest internal bridges in the course: tragedy already experiments with the argument that the dead adulterer or seducer is the real offender.",
+        whyItMatters:
+          "The week matters for Week 7 because it shows that the cultural logic behind lawful killing of a seducer predates the courtroom speech.",
+        relatedWeekIds: ["week-4", "week-7"],
+        relatedTerms: ["seducer", "lawful self-help", "Draco"],
+        passages: [
+          {
+            id: "oresteia-aegisthus",
+            citation: "Libation Bearers, seducer logic discussed in the Week 4 lecture",
+            quote: "Orestes treats Aegisthus' death as a seducer's due penalty rather than as a separate homicide problem.",
+            context:
+              "The lecture explicitly flags this as a preview of how Lysias will later stretch a homicide exception into a broader moral license.",
+            analysis:
+              "Use this passage as comparative evidence when asked why Lysias' rhetoric would feel plausible to an Athenian audience."
+          }
+        ]
+      },
+      {
+        id: "oresteia-athena-court",
+        label: "Athena Creates a Court",
+        span: "Eumenides 470-489",
+        summary:
+          "Athena refuses to settle the case as a solitary divine ruler and instead creates a permanent homicide court with witnesses, oaths, and judges.",
+        note:
+          "This is the reader's key institutional section. It is where tragedy starts sounding like a legal manual.",
+        whyItMatters:
+          "The passage shows the course's favorite point about state formation: law redirects revenge into recognizable procedure instead of pretending revenge never mattered.",
+        relatedWeekIds: ["week-3", "week-4"],
+        relatedTerms: ["Athena", "Areopagus", "court"],
+        passages: [
+          {
+            id: "oresteia-athena-judges",
+            citation: "Eumenides 470-484",
+            quote:
+              "The matter is too big for any mortal man ... I shall select judges of manslaughter, and swear them in, establish a court into all time to come.",
+            context:
+              "Athena turns a cycle of blood vengeance into a recurring civic institution.",
+            analysis:
+              "For exam purposes, this is the cleanest statement that the trilogy is about durable public procedure, not only divine truth."
+          },
+          {
+            id: "oresteia-athena-evidence",
+            citation: "Eumenides 485-489",
+            quote:
+              "Litigants, call your witnesses, have ready your proofs as evidence under bond to keep this case secure.",
+            context:
+              "The language abruptly shifts from mythic curse to procedural proof.",
+            analysis:
+              "This is where tragedy most clearly imagines how law formalizes conflict."
+          }
+        ]
+      },
+      {
+        id: "oresteia-political-settlement",
+        label: "Political Settlement and Civic Peace",
+        span: "Eumenides end",
+        summary:
+          "The trial does not simply acquit Orestes. It settles the place of old vengeance powers inside the civic order and redirects communal violence outward.",
+        note:
+          "The ending is political rather than purely evidentiary. The city must absorb the Furies instead of annihilating them.",
+        whyItMatters:
+          "This is the section to use when asked whether courts abolish vengeance or manage it.",
+        relatedWeekIds: ["week-4", "week-10"],
+        relatedTerms: ["Eumenides", "insider-outsider violence", "civic justice"],
+        passages: [
+          {
+            id: "oresteia-outward-war",
+            citation: "Eumenides 858-866",
+            quote: "No, let our wars range outward ... No true fighter I call the bird that fights at home.",
+            context:
+              "Athena asks the transformed Furies to help prevent internal bloodshed.",
+            analysis:
+              "The course reads this as the criminalization of intra-community violence alongside the continued legitimacy of outward war."
+          }
+        ]
+      }
+    ],
     excerpts: [
       {
         citation: "Eumenides 470-484, quoted in the Week 4 lecture script",
@@ -309,6 +443,120 @@ const readingDossiers = [
     themes: ["homicide exception", "household order", "seduction", "jury identification"],
     relatedTerms: ["Draco", "logographer", "seducer", "Euphiletos", "Eratosthenes"],
     relatedWeekIds: ["week-3", "week-7"],
+    fullTextAvailable: true,
+    readerNote:
+      "The exact assigned PDF translation is modern course material, so the app treats the lecture and the public-domain translation as study scaffolding rather than as identical texts.",
+    sourceProvenance: [
+      {
+        label: "Internet Classics Archive - Lysias 1 (public-domain translation)",
+        url: "https://classics.mit.edu/Lysias/lys.1.html",
+        note: "Safe public-domain full text for section-by-section reading."
+      },
+      {
+        label: "Week 7 lecture script",
+        note: "Primary course framing for the law, the homicide exception, and the rhetoric of household danger."
+      }
+    ],
+    sections: [
+      {
+        id: "lysias-opening-frame",
+        label: "Opening Identification Strategy",
+        span: "Lysias 1 [1]-[5]",
+        summary:
+          "The speech begins by asking the jurors to judge as householders and husbands before they judge as technical interpreters of homicide law.",
+        note:
+          "This is the basic rhetorical move of the whole defense. Euphiletos wants the jury to feel the wrong first and sort out the legal category second.",
+        whyItMatters:
+          "Use this section when explaining why the speech is about the construction of criminality, not only about the formal fact of a killing.",
+        relatedWeekIds: ["week-6", "week-7"],
+        relatedTerms: ["jury identification", "household", "logographer"],
+        passages: [
+          {
+            id: "lysias-opening-fury",
+            citation: "Lysias 1 opening",
+            quote:
+              "If you employed the same standards for others as you do for your own behaviour, there is not a single one of you who would not be furious...",
+            context:
+              "Before the defense lays out doctrine, it asks the jurors to inhabit the same injured masculine role.",
+            analysis:
+              "Treat this as the speech's emotional foundation: the jury is being taught how to feel before it is being taught how to classify."
+          }
+        ]
+      },
+      {
+        id: "lysias-lawful-killing",
+        label: "Lawful Killing and Draco's Exception",
+        span: "Lysias 1 [4] and legal framing",
+        summary:
+          "Euphiletos does not deny the homicide. He argues that the killing falls inside a lawful exception and should therefore not count as murder.",
+        note:
+          "The lecture repeatedly warns that the exception is narrower than the speech makes it sound. That tension is the legal core of the case.",
+        whyItMatters:
+          "This section is essential for distinguishing lawful self-help from a generalized death penalty for adultery.",
+        relatedWeekIds: ["week-3", "week-7"],
+        relatedTerms: ["Draco", "homicide exception", "lawful self-help"],
+        passages: [
+          {
+            id: "lysias-law-allows",
+            citation: "Lysias 1 [4]",
+            quote:
+              "I believe, gentlemen, that what I have to demonstrate is this: that Eratosthenes seduced my wife and corrupted her ... except revenge, as the law allows.",
+            context:
+              "The defense condenses seduction, household shame, and legal permission into one opening claim.",
+            analysis:
+              "For study purposes, this is the speech's thesis statement. It is where a homicide defense becomes a story about household corruption."
+          }
+        ]
+      },
+      {
+        id: "lysias-evidence-and-witnesses",
+        label: "Evidence, Witnesses, and Restraint",
+        span: "Lysias 1 [18]-[24]",
+        summary:
+          "Euphiletos insists that he waited for direct proof, gathered witnesses, and acted only after the adulterer was caught in flagrante delicto.",
+        note:
+          "The speech needs this section because otherwise Euphiletos could look like a man luring a rival into a premeditated killing.",
+        whyItMatters:
+          "This is where the defense tries hardest to sound procedural, measured, and almost judicial.",
+        relatedWeekIds: ["week-3", "week-7"],
+        relatedTerms: ["witnesses", "clear evidence", "premeditation"],
+        passages: [
+          {
+            id: "lysias-clear-evidence",
+            citation: "Lysias 1 [21]",
+            quote: "I expect you to show me them in the act. For I do not need words, but clear evidence...",
+            context:
+              "Euphiletos reports his demand for proof from the household informant before he confronts Eratosthenes.",
+            analysis:
+              "The phrase 'clear evidence' is rhetorical gold: it makes private violence look disciplined and evidentiary."
+          }
+        ]
+      },
+      {
+        id: "lysias-seducer-type",
+        label: "The Seducer as Civic Threat",
+        span: "Late defense strategy",
+        summary:
+          "The dead man is reconstructed as the type of dangerous seducer who corrupts households, children, inheritance, and civic order.",
+        note:
+          "This is where the speech's social imagination does the most work. Eratosthenes becomes more than an adulterer; he becomes a category of menace.",
+        whyItMatters:
+          "Use this section when comparing Lysias to modern character-based arguments or to the seducer logic already visible in the Oresteia.",
+        relatedWeekIds: ["week-4", "week-6", "week-7"],
+        relatedTerms: ["seducer", "household order", "legitimacy"],
+        passages: [
+          {
+            id: "lysias-real-criminal",
+            citation: "Lecture framing of Lysias 1",
+            quote: "The defendant presents himself as the victim of a crime and the man he killed as the real criminal.",
+            context:
+              "The lecture's summary captures the speech's deepest inversion.",
+            analysis:
+              "This is the line to remember if asked who the speech wants the jury to see as the true offender."
+          }
+        ]
+      }
+    ],
     excerpts: [
       {
         citation: "Lysias 1 [4], quoted in the Week 7 lecture and final guide",
@@ -355,6 +603,155 @@ const readingDossiers = [
     themes: ["rhetoric", "punishment", "deterrence", "self-discipline", "social construction"],
     relatedTerms: ["rhetoric", "Socrates", "Gorgias", "Polus", "Callicles", "nomos", "physis"],
     relatedWeekIds: ["week-6", "week-8"],
+    fullTextAvailable: true,
+    readerNote:
+      "The dialogue is long, so the app organizes it by argumentative movements rather than by trying to make you memorize every exchange in sequence.",
+    sourceProvenance: [
+      {
+        label: "Internet Classics Archive - Plato, Gorgias (Jowett translation, public domain)",
+        url: "https://classics.mit.edu/Plato/gorgias.html",
+        note: "Safe public-domain full text for reading the dialogue in full."
+      },
+      {
+        label: "Week 8 lecture script",
+        note: "Primary course framing for rhetoric, punishment, and criminological comparison."
+      }
+    ],
+    sections: [
+      {
+        id: "gorgias-rhetoric-definition",
+        label: "What Rhetoric Claims To Be",
+        span: "Early dialogue with Gorgias",
+        summary:
+          "Socrates presses Gorgias to define rhetoric precisely, exposing the gap between persuasive success and genuine knowledge.",
+        note:
+          "This section matters because law-courts are already inside the definition. Crime and punishment are present before punishment is explicitly discussed.",
+        whyItMatters:
+          "Use it to explain why Plato is the philosophical background for both Lysias and Cicero.",
+        relatedWeekIds: ["week-8"],
+        relatedTerms: ["rhetoric", "sophist", "Gorgias"],
+        passages: [
+          {
+            id: "gorgias-law-courts",
+            citation: "Gorgias 454b",
+            quote:
+              "Its effect is to persuade people in the kinds of mass meetings which happen in law-courts and so on; and I think its province is right and wrong.",
+            context:
+              "Gorgias identifies the social spaces where rhetoric naturally operates.",
+            analysis:
+              "The course uses this as proof that rhetoric is already bound to adjudication and civic decision-making."
+          }
+        ]
+      },
+      {
+        id: "gorgias-polus-power",
+        label: "Polus, Success, and the Appeal of Power",
+        span: "Middle dialogue",
+        summary:
+          "Polus resists Socrates by treating successful wrongdoing as enviable power rather than as inner damage.",
+        note:
+          "This section gives you the anti-Socratic position that makes the later theory of punishment as cure meaningful.",
+        whyItMatters:
+          "It helps connect the dialogue to rational-choice and power-centered explanations of crime.",
+        relatedWeekIds: ["week-6", "week-8"],
+        relatedTerms: ["Polus", "power", "rational choice"],
+        passages: [
+          {
+            id: "gorgias-power-appeal",
+            citation: "Week 8 lecture discussion of Polus",
+            quote: "Polus sees punishment as the unhappy consequence of crime rather than as something intrinsically good.",
+            context:
+              "The lecture uses Polus to articulate the intuitive attraction of unpunished wrongdoing.",
+            analysis:
+              "Remember Polus whenever the course contrasts success, force, and moral repair."
+          }
+        ]
+      },
+      {
+        id: "gorgias-callicles-physis",
+        label: "Callicles, Nature, and Anti-Conventional Justice",
+        span: "Callicles' challenge",
+        summary:
+          "Callicles argues that conventional law is a weak collective restraint imposed on the naturally stronger and bolder.",
+        note:
+          "This is the dialogue's harshest challenge to shared civic justice and one of the clearest places where `physis` and `nomos` collide.",
+        whyItMatters:
+          "Study this section if you need to explain why Plato treats rhetoric as politically dangerous, not just morally slippery.",
+        relatedWeekIds: ["week-8"],
+        relatedTerms: ["Callicles", "physis", "nomos"],
+        passages: [
+          {
+            id: "gorgias-callicles-frame",
+            citation: "Week 8 lecture on Callicles",
+            quote: "Callicles rejects conventional justice by treating law as an artificial restraint imposed by the weak.",
+            context:
+              "The lecture uses Callicles as the extreme version of anti-Socratic power politics.",
+            analysis:
+              "This is the best section to cite when asked what the dialogue contributes beyond courtroom technique."
+          }
+        ]
+      },
+      {
+        id: "gorgias-punishment-cure",
+        label: "Punishment as Cure",
+        span: "Socratic answer to Polus and Callicles",
+        summary:
+          "Socrates argues that doing wrong harms the wrongdoer more deeply than suffering wrong and that punishment can therefore be beneficial.",
+        note:
+          "This is the course's cleanest ancient argument for rehabilitation without reducing punishment to softness or indulgence.",
+        whyItMatters:
+          "It lets you compare rehabilitative and deterrent ideas inside one ancient text instead of treating them as purely modern theories.",
+        relatedWeekIds: ["week-6", "week-8"],
+        relatedTerms: ["punishment as cure", "rehabilitation", "self-discipline"],
+        passages: [
+          {
+            id: "gorgias-predatory-outlaw",
+            citation: "Gorgias 507c-e",
+            quote:
+              "Anyone who wants to be happy must seek out and practise self-discipline ... This is the life of a predatory outlaw.",
+            context:
+              "Socrates links happiness to justice, restraint, and life with others.",
+            analysis:
+              "The point is not merely personal morality. The lecture reads this as an anti-predatory model of civic existence."
+          },
+          {
+            id: "gorgias-worse-to-do-wrong",
+            citation: "Gorgias 508d-e",
+            quote:
+              "It is more contemptible, and worse as well, to hit and cut me and my property without just cause ... than it is for me, the target of his wrongdoing.",
+            context:
+              "Socrates argues that wrongdoing damages the offender's soul.",
+            analysis:
+              "This is the most concise statement of crime as self-deformation in the whole course."
+          }
+        ]
+      },
+      {
+        id: "gorgias-deterrence-afterlife",
+        label: "Example, Spectacle, and Deterrence",
+        span: "Late myth and afterlife argument",
+        summary:
+          "The dialogue ends by saying punishment should improve the punished person or serve as an example to others who witness it.",
+        note:
+          "This is where deterrence and rehabilitation sit side by side rather than replacing one another.",
+        whyItMatters:
+          "Use this section when asked how ancient texts can anticipate more than one modern theory of punishment at once.",
+        relatedWeekIds: ["week-6", "week-8", "week-11"],
+        relatedTerms: ["deterrence", "example", "punishment"],
+        passages: [
+          {
+            id: "gorgias-example-others",
+            citation: "Gorgias 525b-c",
+            quote:
+              "Every instance of punishment should either help its recipient by making him a better person or should act as an example for others.",
+            context:
+              "Late in the dialogue Socrates connects punishment to moral repair and public warning.",
+            analysis:
+              "This passage is ideal for comparative answers because it names both functions directly."
+          }
+        ]
+      }
+    ],
     excerpts: [
       {
         citation: "Gorgias 454b, quoted in the Week 8 lecture script",
@@ -421,6 +818,145 @@ const readingDossiers = [
     themes: ["state emergency", "hostis", "relative deprivation", "deterrence", "civil conflict"],
     relatedTerms: ["Catiline", "SCU", "hostis", "provocatio", "relative deprivation"],
     relatedWeekIds: ["week-10", "week-11"],
+    fullTextAvailable: true,
+    readerNote:
+      "This reading works best when you treat it as both crisis narrative and argument about classification: citizen, criminal, rebel, enemy, and hero are all in play.",
+    sourceProvenance: [
+      {
+        label: "Perseus Catalog - Sallust, Catiline's War (public-domain English)",
+        url: "https://catalog.perseus.org/catalog/urn%3Acts%3AlatinLit%3Aphi0631.phi001.perseus-eng1",
+        note: "Safe public-domain access point for the full text."
+      },
+      {
+        label: "Week 11 lecture script",
+        note: "Primary course framing for chronology, emergency power, and the criminal-versus-enemy problem."
+      }
+    ],
+    sections: [
+      {
+        id: "catiline-social-crisis",
+        label: "Social Crisis and the Appeal of Catiline",
+        span: "Opening narrative and background",
+        summary:
+          "Sallust frames the conspiracy as a product of elite corruption, debt, frustration, and a wider diseased social order rather than as one isolated criminal mind.",
+        note:
+          "This section is where the course gets its strongest relative-deprivation reading of the Roman material.",
+        whyItMatters:
+          "Use it when explaining why Catiline has followers and why the urban plebs matter to the narrative.",
+        relatedWeekIds: ["week-6", "week-10", "week-11"],
+        relatedTerms: ["relative deprivation", "plebs", "debt crisis"],
+        passages: [
+          {
+            id: "catiline-plebs",
+            citation: "Catiline's War 24-25",
+            quote: "The entire plebs, in its enthusiasm for revolution, approved completely of Catiline's projects.",
+            context:
+              "Sallust expands the crisis from one aristocratic conspirator to a broader political atmosphere.",
+            analysis:
+              "This is the cleanest passage for connecting social grievance to criminal or revolutionary mobilization."
+          }
+        ]
+      },
+      {
+        id: "catiline-emergency-timeline",
+        label: "Emergency Timeline and the SCU",
+        span: "63 BCE chronology",
+        summary:
+          "The crisis escalates through letters, the SCU, revolt in Etruria, arrests, Senate debate, and executions without trial.",
+        note:
+          "Chronology matters here because the legal frame changes as the crisis escalates. Delay itself becomes part of the rhetoric of danger.",
+        whyItMatters:
+          "This is the section to study if you need to explain when suspects are still citizens and when they are pushed toward hostis status.",
+        relatedWeekIds: ["week-10", "week-11"],
+        relatedTerms: ["SCU", "hostis", "provocatio"],
+        passages: [
+          {
+            id: "catiline-scu-frame",
+            citation: "Week 11 lecture chronology",
+            quote: "The SCU advises extraordinary measures but does not magically erase later legal responsibility.",
+            context:
+              "The lecture stresses that emergency decree and legality are not the same thing.",
+            analysis:
+              "Remember this when explaining why Cicero later becomes vulnerable for what he did in the emergency."
+          }
+        ]
+      },
+      {
+        id: "catiline-caesar",
+        label: "Caesar's Criminal-Punishment Frame",
+        span: "Senate debate on 5 December 63 BCE",
+        summary:
+          "Caesar rejects execution without trial, but he does not become a simple soft option. He proposes confiscation and severe confinement instead.",
+        note:
+          "The course treats Caesar as someone trying to keep the captives inside a criminal-punishment frame, albeit a harsh one.",
+        whyItMatters:
+          "This is the best section for showing that Roman arguments about rights and punishment are already entangled with security logic.",
+        relatedWeekIds: ["week-10", "week-11"],
+        relatedTerms: ["Caesar", "detention", "citizenship"],
+        passages: [
+          {
+            id: "catiline-caesar-prison",
+            citation: "Catiline's War 37",
+            quote:
+              "Their money should be confiscated and they themselves held in chains in the municipalities which have the most effective resources.",
+            context:
+              "Caesar opposes execution but proposes an unusually strong custodial alternative.",
+            analysis:
+              "This matters because long-term punitive detention is relatively unclassical and shows how unstable the category of punishment becomes in emergencies."
+          }
+        ]
+      },
+      {
+        id: "catiline-cato",
+        label: "Cato's Enemy-War Frame",
+        span: "Same Senate debate",
+        summary:
+          "Cato insists that the Senate is not really sentencing ordinary criminals. It is signaling resolve in an active war against enemies inside and outside the city.",
+        note:
+          "This is the decisive reframing move of the week: once the conspirators are treated as war enemies, the demand for ordinary trial weakens.",
+        whyItMatters:
+          "Use this section when asked how criminal law gives way to preemption, deterrence, and military logic.",
+        relatedWeekIds: ["week-10", "week-11"],
+        relatedTerms: ["Cato", "hostis", "deterrence"],
+        passages: [
+          {
+            id: "catiline-cato-decree",
+            citation: "Catiline's War 39",
+            quote:
+              "When you decide about P. Lentulus and the others, be assured that at the same time you are issuing a decree about Catiline's army.",
+            context:
+              "Cato turns sentencing into strategic messaging for the larger conflict.",
+            analysis:
+              "The key point is that punishment is now military theater as much as judicial response."
+          }
+        ]
+      },
+      {
+        id: "catiline-heroic-end",
+        label: "Catiline as Criminal and Hero",
+        span: "Battle ending",
+        summary:
+          "Sallust ends by making Catiline die with the bravery of a Roman hero even though the state has defined him as an enemy.",
+        note:
+          "The text never lets the classification settle. That instability is the whole point of using Sallust in the course.",
+        whyItMatters:
+          "This section is ideal for answers about insider versus outsider and about the contradictions of political criminality.",
+        relatedWeekIds: ["week-11", "week-12"],
+        relatedTerms: ["heroism", "enemy combatant", "insider-outsider"],
+        passages: [
+          {
+            id: "catiline-final-charge",
+            citation: "Catiline's War 46",
+            quote:
+              "Mindful of his lineage and his own old-time status, he rushed into the thickest of the enemy and there, fighting, was stabbed.",
+            context:
+              "Catiline dies in a way that looks admirable by traditional Roman martial standards.",
+            analysis:
+              "This is the passage to use when arguing that the worst criminal can still be represented with aristocratic or heroic dignity."
+          }
+        ]
+      }
+    ],
     excerpts: [
       {
         citation: "Catiline's War 24-25, quoted in the Week 11 lecture script",
@@ -487,6 +1023,145 @@ const readingDossiers = [
     themes: ["vis", "theater", "character", "gender", "state violence"],
     relatedTerms: ["Caelius", "Clodia", "vis", "Megalensia", "character evidence"],
     relatedWeekIds: ["week-10", "week-11", "week-12"],
+    fullTextAvailable: true,
+    readerNote:
+      "Read this speech as courtroom performance. The legal charge matters, but the speech wins by making the jurors inhabit a different genre before they decide the case.",
+    sourceProvenance: [
+      {
+        label: "Internet Classics Archive - Cicero, Pro Caelio (public-domain translation)",
+        url: "https://classics.mit.edu/Cicero/cic.cael.html",
+        note: "Safe public-domain full text for reading the speech in full."
+      },
+      {
+        label: "Week 12 lecture script",
+        note: "Primary course framing for vis, theatrical substitution, Clodia, and character-based criminality."
+      }
+    ],
+    sections: [
+      {
+        id: "caelio-opening",
+        label: "Opening Frame and the Holiday Court",
+        span: "Pro Caelio 1",
+        summary:
+          "Cicero opens by stressing how grave the forum must look to an outsider, only so he can make the charge on `vis` feel absurdly overblown once Caelius is recast as harmless.",
+        note:
+          "The speech begins with legal seriousness, not because Cicero wants to dwell on doctrine, but because he needs the seriousness as the setup for his mockery.",
+        whyItMatters:
+          "This section is the clearest proof that the defense is really fighting over interpretive frame, not simply factual detail.",
+        relatedWeekIds: ["week-10", "week-12"],
+        relatedTerms: ["vis", "Megalensia", "theatrical substitution"],
+        passages: [
+          {
+            id: "caelio-opening-overkill",
+            citation: "Pro Caelio 1",
+            quote:
+              "If somebody were here who knew nothing about our laws, our courts, and our customs ... he would have no doubt that the defendant is charged with so massive a crime that to leave it unattended would result in the collapse of the state.",
+            context:
+              "Cicero dramatizes the legal setting before undercutting it.",
+            analysis:
+              "The opening teaches the jurors that the case can be won by making the forum itself look mismatched to the accused."
+          }
+        ]
+      },
+      {
+        id: "caelio-catiline-problem",
+        label: "Caelius, Catiline, and Dangerous Association",
+        span: "Early character work",
+        summary:
+          "Cicero must neutralize Caelius' earlier connection to Catiline without letting Catiline stop being the villain of last week's material.",
+        note:
+          "This is where Cicero's rhetorical flexibility is most obvious. Catiline becomes so slippery and protean that Caelius can be excused for once moving in his orbit.",
+        whyItMatters:
+          "Study this section if you need to connect Weeks 11 and 12 in a single answer about criminal identity and elite politics.",
+        relatedWeekIds: ["week-11", "week-12"],
+        relatedTerms: ["Catiline", "Caelius", "character evidence"],
+        passages: [
+          {
+            id: "caelio-catiline-description",
+            citation: "Week 12 lecture on Cicero's description of Catiline",
+            quote: "Cicero repurposes last week's villain into someone so deceptive that mere association no longer proves Caelius' guilt.",
+            context:
+              "The lecture stresses that courtroom rhetoric is driven by present advantage, not by stable personal conviction.",
+            analysis:
+              "This is the comparative bridge back to Lysias: both speeches reshape identity to solve a legal problem."
+          }
+        ]
+      },
+      {
+        id: "caelio-clodia-theater",
+        label: "Clodia as Stage Type",
+        span: "Middle of the speech",
+        summary:
+          "Cicero converts Clodia from elite woman and former lover into a stock comic type whose narrative can be dismissed as theatrical fabrication.",
+        note:
+          "The speech's gender politics matter here. Clodia is both historical participant and rhetorical dumping ground.",
+        whyItMatters:
+          "This is the section to use when asked how the speech relies on misogyny, sexual double standards, and genre.",
+        relatedWeekIds: ["week-6", "week-12"],
+        relatedTerms: ["Clodia", "comedy", "gender", "character construction"],
+        passages: [
+          {
+            id: "caelio-aging-poet",
+            citation: "Pro Caelio 64",
+            quote:
+              "This whole tale ... belongs to an aging lady poet who has written a lot of comedies - but it has no plot and no ending.",
+            context:
+              "Cicero accuses the prosecution of theatrical fabrication while staging the whole case theatrically himself.",
+            analysis:
+              "The line is essential because it shows the speech projecting its own strategy onto the other side."
+          }
+        ]
+      },
+      {
+        id: "caelio-law-on-vis",
+        label: "Returning to the Law on Vis",
+        span: "Closing movement",
+        summary:
+          "After long stretches of ridicule, Cicero returns to the law itself and insists that a statute designed for riots and insurrection is being abused for private erotic revenge.",
+        note:
+          "This return to doctrine is strategic. Cicero can only make it work after he has already privatized the case through comedy and scandal.",
+        whyItMatters:
+          "This section is where the speech most clearly intersects with the Roman state's growing claim over violence.",
+        relatedWeekIds: ["week-10", "week-12"],
+        relatedTerms: ["vis", "state violence", "public versus private"],
+        passages: [
+          {
+            id: "caelio-vis-statute",
+            citation: "Pro Caelio 70",
+            quote:
+              "This is the law under which this young man Caelius is being prosecuted not to exact punishment on behalf of the commonwealth but on behalf of the sexual perversions of this woman.",
+            context:
+              "Cicero fuses public-law seriousness and private scandal at the very end of the speech.",
+            analysis:
+              "Remember this as the clearest statement of the speech's privatizing strategy."
+          }
+        ]
+      },
+      {
+        id: "caelio-riggsby",
+        label: "Riggsby and the Bigger Roman Shift",
+        span: "Lecture's modern scholarship frame",
+        summary:
+          "The lecture uses Andrew Riggsby to argue that the speech reveals a Roman world in which the state is increasingly trying to centralize legitimate force while advocacy still turns law into theater.",
+        note:
+          "This section is not a primary-text movement, but it is crucial for understanding why the course assigns the speech in a crime-and-punishment course rather than only in a rhetoric course.",
+        whyItMatters:
+          "Use it when explaining how Week 12 synthesizes rhetoric, criminality, and the rise of stronger public claims over violence.",
+        relatedWeekIds: ["week-10", "week-12"],
+        relatedTerms: ["Riggsby", "vis", "state monopoly on violence"],
+        passages: [
+          {
+            id: "caelio-riggsby-theater",
+            citation: "Week 12 lecture quoting Riggsby",
+            quote: "Cicero invites the jurors to view themselves as a comic, not a judicial, audience.",
+            context:
+              "Riggsby gives the lecture its clearest vocabulary for theatrical substitution.",
+            analysis:
+              "This is the best secondary-source sentence to remember for explaining the speech's genre strategy."
+          }
+        ]
+      }
+    ],
     excerpts: [
       {
         citation: "Pro Caelio 1, quoted in the Week 12 lecture script",
@@ -548,9 +1223,9 @@ const weekMetaMap = {
   },
   "Week 5": {
     family: "bridge",
-    priority: "reference",
-    themes: ["archive note"],
-    headline: "No lecture-script content is present in the local archive."
+    priority: "foundation",
+    themes: ["bridge review", "greek synthesis", "transition"],
+    headline: "No lecture script survives here, so the week functions as a Greek review and transition module."
   },
   "Week 6": {
     family: "bridge",
@@ -572,9 +1247,9 @@ const weekMetaMap = {
   },
   "Week 9": {
     family: "bridge",
-    priority: "reference",
-    themes: ["archive note"],
-    headline: "No lecture-script content is present in the local archive."
+    priority: "foundation",
+    themes: ["bridge review", "greek to roman transition", "comparison"],
+    headline: "No lecture script survives here, so the week functions as the bridge from Greek argument to Roman law."
   },
   "Week 10": {
     family: "roman",
@@ -637,34 +1312,75 @@ function buildWeekModules(topics, sections, readings) {
     const relatedReadings = readings.filter((reading) => relatedReadingIds.includes(reading.id));
 
     if (!moduleTopics.length) {
+      const bridgeSummary = section?.preview || meta.headline;
+      const lectureThesis = extractFirstSubsection(section?.markdown, [
+        "Bridge thesis",
+        "Why this bridge week matters",
+        "Why this bridge is doing",
+        "Why this week still matters"
+      ]);
+      const whyItMatters = extractFirstSubsection(section?.markdown, [
+        "What to review in this gap week",
+        "What to carry forward into Week 10",
+        "Roman preview"
+      ]);
+      const examTrap =
+        stripMarkdown(extractFirstSubsection(section?.markdown, ["Exam trap"])) ||
+        "Use the surrounding lectures to review and connect material rather than inventing missing lecture claims.";
+
       return {
         id: moduleId,
         week: weekLabel,
-        title: `${weekLabel}: Archive Note`,
-        shortTitle: "No lecture-script content",
+        title: section?.title || `${weekLabel}: Bridge Week`,
+        shortTitle: section?.title?.split(":").slice(1).join(":").trim() || "Bridge week",
         family: meta.family,
         priority: meta.priority,
         themes: meta.themes,
         headline: meta.headline,
+        isBridgeWeek: true,
         hasLectureContent: false,
         summary:
-          "The local archive has no lecture-script content for this week, so the app treats it as a reference gap rather than inventing missing material.",
+          bridgeSummary ||
+          "This week has no standalone lecture script in the local archive, so it is treated as a bridge module rather than a fabricated content week.",
         lectureThesis:
-          "Use adjacent weeks to bridge the course narrative. The app marks this absence explicitly so you do not mistake the silence for missing study.",
+          stripMarkdown(lectureThesis) ||
+          "Use adjacent weeks to consolidate the course argument and move into the next major block without inventing missing lecture claims.",
         whyItMatters:
-          "The course as preserved locally moves from the surrounding lectures without new weekly lecture content here.",
-        examTrap:
-          "Do not invent lecture claims for this week. On the preserved course spine, Weeks 5 and 9 are content gaps in the local archive.",
+          stripMarkdown(whyItMatters) ||
+          "The gap itself is informative: it is the right place to review, synthesize, and compare surrounding weeks.",
+        historicalContext: stripMarkdown(
+          extractFirstSubsection(section?.markdown, ["What to review in this gap week", "What this bridge is doing"])
+        ),
+        comparisonLens: stripMarkdown(
+          extractFirstSubsection(section?.markdown, ["Roman preview", "What to carry forward into Week 10"])
+        ),
+        examAdvice: stripMarkdown(extractFirstSubsection(section?.markdown, ["Bridge checklist"])),
+        sourceFrame:
+          "Bridge week built from the surrounding guide sections because no separate lecture-script file survives in the local archive.",
+        bridgeSummary: bridgeSummary,
+        comparisonTakeaways: [],
         keyTerms: [],
         chronology: [],
-        selfCheck: [
-          "Can you explain how the previous and next lecture connect without making up missing content?",
-          "Can you tell which source in the archive actually covers the concept you are studying?"
-        ],
+        selfCheck: dedupeStrings(
+          extractFirstSubsection(section?.markdown, ["Bridge checklist"])
+            .split(/\r?\n/)
+            .map((line) => line.replace(/^\d+\.\s*/, "").trim())
+            .filter(Boolean)
+        ).length
+          ? dedupeStrings(
+              extractFirstSubsection(section?.markdown, ["Bridge checklist"])
+                .split(/\r?\n/)
+                .map((line) => line.replace(/^\d+\.\s*/, "").trim())
+                .filter(Boolean)
+            )
+          : [
+              "Can you explain how the previous and next lecture connect without making up missing content?",
+              "Can you tell which source in the archive actually covers the concept you are studying?"
+            ],
         concepts: [],
         passages: [],
         comparisons: [],
-        pitfalls: [],
+        pitfalls: examTrap ? [examTrap] : [],
         guideSectionId: section?.id || null,
         guidePreview: section?.preview || "",
         relatedReadingIds,
@@ -675,11 +1391,10 @@ function buildWeekModules(topics, sections, readings) {
     const titleMatch = section?.title?.split(":");
     const shortTitle = titleMatch && titleMatch.length > 1 ? titleMatch.slice(1).join(":").trim() : weekLabel;
     const lectureThesis =
-      extractSubsection(section?.markdown, "What this lecture is arguing") ||
-      extractSubsection(section?.markdown, "Lecture frame in plain English") ||
+      extractFirstSubsection(section?.markdown, ["What this lecture is arguing", "Lecture frame in plain English"]) ||
       dedupeStrings(moduleTopics.map((topic) => topic.argument)).join(" ");
     const whyItMatters =
-      extractSubsection(section?.markdown, "Why this matters for crime and punishment") ||
+      extractFirstSubsection(section?.markdown, ["Why this matters for crime and punishment", "Why this week matters"]) ||
       dedupeStrings(moduleTopics.map((topic) => topic.whyItMatters)).join(" ");
     const examTrap =
       stripMarkdown(extractSubsection(section?.markdown, "MCQ Trap")) ||
@@ -695,10 +1410,28 @@ function buildWeekModules(topics, sections, readings) {
       priority: meta.priority,
       themes: meta.themes,
       headline: meta.headline,
+      isBridgeWeek: false,
       hasLectureContent: true,
       summary: section?.preview || moduleTopics[0]?.summary || "",
       lectureThesis: stripMarkdown(lectureThesis),
       whyItMatters: stripMarkdown(whyItMatters),
+      historicalContext: stripMarkdown(
+        extractFirstSubsection(section?.markdown, [
+          "Historical background to the conspiracy",
+          "History and background",
+          "Background to the conspiracy",
+          "Background to the case at hand",
+          "Ancient case study: Publius Claudius Pulcher and the sacred chickens",
+          "What this week matters",
+          "Why this week matters",
+          "What this lecture teaches"
+        ])
+      ),
+      comparisonLens: stripMarkdown(extractSubsection(section?.markdown, "Ancient vs modern comparison")),
+      examAdvice: stripMarkdown(extractSubsection(section?.markdown, "Study questions answered")),
+      sourceFrame: stripMarkdown(extractSubsection(section?.markdown, "The Five Things")),
+      bridgeSummary: "",
+      comparisonTakeaways: moduleTopics.flatMap((topic) => topic.comparisons || []).slice(0, 4),
       examTrap,
       keyTerms: dedupeStrings(moduleTopics.flatMap((topic) => topic.terms || [])),
       chronology: dedupeStrings(moduleTopics.flatMap((topic) => topic.events || [])),
@@ -716,6 +1449,71 @@ function buildWeekModules(topics, sections, readings) {
   });
 }
 
+function inferReadingLocation(question) {
+  const source = String(question.sourceRef || "").toLowerCase();
+
+  const mappings = [
+    {
+      when: () => question.week === "Week 7" && source.includes("[21]"),
+      value: { readingSectionId: "lysias-evidence-and-witnesses", readingPassageId: "lysias-clear-evidence" }
+    },
+    {
+      when: () => question.week === "Week 7" && source.includes("[4]"),
+      value: { readingSectionId: "lysias-lawful-killing", readingPassageId: "lysias-law-allows" }
+    },
+    {
+      when: () => question.week === "Week 7" && source.includes("opening"),
+      value: { readingSectionId: "lysias-opening-frame", readingPassageId: "lysias-opening-fury" }
+    },
+    {
+      when: () => question.week === "Week 8" && source.includes("454"),
+      value: { readingSectionId: "gorgias-rhetoric-definition", readingPassageId: "gorgias-law-courts" }
+    },
+    {
+      when: () => question.week === "Week 8" && source.includes("525"),
+      value: { readingSectionId: "gorgias-deterrence-afterlife", readingPassageId: "gorgias-example-others" }
+    },
+    {
+      when: () => question.week === "Week 8" && (source.includes("507") || source.includes("508")),
+      value: { readingSectionId: "gorgias-punishment-cure", readingPassageId: "gorgias-predatory-outlaw" }
+    },
+    {
+      when: () => question.week === "Week 11" && (source.includes("24") || source.includes("25")),
+      value: { readingSectionId: "catiline-social-crisis", readingPassageId: "catiline-plebs" }
+    },
+    {
+      when: () => question.week === "Week 11" && source.includes("37"),
+      value: { readingSectionId: "catiline-caesar", readingPassageId: "catiline-caesar-prison" }
+    },
+    {
+      when: () => question.week === "Week 11" && source.includes("39"),
+      value: { readingSectionId: "catiline-cato", readingPassageId: "catiline-cato-decree" }
+    },
+    {
+      when: () => question.week === "Week 11" && source.includes("46"),
+      value: { readingSectionId: "catiline-heroic-end", readingPassageId: "catiline-final-charge" }
+    },
+    {
+      when: () => question.week === "Week 12" && source.includes("64"),
+      value: { readingSectionId: "caelio-clodia-theater", readingPassageId: "caelio-aging-poet" }
+    },
+    {
+      when: () => question.week === "Week 12" && source.includes("70"),
+      value: { readingSectionId: "caelio-law-on-vis", readingPassageId: "caelio-vis-statute" }
+    },
+    {
+      when: () => question.week === "Week 12" && source.includes("riggsby"),
+      value: { readingSectionId: "caelio-riggsby", readingPassageId: "caelio-riggsby-theater" }
+    },
+    {
+      when: () => question.week === "Week 12" && source.includes("1"),
+      value: { readingSectionId: "caelio-opening", readingPassageId: "caelio-opening-overkill" }
+    }
+  ];
+
+  return mappings.find((mapping) => mapping.when())?.value || {};
+}
+
 function buildStudyRef(question) {
   if (question.bank === "glossary") {
     return {
@@ -730,7 +1528,8 @@ function buildStudyRef(question) {
   return {
     type: "week",
     moduleId,
-    readingId: relatedReadingId
+    readingId: relatedReadingId,
+    ...inferReadingLocation(question)
   };
 }
 
@@ -834,8 +1633,22 @@ function buildGlossaryIndex(quizQuestions, weekModules, readingRecords) {
             [
               reading.summary,
               reading.whyItMatters,
+              reading.readerNote,
               ...(reading.relatedTerms || []),
-              ...reading.excerpts.map((excerpt) => excerpt.quote)
+              ...reading.excerpts.map((excerpt) => excerpt.quote),
+              ...(reading.sections || []).flatMap((section) => [
+                section.label,
+                section.summary,
+                section.note,
+                section.whyItMatters,
+                ...(section.relatedTerms || []),
+                ...((section.passages || []).flatMap((passage) => [
+                  passage.citation,
+                  passage.quote,
+                  passage.context,
+                  passage.analysis
+                ]))
+              ])
             ].some((field) => containsTerm(field, token))
           )
         )

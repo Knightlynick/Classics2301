@@ -76,6 +76,23 @@ async function main() {
       assert(weekIds.has(weekId), `Broken week link ${weekId} on reading ${reading.id}.`);
     });
     assert(Array.isArray(reading.excerpts) && reading.excerpts.length >= 2, `Reading ${reading.id} needs excerpt coverage.`);
+    assert(Array.isArray(reading.sections) && reading.sections.length >= 3, `Reading ${reading.id} needs section coverage.`);
+    assert(Array.isArray(reading.sourceProvenance) && reading.sourceProvenance.length >= 1, `Reading ${reading.id} needs source provenance.`);
+
+    const sectionIds = new Set();
+    const passageIds = new Set();
+    reading.sections.forEach((section) => {
+      assert(section.id, `Reading ${reading.id} has a section without an id.`);
+      assert(!sectionIds.has(section.id), `Reading ${reading.id} has duplicate section id ${section.id}.`);
+      sectionIds.add(section.id);
+      assert(Array.isArray(section.passages) && section.passages.length >= 1, `Reading ${reading.id} section ${section.id} needs mapped passages.`);
+
+      section.passages.forEach((passage) => {
+        assert(passage.id, `Reading ${reading.id} section ${section.id} has a passage without an id.`);
+        assert(!passageIds.has(passage.id), `Reading ${reading.id} has duplicate passage id ${passage.id}.`);
+        passageIds.add(passage.id);
+      });
+    });
   });
 
   data.glossaryIndex.forEach((entry) => {
@@ -97,6 +114,22 @@ async function main() {
       assert(weekIds.has(question.studyRef.moduleId), `Question ${question.id} points to missing week ${question.studyRef.moduleId}.`);
       if (question.studyRef.readingId) {
         assert(readingIds.has(question.studyRef.readingId), `Question ${question.id} points to missing reading ${question.studyRef.readingId}.`);
+      }
+      if (question.studyRef.readingId && question.studyRef.readingSectionId) {
+        const reading = data.readingDossiers.find((entry) => entry.id === question.studyRef.readingId);
+        assert(
+          reading?.sections?.some((section) => section.id === question.studyRef.readingSectionId),
+          `Question ${question.id} points to missing reading section ${question.studyRef.readingSectionId}.`
+        );
+      }
+      if (question.studyRef.readingId && question.studyRef.readingPassageId) {
+        const reading = data.readingDossiers.find((entry) => entry.id === question.studyRef.readingId);
+        assert(
+          reading?.sections?.some((section) =>
+            section.passages?.some((passage) => passage.id === question.studyRef.readingPassageId)
+          ),
+          `Question ${question.id} points to missing reading passage ${question.studyRef.readingPassageId}.`
+        );
       }
     }
 

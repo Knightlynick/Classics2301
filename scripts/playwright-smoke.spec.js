@@ -35,6 +35,12 @@ test("study app renders each surface and core interactions", async ({ page }) =>
   await expect(page.locator("#readingIndex .index-card")).toHaveCount(5);
   await page.locator("#readingIndex .index-card").nth(1).click();
   await expect(page.locator("#readingDetail h3").first()).toBeVisible();
+  await expect(page.locator("#readingDetail .reading-source-card")).toHaveCount(2);
+  await expect(page.locator("#readingDetail .reading-section-map .chip-button")).toHaveCount(4);
+  await page.locator("#readingDetail .reading-section-map .chip-button").nth(1).click();
+  await expect(page.locator("#readingDetail .reading-section-card h4")).toBeVisible();
+  await page.locator("#readingDetail .reading-passage-list .index-card").first().click();
+  await expect(page.locator("#readingDetail .reading-passage-detail")).toBeVisible();
 
   await page.click('.nav-btn[data-target="glossaryView"]');
   await page.fill("#glossarySearchInput", "hubris");
@@ -49,6 +55,7 @@ test("study app renders each surface and core interactions", async ({ page }) =>
   await expect(page.locator(".question-title")).toBeVisible();
   await page.locator(".answer-btn").first().click();
   await expect(page.locator(".feedback-box")).toBeVisible();
+  await expect(page.locator('.feedback-box .ghost-btn').first()).toBeVisible();
 
   await page.click('.nav-btn[data-target="guideView"]');
   await expect(page.locator("#guideContent .guide-section").first()).toBeVisible();
