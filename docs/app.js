@@ -1,5 +1,5 @@
 (() => {
-const STORAGE_KEY = "cs2301-study-state-v3";
+const STORAGE_KEY = "cs2301-study-state-v4";
 const {
   guideSections,
   glossaryIndex,
@@ -82,7 +82,7 @@ function init() {
 
 function loadState() {
   const fallback = {
-    version: 3,
+    version: 4,
     history: [],
     bookmarks: [],
     reviewed: [],
@@ -92,6 +92,8 @@ function loadState() {
       weekPriority: "all",
       readingFamily: "all",
       selectedReadingId: readingDossiers[0]?.id || "",
+      selectedReadingSectionId: readingDossiers[0]?.sections?.[0]?.id || "",
+      selectedReadingPassageId: readingDossiers[0]?.sections?.[0]?.passages?.[0]?.id || "",
       glossarySearch: "",
       glossaryFamily: "all",
       selectedGlossaryId: glossaryIndex[0]?.id || "",
@@ -110,7 +112,7 @@ function loadState() {
     }
 
     return {
-      version: 3,
+      version: 4,
       history: Array.isArray(parsed.history) ? parsed.history : [],
       bookmarks: Array.isArray(parsed.bookmarks) ? parsed.bookmarks : [],
       reviewed: Array.isArray(parsed.reviewed) ? parsed.reviewed : [],
@@ -123,6 +125,29 @@ function loadState() {
     console.warn("Could not load saved study state.", error);
     return fallback;
   }
+}
+
+function getReadingSection(reading, sectionId) {
+  return (reading?.sections || []).find((section) => section.id === sectionId) || null;
+}
+
+function getReadingPassage(section, passageId) {
+  return (section?.passages || []).find((passage) => passage.id === passageId) || null;
+}
+
+function syncReadingSelection(reading, sectionId, passageId) {
+  const sections = reading?.sections || [];
+  const selectedSection = getReadingSection(reading, sectionId) || sections[0] || null;
+  const selectedPassage =
+    getReadingPassage(selectedSection, passageId) || selectedSection?.passages?.[0] || null;
+
+  appState.settings.selectedReadingSectionId = selectedSection?.id || "";
+  appState.settings.selectedReadingPassageId = selectedPassage?.id || "";
+
+  return {
+    section: selectedSection,
+    passage: selectedPassage
+  };
 }
 
 function saveState() {
@@ -234,6 +259,10 @@ function escapeHtml(value) {
 
 function escapeRegExp(value) {
   return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function dedupeStrings(values) {
+  return [...new Set((values || []).filter(Boolean).map((value) => String(value).trim()))];
 }
 
 function shuffle(items) {
@@ -801,6 +830,17 @@ function renderWeekModule(module) {
   const bookmarkKey = `week:${module.id}`;
   const reviewedKey = `week:${module.id}`;
   const badgeClass = slugify(module.priority);
+  const bridgeMarkup = module.isBridgeWeek
+    ? `
+      <div class="bridge-banner" data-glossary-scope>
+        <strong>Bridge Week</strong>
+        <p>${escapeHtml(
+          module.bridgeSummary ||
+            "No standalone lecture script survives in the local archive for this week, so the guide uses it as a structured synthesis and transition module."
+        )}</p>
+      </div>
+    `
+    : "";
   const conceptsMarkup = module.concepts.length
     ? `
       <details class="detail-panel">
@@ -867,6 +907,52 @@ function renderWeekModule(module) {
     `
     : "";
 
+  const comparisonMarkup = (module.comparisonTakeaways || module.comparisons || []).length
+    ? `
+      <details class="detail-panel">
+        <summary>Comparison Lens</summary>
+        <div class="stack-list">
+          ${(module.comparisonTakeaways || module.comparisons || [])
+            .map(
+              (comparison) => `
+                <article class="stack-card" data-glossary-scope>
+                  <h4>${escapeHtml(comparison.term || comparison.ancient || "Comparison")}</h4>
+                  <p>${escapeHtml(comparison.meaning || comparison.ancient || "")}</p>
+                  ${
+                    comparison.modern
+                      ? `<p><strong>Modern parallel:</strong> ${escapeHtml(comparison.modern)}</p>`
+                      : ""
+                  }
+                  <p class="muted">${escapeHtml(comparison.significance || "")}</p>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </details>
+    `
+    : module.comparisonLens
+      ? `
+        <details class="detail-panel">
+          <summary>Comparison Lens</summary>
+          <div class="stack-card" data-glossary-scope>
+            <p>${escapeHtml(module.comparisonLens)}</p>
+          </div>
+        </details>
+      `
+      : "";
+
+  const examAdviceMarkup = module.examAdvice
+    ? `
+      <details class="detail-panel">
+        <summary>${module.isBridgeWeek ? "Bridge Checklist" : "Study Questions in Prose"}</summary>
+        <div class="stack-card" data-glossary-scope>
+          <p>${escapeHtml(module.examAdvice)}</p>
+        </div>
+      </details>
+    `
+    : "";
+
   return `
     <article class="surface module-card" id="${module.id}">
       <div class="surface-header">
@@ -884,21 +970,37 @@ function renderWeekModule(module) {
       <div class="chip-row">${(module.themes || [])
         .map((theme) => `<span class="term-chip">${escapeHtml(theme)}</span>`)
         .join("")}</div>
+      ${bridgeMarkup}
       <div class="module-grid">
         <div class="panel-card" data-glossary-scope>
-          <h4>Lecture Thesis</h4>
+          <h4>${module.isBridgeWeek ? "Bridge Thesis" : "Lecture Thesis"}</h4>
           <p>${escapeHtml(module.lectureThesis)}</p>
         </div>
         <div class="panel-card" data-glossary-scope>
           <h4>Why It Matters</h4>
           <p>${escapeHtml(module.whyItMatters)}</p>
         </div>
+        ${
+          module.historicalContext
+            ? `
+              <div class="panel-card" data-glossary-scope>
+                <h4>${module.isBridgeWeek ? "Review Frame" : "Historical Context"}</h4>
+                <p>${escapeHtml(module.historicalContext)}</p>
+              </div>
+            `
+            : `
+              <div class="panel-card" data-glossary-scope>
+                <h4>Chronology</h4>
+                <ul>${module.chronology.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+              </div>
+            `
+        }
         <div class="panel-card" data-glossary-scope>
-          <h4>Chronology</h4>
-          <ul>${module.chronology.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+          <h4>${module.sourceFrame ? "Source Frame" : "Exam Trap"}</h4>
+          <p>${escapeHtml(module.sourceFrame || module.examTrap)}</p>
         </div>
         <div class="panel-card" data-glossary-scope>
-          <h4>Exam Trap</h4>
+          <h4>${module.isBridgeWeek ? "Exam Trap" : "Exam Trap"}</h4>
           <p>${escapeHtml(module.examTrap)}</p>
         </div>
       </div>
@@ -930,10 +1032,30 @@ function renderWeekModule(module) {
           : ""}
       </div>
       ${conceptsMarkup}
+      ${comparisonMarkup}
+      ${examAdviceMarkup}
       ${topicMarkup}
       ${passageMarkup}
     </article>
   `;
+}
+
+function renderReadingSourceCards(reading) {
+  return (reading.sourceProvenance || [])
+    .map(
+      (source) => `
+        <article class="stack-card reading-source-card">
+          <h4>${escapeHtml(source.label)}</h4>
+          <p>${escapeHtml(source.note || "")}</p>
+          ${
+            source.url
+              ? `<a class="ghost-btn" href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">Open Source</a>`
+              : ""
+          }
+        </article>
+      `
+    )
+    .join("");
 }
 
 function renderReadingsView() {
@@ -957,6 +1079,9 @@ function renderReadingsView() {
           <span class="timeline-era">${escapeHtml(reading.family)}</span>
           <strong>${escapeHtml(reading.shortTitle)}</strong>
           <span>${escapeHtml(reading.summary)}</span>
+          <span class="reading-index-meta">${escapeHtml(
+            reading.fullTextAvailable ? "Public-domain text available" : "Commentary and guided excerpts"
+          )}</span>
         </button>
       `
     )
@@ -968,8 +1093,59 @@ function renderReadingsView() {
     return;
   }
 
+  const { section, passage } = syncReadingSelection(
+    reading,
+    appState.settings.selectedReadingSectionId,
+    appState.settings.selectedReadingPassageId
+  );
+
   const bookmarkKey = `reading:${reading.id}`;
   const reviewedKey = `reading:${reading.id}`;
+  const sectionButtons = (reading.sections || [])
+    .map(
+      (entry) => `
+        <button
+          class="chip-button ${entry.id === section?.id ? "is-active" : ""}"
+          type="button"
+          data-action="open-reading-section"
+          data-id="${reading.id}"
+          data-section-id="${entry.id}"
+        >
+          ${escapeHtml(entry.label)}
+        </button>
+      `
+    )
+    .join("");
+
+  const relatedTermButtons = dedupeStrings(section?.relatedTerms || reading.relatedTerms || [])
+    .map((term) => {
+      const glossaryId = glossaryById.has(slugify(term)) ? slugify(term) : "";
+      return glossaryId
+        ? `<button class="chip-button" type="button" data-action="open-glossary" data-id="${glossaryId}">${escapeHtml(
+            term
+          )}</button>`
+        : `<span class="term-chip">${escapeHtml(term)}</span>`;
+    })
+    .join("");
+
+  const passageButtons = (section?.passages || [])
+    .map(
+      (entry) => `
+        <button
+          class="index-card ${entry.id === passage?.id ? "is-active" : ""}"
+          type="button"
+          data-action="open-reading-passage"
+          data-id="${reading.id}"
+          data-section-id="${section?.id || ""}"
+          data-passage-id="${entry.id}"
+        >
+          <strong>${escapeHtml(entry.citation)}</strong>
+          <span>${escapeHtml(entry.context || entry.analysis || "")}</span>
+        </button>
+      `
+    )
+    .join("");
+
   elements.readingDetail.innerHTML = `
     <div class="surface-header">
       <div>
@@ -977,6 +1153,9 @@ function renderReadingsView() {
         <h3>${escapeHtml(reading.title)}</h3>
       </div>
       <div class="button-row">
+        <span class="priority-badge ${reading.fullTextAvailable ? "foundation" : "reference"}">${
+          reading.fullTextAvailable ? "public-domain text" : "guided commentary"
+        }</span>
         ${renderBookmarkButton(bookmarkKey)}
         ${renderReviewedButton(reviewedKey)}
       </div>
@@ -996,28 +1175,82 @@ function renderReadingsView() {
         <h4>Why This Reading Matters</h4>
         <p>${escapeHtml(reading.whyItMatters)}</p>
       </div>
+      <div class="panel-card" data-glossary-scope>
+        <h4>Reader Note</h4>
+        <p>${escapeHtml(reading.readerNote || reading.courseRole || "")}</p>
+      </div>
       <div class="panel-card">
         <h4>Key Questions</h4>
         <ul data-glossary-scope>${reading.keyQuestions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
       </div>
+      <div class="panel-card" data-glossary-scope>
+        <h4>Course Role</h4>
+        <p>${escapeHtml(reading.courseRole)}</p>
+      </div>
     </div>
-    <div class="surface-header">
-      <h4>Excerpt Dossier</h4>
+    <div class="surface-header reading-subhead">
+      <h4>Source Provenance</h4>
     </div>
-    <div class="stack-list">
-      ${reading.excerpts
-        .map(
-          (excerpt) => `
-            <article class="quote-card" data-glossary-scope>
-              <strong>${escapeHtml(excerpt.citation)}</strong>
-              <p>${escapeHtml(excerpt.quote)}</p>
-              <p><strong>Context:</strong> ${escapeHtml(excerpt.context)}</p>
-              <p><strong>Analysis:</strong> ${escapeHtml(excerpt.analysis)}</p>
+    <div class="stack-list reading-source-list">
+      ${renderReadingSourceCards(reading)}
+    </div>
+    <div class="surface-header reading-subhead">
+      <h4>Section Map</h4>
+    </div>
+    <div class="chip-row reading-section-map">
+      ${sectionButtons || `<p class="empty-note">No section map available for this reading yet.</p>`}
+    </div>
+    ${
+      section
+        ? `
+          <div class="reading-section-layout">
+            <article class="panel-card reading-section-card" data-glossary-scope>
+              <p class="section-kicker">${escapeHtml(section.span || "Reading movement")}</p>
+              <h4>${escapeHtml(section.label)}</h4>
+              <p>${escapeHtml(section.summary)}</p>
+              <p><strong>Study note:</strong> ${escapeHtml(section.note || "")}</p>
+              <p><strong>Why it matters:</strong> ${escapeHtml(section.whyItMatters || "")}</p>
+              ${relatedTermButtons ? `<div class="chip-row">${relatedTermButtons}</div>` : ""}
             </article>
-          `
-        )
-        .join("")}
-    </div>
+            <div class="reading-passage-column">
+              <div class="surface-header reading-subhead">
+                <h4>Passage Map</h4>
+              </div>
+              <div class="stack-list reading-passage-list">
+                ${passageButtons || `<p class="empty-note">No passages are mapped for this section yet.</p>`}
+              </div>
+              ${
+                passage
+                  ? `
+                    <article class="quote-card reading-passage-detail" data-glossary-scope>
+                      <strong>${escapeHtml(passage.citation)}</strong>
+                      <p>${escapeHtml(passage.quote || "")}</p>
+                      <p><strong>Context:</strong> ${escapeHtml(passage.context || "")}</p>
+                      <p><strong>Analysis:</strong> ${escapeHtml(passage.analysis || "")}</p>
+                    </article>
+                  `
+                  : ""
+              }
+            </div>
+          </div>
+        `
+        : `
+          <div class="stack-list">
+            ${reading.excerpts
+              .map(
+                (excerpt) => `
+                  <article class="quote-card" data-glossary-scope>
+                    <strong>${escapeHtml(excerpt.citation)}</strong>
+                    <p>${escapeHtml(excerpt.quote)}</p>
+                    <p><strong>Context:</strong> ${escapeHtml(excerpt.context)}</p>
+                    <p><strong>Analysis:</strong> ${escapeHtml(excerpt.analysis)}</p>
+                  </article>
+                `
+              )
+              .join("")}
+          </div>
+        `
+    }
     <div class="button-row">
       ${reading.relatedWeekIds
         .map((weekId) => {
@@ -1028,6 +1261,15 @@ function renderReadingsView() {
               )}</button>`
             : "";
         })
+        .join("")}
+      ${(reading.sourceProvenance || [])
+        .filter((source) => source.url)
+        .map(
+          (source) =>
+            `<a class="ghost-btn" href="${escapeHtml(source.url)}" target="_blank" rel="noreferrer">Open ${escapeHtml(
+              source.label
+            )}</a>`
+        )
         .join("")}
     </div>
   `;
@@ -1318,7 +1560,9 @@ function renderStudyLinks(studyRef) {
   }
   if (studyRef.readingId) {
     buttons.push(
-      `<button class="ghost-btn" type="button" data-action="open-reading" data-id="${studyRef.readingId}">Open Reading</button>`
+      `<button class="ghost-btn" type="button" data-action="open-reading" data-id="${studyRef.readingId}" ${
+        studyRef.readingSectionId ? `data-section-id="${studyRef.readingSectionId}"` : ""
+      } ${studyRef.readingPassageId ? `data-passage-id="${studyRef.readingPassageId}"` : ""}>Open Reading</button>`
     );
   }
   return buttons.join("");
@@ -1496,7 +1740,7 @@ function handleDocumentClick(event) {
     return;
   }
 
-  const { action, target, id, key, index } = trigger.dataset;
+  const { action, target, id, key, index, sectionId, passageId } = trigger.dataset;
 
   switch (action) {
     case "switch-view":
@@ -1508,8 +1752,28 @@ function handleDocumentClick(event) {
       return;
     case "open-reading":
       appState.settings.selectedReadingId = id;
+      if (sectionId) {
+        appState.settings.selectedReadingSectionId = sectionId;
+      }
+      if (passageId) {
+        appState.settings.selectedReadingPassageId = passageId;
+      }
       renderReadingsView();
       switchView("readingsView");
+      saveState();
+      return;
+    case "open-reading-section":
+      appState.settings.selectedReadingId = id;
+      appState.settings.selectedReadingSectionId = sectionId || "";
+      appState.settings.selectedReadingPassageId = "";
+      renderReadingsView();
+      saveState();
+      return;
+    case "open-reading-passage":
+      appState.settings.selectedReadingId = id;
+      appState.settings.selectedReadingSectionId = sectionId || "";
+      appState.settings.selectedReadingPassageId = passageId || "";
+      renderReadingsView();
       saveState();
       return;
     case "open-glossary":

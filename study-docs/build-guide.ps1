@@ -1,6 +1,8 @@
 $ErrorActionPreference = "Stop"
 
 $scriptRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
+$repoRoot = Split-Path -Parent $scriptRoot
+$generator = Join-Path $repoRoot "scripts\generate-study-guide-content.mjs"
 $texFile = Join-Path $scriptRoot "final_exam_study_guide.tex"
 $buildDir = Join-Path $scriptRoot "latex-build"
 $outputPdf = Join-Path $scriptRoot "final_exam_study_guide.pdf"
@@ -18,6 +20,7 @@ $pdflatexArgs = @(
 
 Push-Location $scriptRoot
 try {
+  & node $generator | Out-Host
   & pdflatex @pdflatexArgs | Out-Host
   & pdflatex @pdflatexArgs | Out-Host
 

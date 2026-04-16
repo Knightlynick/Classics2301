@@ -1,0 +1,15 @@
+{
+  "name": "classics2301-study-system",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static study guide and study app for Classics 2301.",
+  "scripts": {
+    "generate:guide": "node scripts/generate-study-guide-content.mjs",
+    "screenshots": "node scripts/capture-pr-assets.mjs",
+    "validate": "node scripts/validate-study-app.mjs",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.0"
+  }
+}
