@@ -1,5 +1,5 @@
 (() => {
-const STORAGE_KEY = "cs2301-study-state-v4";
+const STORAGE_KEY = "cs2301-study-state-v5";
 const {
   guideSections,
   glossaryIndex,
@@ -15,6 +15,8 @@ const {
 const weekById = new Map(weekModules.map((module) => [module.id, module]));
 const readingById = new Map(readingDossiers.map((reading) => [reading.id, reading]));
 const glossaryById = new Map(glossaryIndex.map((entry) => [entry.id, entry]));
+const timelineById = new Map((timeline || []).map((entry) => [entry.id, entry]));
+const guideSectionById = new Map(guideSections.topLevelSections.map((section) => [section.id, section]));
 const glossaryLabelMap = buildGlossaryLabelMap(glossaryIndex);
 
 const appState = loadState();
@@ -33,7 +35,12 @@ const elements = {
   coreThemes: document.querySelector("#coreThemes"),
   archiveNotes: document.querySelector("#archiveNotes"),
   bookmarkList: document.querySelector("#bookmarkList"),
-  timelineRail: document.querySelector("#timelineRail"),
+  timelineEraSelect: document.querySelector("#timelineEraSelect"),
+  timelineCategorySelect: document.querySelector("#timelineCategorySelect"),
+  timelineFocusSelect: document.querySelector("#timelineFocusSelect"),
+  timelineNavigator: document.querySelector("#timelineNavigator"),
+  timelineEventList: document.querySelector("#timelineEventList"),
+  timelineDetail: document.querySelector("#timelineDetail"),
   views: [...document.querySelectorAll(".view-panel")],
   navButtons: [...document.querySelectorAll(".nav-btn")],
   weekFilterSelect: document.querySelector("#weekFilterSelect"),
@@ -82,7 +89,7 @@ function init() {
 
 function loadState() {
   const fallback = {
-    version: 4,
+    version: 5,
     history: [],
     bookmarks: [],
     reviewed: [],
@@ -97,11 +104,16 @@ function loadState() {
       glossarySearch: "",
       glossaryFamily: "all",
       selectedGlossaryId: glossaryIndex[0]?.id || "",
+      timelineEra: "all",
+      timelineCategory: "all",
+      timelineFocus: "all",
+      selectedTimelineId: timeline[0]?.id || "",
       guideSearch: "",
+      selectedGuideSectionId: guideSections.topLevelSections[0]?.id || "",
       mode: "final_mix",
       week: "Week 10",
       glossaryScope: "mixed",
-      count: 20
+      count: 30
     }
   };
 
@@ -112,7 +124,7 @@ function loadState() {
     }
 
     return {
-      version: 4,
+      version: 5,
       history: Array.isArray(parsed.history) ? parsed.history : [],
       bookmarks: Array.isArray(parsed.bookmarks) ? parsed.bookmarks : [],
       reviewed: Array.isArray(parsed.reviewed) ? parsed.reviewed : [],
@@ -199,6 +211,34 @@ function populateControls() {
     .map(([value, label]) => `<option value="${value}">${label}</option>`)
     .join("");
 
+  elements.timelineEraSelect.innerHTML = [
+    ["all", "All eras"],
+    ["greek", "Greek timeline"],
+    ["roman", "Roman timeline"]
+  ]
+    .map(([value, label]) => `<option value="${value}">${label}</option>`)
+    .join("");
+
+  const timelineCategories = ["all", ...new Set(timeline.map((entry) => entry.category))];
+  elements.timelineCategorySelect.innerHTML = timelineCategories
+    .map((value) => `<option value="${value}">${value === "all" ? "All categories" : toTitleCase(value)}</option>`)
+    .join("");
+
+  elements.timelineFocusSelect.innerHTML = [
+    ["all", "All course areas"],
+    ["week-10", "Roman law launch"],
+    ["week-11", "Catiline crisis"],
+    ["week-12", "Pro Caelio"],
+    ["week-7", "Lysias / homicide"],
+    ["week-8", "Gorgias / punishment"]
+  ]
+    .map(([value, label]) => `<option value="${value}">${label}</option>`)
+    .join("");
+
+  if (!elements.countSelect.querySelector(`option[value="${appState.settings.count}"]`)) {
+    appState.settings.count = 30;
+  }
+
   elements.modeSelect.value = appState.settings.mode;
   elements.weekSelect.value = appState.settings.week;
   elements.glossaryScopeSelect.value = appState.settings.glossaryScope;
@@ -208,6 +248,9 @@ function populateControls() {
   elements.readingFilterSelect.value = appState.settings.readingFamily;
   elements.glossarySearchInput.value = appState.settings.glossarySearch;
   elements.glossaryFamilySelect.value = appState.settings.glossaryFamily;
+  elements.timelineEraSelect.value = appState.settings.timelineEra;
+  elements.timelineCategorySelect.value = appState.settings.timelineCategory;
+  elements.timelineFocusSelect.value = appState.settings.timelineFocus;
   elements.guideSearchInput.value = appState.settings.guideSearch;
 }
 
@@ -265,10 +308,27 @@ function dedupeStrings(values) {
   return [...new Set((values || []).filter(Boolean).map((value) => String(value).trim()))];
 }
 
+function toTitleCase(value) {
+  return String(value || "")
+    .split(/[\s_-]+/)
+    .filter(Boolean)
+    .map((part) => part[0].toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function randomFraction() {
+  if (window.crypto?.getRandomValues) {
+    const values = new Uint32Array(1);
+    window.crypto.getRandomValues(values);
+    return values[0] / 4294967296;
+  }
+  return Math.random();
+}
+
 function shuffle(items) {
   const copy = [...items];
   for (let index = copy.length - 1; index > 0; index -= 1) {
-    const swapIndex = Math.floor(Math.random() * (index + 1));
+    const swapIndex = Math.floor(randomFraction() * (index + 1));
     [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
   }
   return copy;
@@ -278,23 +338,24 @@ function weightedSelection(items, count) {
   return [...items]
     .map((item) => ({
       item,
-      key: Math.pow(Math.random(), 1 / (item.weight || 1))
+      key: Math.pow(randomFraction(), 1 / (item.weight || 1))
     }))
     .sort((left, right) => right.key - left.key)
     .slice(0, count)
     .map((entry) => entry.item);
 }
 
-function materializeQuizQuestion(question) {
-  const choices = shuffle([
-    { label: question.correctAnswer, correct: true },
-    ...question.distractors.map((choice) => ({ label: choice, correct: false }))
-  ]);
+function materializeQuizQuestion(question, forcedCorrectIndex = null) {
+  const distractors = dedupeStrings(question.distractors || []).filter((choice) => choice !== question.correctAnswer);
+  const wrongChoices = shuffle(distractors).slice(0, 3);
+  const correctIndex = Number.isInteger(forcedCorrectIndex) ? forcedCorrectIndex : Math.floor(randomFraction() * 4);
+  const choices = [...wrongChoices];
+  choices.splice(correctIndex, 0, question.correctAnswer);
 
   return {
     ...question,
-    choices: choices.map((choice) => choice.label),
-    correctIndex: choices.findIndex((choice) => choice.correct)
+    choices,
+    correctIndex
   };
 }
 
@@ -668,6 +729,8 @@ function renderStartView() {
   const coreThemeCards = parseStructuredCards(
     guideSections.overviewSections.find((section) => section.title === "Core Themes You Should See Everywhere")?.markdown || ""
   );
+  const filteredTimeline = getFilteredTimelineEvents();
+  const selectedTimelineEvent = syncTimelineSelection(filteredTimeline);
 
   elements.studyPath.innerHTML = studyPath
     .map(
@@ -719,22 +782,161 @@ function renderStartView() {
     })
     .join("");
 
-  elements.timelineRail.innerHTML = timeline
-    .map(
-      (entry) => `
-        <button class="timeline-card ${entry.era}" type="button" ${targetToAction(entry.target)}>
-          <span class="timeline-era">${escapeHtml(entry.era)}</span>
-          <strong>${escapeHtml(entry.label)}</strong>
-          <span>${escapeHtml(entry.detail)}</span>
-        </button>
-      `
-    )
-    .join("");
+  elements.timelineNavigator.innerHTML = renderTimelineNavigator(filteredTimeline);
+  elements.timelineEventList.innerHTML = filteredTimeline.length
+    ? filteredTimeline
+        .map(
+          (entry) => `
+            <button
+              class="timeline-event-card ${entry.id === selectedTimelineEvent?.id ? "is-active" : ""}"
+              type="button"
+              data-action="open-timeline-event"
+              data-id="${entry.id}"
+            >
+              <span class="timeline-era">${escapeHtml(entry.dateLabel)}</span>
+              <strong>${escapeHtml(entry.title)}</strong>
+              <span>${escapeHtml(entry.summary)}</span>
+              <div class="chip-row">
+                <span class="term-chip">${escapeHtml(toTitleCase(entry.era))}</span>
+                <span class="term-chip">${escapeHtml(toTitleCase(entry.category))}</span>
+                ${
+                  entry.moduleIds[0]
+                    ? `<span class="term-chip">${escapeHtml(weekById.get(entry.moduleIds[0])?.week || entry.moduleIds[0])}</span>`
+                    : ""
+                }
+              </div>
+            </button>
+          `
+        )
+        .join("")
+    : `<p class="empty-note">No timeline events match the current filter. Broaden the era or category to reopen the full course chronology.</p>`;
+  elements.timelineDetail.innerHTML = renderTimelineDetail(selectedTimelineEvent);
 
   elements.bookmarkList.innerHTML = renderBookmarkList();
   elements.recentAttempts.innerHTML = renderRecentAttempts();
 
   annotateGlossary(elements.coreThemes);
+  annotateGlossary(elements.timelineDetail);
+}
+
+function getFilteredTimelineEvents() {
+  return timeline.filter((entry) => {
+    const eraMatch = appState.settings.timelineEra === "all" || entry.era === appState.settings.timelineEra;
+    const categoryMatch =
+      appState.settings.timelineCategory === "all" || entry.category === appState.settings.timelineCategory;
+    const focusMatch =
+      appState.settings.timelineFocus === "all" || (entry.moduleIds || []).includes(appState.settings.timelineFocus);
+    return eraMatch && categoryMatch && focusMatch;
+  });
+}
+
+function syncTimelineSelection(events) {
+  if (!events.some((entry) => entry.id === appState.settings.selectedTimelineId)) {
+    appState.settings.selectedTimelineId = events[0]?.id || "";
+  }
+
+  return timelineById.get(appState.settings.selectedTimelineId) || events[0] || null;
+}
+
+function renderTimelineNavigator(events) {
+  const anchors = [];
+  let lastEra = "";
+
+  events.forEach((entry) => {
+    if (entry.era !== lastEra) {
+      anchors.push({ id: entry.id, label: `${toTitleCase(entry.era)} arc` });
+      lastEra = entry.era;
+    }
+  });
+
+  return anchors
+    .map(
+      (anchor) => `
+        <button class="chip-button" type="button" data-action="open-timeline-event" data-id="${anchor.id}">
+          ${escapeHtml(anchor.label)}
+        </button>
+      `
+    )
+    .join("");
+}
+
+function renderTimelineDetail(event) {
+  if (!event) {
+    return `<p class="empty-note">Choose a timeline event to inspect its laws, crimes, punishments, and study links.</p>`;
+  }
+
+  const weekButtons = (event.moduleIds || [])
+    .map((moduleId) => {
+      const module = weekById.get(moduleId);
+      return module
+        ? `<button class="ghost-btn" type="button" data-action="open-week" data-id="${module.id}">${escapeHtml(module.week)}</button>`
+        : "";
+    })
+    .join("");
+
+  const readingButtons = (event.readingIds || [])
+    .map((readingId) => {
+      const reading = readingById.get(readingId);
+      return reading
+        ? `<button class="ghost-btn" type="button" data-action="open-reading" data-id="${reading.id}">${escapeHtml(reading.shortTitle)}</button>`
+        : "";
+    })
+    .join("");
+
+  const guideButton = event.guideSectionId
+    ? `<button class="ghost-btn" type="button" data-action="open-guide-section" data-id="${event.guideSectionId}">Open Reader Chapter</button>`
+    : "";
+
+  return `
+    <div class="surface-header">
+      <div>
+        <p class="section-kicker">${escapeHtml(event.dateLabel)}</p>
+        <h3>${escapeHtml(event.title)}</h3>
+      </div>
+      <span class="priority-badge reference">${escapeHtml(toTitleCase(event.category))}</span>
+    </div>
+    <p class="module-headline">${escapeHtml(event.summary)}</p>
+    <div class="chip-row">
+      <span class="term-chip">${escapeHtml(toTitleCase(event.era))}</span>
+      ${event.people.map((person) => `<span class="term-chip">${escapeHtml(person)}</span>`).join("")}
+    </div>
+    <div class="timeline-detail-grid">
+      <div class="panel-card" data-glossary-scope>
+        <h4>Laws and Institutions</h4>
+        ${event.laws.length ? `<ul>${event.laws.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : `<p class="muted">This is more contextual than doctrinal.</p>`}
+      </div>
+      <div class="panel-card" data-glossary-scope>
+        <h4>Crimes or Threats</h4>
+        ${event.crimes.length ? `<ul>${event.crimes.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : `<p class="muted">No single offense label dominates this moment.</p>`}
+      </div>
+      <div class="panel-card" data-glossary-scope>
+        <h4>Punishments or Responses</h4>
+        ${event.punishments.length ? `<ul>${event.punishments.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>` : `<p class="muted">Use the linked week for the main response logic.</p>`}
+      </div>
+      <div class="panel-card">
+        <h4>Why It Matters</h4>
+        <p>${escapeHtml(buildTimelineWhyItMatters(event))}</p>
+      </div>
+    </div>
+    <div class="button-row">
+      ${weekButtons}
+      ${readingButtons}
+      ${guideButton}
+    </div>
+  `;
+}
+
+function buildTimelineWhyItMatters(event) {
+  if (event.moduleIds.includes("week-10")) {
+    return "This is part of the Roman law spine, so it is the kind of chronology the final exam is most likely to reuse in institutional and comparison questions.";
+  }
+  if (event.moduleIds.includes("week-11") || event.moduleIds.includes("week-12")) {
+    return "This event helps explain how Rome moves between citizen, criminal, enemy, and public-danger frames under pressure.";
+  }
+  if (event.moduleIds.includes("week-7") || event.moduleIds.includes("week-8")) {
+    return "This moment is valuable because it links doctrine to rhetoric: the course keeps asking how legal meaning is produced, not just what the rule says.";
+  }
+  return "This event anchors the course's shift from broad chronology into specific institutions, readings, and exam-worthy comparisons.";
 }
 
 function renderBookmarkList() {
@@ -804,7 +1006,7 @@ function renderRecentAttempts() {
       return `
         <article class="stack-card">
           <h3>${escapeHtml(entry.label)}</h3>
-          <p>${escapeHtml(`${entry.correct} / ${entry.total} correct`)} · ${timestamp}</p>
+          <p>${escapeHtml(`${entry.correct} / ${entry.total} correct`)} | ${timestamp}</p>
         </article>
       `;
     })
@@ -953,6 +1155,38 @@ function renderWeekModule(module) {
     `
     : "";
 
+  const timelineButtons = (module.relatedTimelineIds || [])
+    .map((timelineId) => timelineById.get(timelineId))
+    .filter(Boolean)
+    .slice(0, 4)
+    .map(
+      (entry) => `
+        <button class="ghost-btn" type="button" data-action="open-timeline-event" data-id="${entry.id}">
+          ${escapeHtml(entry.dateLabel)}
+        </button>
+      `
+    )
+    .join("");
+
+  const questionAnglesMarkup = module.likelyQuestionAngles?.length
+    ? `
+      <details class="detail-panel">
+        <summary>Likely Exam Angles</summary>
+        <div class="stack-list">
+          ${module.likelyQuestionAngles
+            .map(
+              (angle) => `
+                <article class="stack-card" data-glossary-scope>
+                  <p>${escapeHtml(angle)}</p>
+                </article>
+              `
+            )
+            .join("")}
+        </div>
+      </details>
+    `
+    : "";
+
   return `
     <article class="surface module-card" id="${module.id}">
       <div class="surface-header">
@@ -967,6 +1201,7 @@ function renderWeekModule(module) {
         </div>
       </div>
       <p class="module-headline">${escapeHtml(module.headline || module.summary)}</p>
+      ${module.narrativeIntro ? `<p class="reader-lead" data-glossary-scope>${escapeHtml(module.narrativeIntro)}</p>` : ""}
       <div class="chip-row">${(module.themes || [])
         .map((theme) => `<span class="term-chip">${escapeHtml(theme)}</span>`)
         .join("")}</div>
@@ -1020,8 +1255,15 @@ function renderWeekModule(module) {
           <h4>Self-Check</h4>
           <ul data-glossary-scope>${module.selfCheck.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
         </div>
+        <div class="panel-card" data-glossary-scope>
+          <h4>Key Institutions</h4>
+          <div class="chip-row">${(module.keyInstitutions || [])
+            .map((item) => `<span class="term-chip">${escapeHtml(item)}</span>`)
+            .join("")}</div>
+        </div>
       </div>
       <div class="button-row">
+        ${timelineButtons}
         ${module.relatedReadings
           .map(
             (reading) => `<button class="ghost-btn" type="button" data-action="open-reading" data-id="${reading.id}">Open ${escapeHtml(reading.shortTitle)}</button>`
@@ -1034,6 +1276,7 @@ function renderWeekModule(module) {
       ${conceptsMarkup}
       ${comparisonMarkup}
       ${examAdviceMarkup}
+      ${questionAnglesMarkup}
       ${topicMarkup}
       ${passageMarkup}
     </article>
@@ -1366,53 +1609,124 @@ function renderGuideView() {
       section.text.toLowerCase().includes(query)
     );
   });
+  const resultIds = new Set(results.map((result) => result.id));
+
+  if (!guideSectionById.has(appState.settings.selectedGuideSectionId)) {
+    appState.settings.selectedGuideSectionId = guideSections.topLevelSections[0]?.id || "";
+  }
+
+  if (query && results.length && !resultIds.has(appState.settings.selectedGuideSectionId)) {
+    appState.settings.selectedGuideSectionId = results[0].id;
+  }
+
+  const currentSection =
+    guideSectionById.get(appState.settings.selectedGuideSectionId) || guideSections.topLevelSections[0] || null;
+  const currentIndex = guideSections.topLevelSections.findIndex((section) => section.id === currentSection?.id);
+  const previousSection = currentIndex > 0 ? guideSections.topLevelSections[currentIndex - 1] : null;
+  const nextSection =
+    currentIndex >= 0 && currentIndex < guideSections.topLevelSections.length - 1
+      ? guideSections.topLevelSections[currentIndex + 1]
+      : null;
 
   elements.guideSearchResults.innerHTML = results
     .slice(0, 14)
     .map(
       (result) => `
-        <button class="index-card" type="button" data-action="open-guide-section" data-id="${result.id}">
+        <button class="index-card ${result.id === currentSection?.id ? "is-active" : ""}" type="button" data-action="open-guide-section" data-id="${result.id}">
           <strong>${escapeHtml(result.title)}</strong>
           <span>${escapeHtml(result.preview)}</span>
         </button>
       `
     )
-    .join("");
+    .join("") || `<p class="empty-note">No reader chapters match that search yet. Try a week number, author, law, or core concept.</p>`;
 
   elements.guideOutline.innerHTML = guideSections.topLevelSections
     .map(
       (section) => `
-        <button class="outline-link" type="button" data-action="open-guide-section" data-id="${section.id}">
+        <button class="outline-link ${section.id === currentSection?.id ? "is-active" : ""}" type="button" data-action="open-guide-section" data-id="${section.id}">
           ${escapeHtml(section.title)}
         </button>
       `
     )
     .join("");
 
-  elements.guideContent.innerHTML = guideSections.topLevelSections
-    .map(
-      (section) => `
-        <section class="guide-section" id="${section.id}">
-          <div class="surface-header">
-            <h3>${escapeHtml(section.title)}</h3>
-            <div class="button-row">
-              ${renderBookmarkButton(`guide:${section.id}`)}
-            </div>
-          </div>
-          <div class="guide-copy">${markdownToHtml(cleanSectionHeading(section.markdown))}</div>
-        </section>
-      `
-    )
-    .join("");
+  if (!currentSection) {
+    elements.guideContent.innerHTML = `<p class="empty-note">No reader chapters are available.</p>`;
+    return;
+  }
+
+  elements.guideContent.innerHTML = `
+    <section class="guide-reader">
+      <div class="surface-header">
+        <div>
+          <p class="section-kicker">Chapter ${currentIndex + 1} of ${guideSections.topLevelSections.length}</p>
+          <h3>${escapeHtml(currentSection.title)}</h3>
+        </div>
+        <div class="button-row">
+          ${renderBookmarkButton(`guide:${currentSection.id}`)}
+        </div>
+      </div>
+      ${
+        currentSection.preview
+          ? `<div class="reader-intro panel-card" data-glossary-scope><p>${escapeHtml(currentSection.preview)}</p></div>`
+          : ""
+      }
+      <div class="button-row reader-links">
+        ${renderGuideSectionStudyLinks(currentSection)}
+      </div>
+      <div class="guide-copy">${markdownToHtml(cleanSectionHeading(currentSection.markdown))}</div>
+      <div class="reader-nav">
+        ${
+          previousSection
+            ? `<button class="ghost-btn" type="button" data-action="open-guide-section" data-id="${previousSection.id}">Previous Chapter</button>`
+            : `<span class="muted">Start of reader</span>`
+        }
+        ${
+          nextSection
+            ? `<button class="primary-btn" type="button" data-action="open-guide-section" data-id="${nextSection.id}">Next Chapter</button>`
+            : `<span class="muted">End of reader</span>`
+        }
+      </div>
+    </section>
+  `;
 
   annotateGlossary(elements.guideContent);
 }
 
+function renderGuideSectionStudyLinks(section) {
+  const links = [];
+  const weekMatch = /^Week (\d+)/.exec(section.title);
+
+  if (weekMatch) {
+    links.push(
+      `<button class="ghost-btn" type="button" data-action="open-week" data-id="week-${weekMatch[1]}">Open Week Module</button>`
+    );
+  }
+
+  if (/Lysias/i.test(section.title)) {
+    links.push(`<button class="ghost-btn" type="button" data-action="open-reading" data-id="lysias-1">Open Lysias Dossier</button>`);
+  } else if (/Gorgias/i.test(section.title)) {
+    links.push(`<button class="ghost-btn" type="button" data-action="open-reading" data-id="gorgias">Open Gorgias Dossier</button>`);
+  } else if (/Catiline/i.test(section.title)) {
+    links.push(`<button class="ghost-btn" type="button" data-action="open-reading" data-id="catiline">Open Catiline Dossier</button>`);
+  } else if (/Caelio/i.test(section.title)) {
+    links.push(`<button class="ghost-btn" type="button" data-action="open-reading" data-id="pro-caelio">Open Pro Caelio Dossier</button>`);
+  } else if (/Glossary/i.test(section.title)) {
+    links.push(`<button class="ghost-btn" type="button" data-action="switch-view" data-target="glossaryView">Open Glossary</button>`);
+  } else if (/Timeline/i.test(section.title)) {
+    links.push(`<button class="ghost-btn" type="button" data-action="switch-view" data-target="startView">Open Timeline Workspace</button>`);
+  }
+
+  return links.join("");
+}
+
 function renderQuizStats() {
   const summary = getProgressSummary();
+  const coreCount = quizQuestions.filter((question) => question.bank === "core").length;
   elements.quizStats.innerHTML = `
     <div class="stat-chip"><strong>${summary.attempts}</strong><span>sets</span></div>
     <div class="stat-chip"><strong>${summary.accuracy}%</strong><span>overall</span></div>
+    <div class="stat-chip"><strong>${coreCount}</strong><span>core questions</span></div>
   `;
 }
 
@@ -1444,6 +1758,7 @@ function renderQuizView() {
                     <article class="stack-card">
                       <strong>${escapeHtml(entry.prompt)}</strong>
                       <p>${escapeHtml(`Correct answer: ${entry.correctAnswer}`)}</p>
+                      <p class="muted">${escapeHtml(entry.explanation || "")}</p>
                       <div class="button-row">${renderStudyLinks(entry.studyRef)}</div>
                     </article>
                   `
@@ -1469,7 +1784,14 @@ function renderQuizView() {
         <div class="score-chip">${escapeHtml(`${quiz.score} correct`)}</div>
       </div>
       <div class="progress-rail"><div class="progress-bar" style="width:${progress}%"></div></div>
-      <p class="muted">${escapeHtml(`${question.week} · ${question.topic} · ${question.sourceRef}`)}</p>
+      <p class="muted">${escapeHtml(`${question.week} | ${question.topic} | ${question.sourceRef}`)}</p>
+      <div class="chip-row">
+        <span class="term-chip">${escapeHtml(toTitleCase(question.difficulty || "medium"))}</span>
+        ${(question.tags || [])
+          .slice(0, 3)
+          .map((tag) => `<span class="term-chip">${escapeHtml(toTitleCase(tag))}</span>`)
+          .join("")}
+      </div>
       <h4 class="question-title">${escapeHtml(question.prompt)}</h4>
       <div class="answer-list">
         ${question.choices
@@ -1568,38 +1890,119 @@ function renderStudyLinks(studyRef) {
   return buttons.join("");
 }
 
+function getRecentQuestionIds(limit = 120) {
+  return new Set(
+    appState.history
+      .slice(0, 5)
+      .flatMap((entry) => entry.questionIds || [])
+      .slice(0, limit)
+  );
+}
+
+function selectDistinctQuestions(pool, count, recentIds = new Set()) {
+  const selected = [];
+  const usedIds = new Set();
+  const usedVariantGroups = new Set();
+  const preferredPool = pool.filter((question) => !recentIds.has(question.id));
+  const fallbackPool = pool.filter((question) => recentIds.has(question.id));
+
+  const takeFrom = (source) => {
+    weightedSelection(source, source.length).forEach((question) => {
+      if (selected.length >= count) {
+        return;
+      }
+      if (usedIds.has(question.id)) {
+        return;
+      }
+      if (question.variantGroup && usedVariantGroups.has(question.variantGroup)) {
+        return;
+      }
+      if ((question.distractors || []).length < 3) {
+        return;
+      }
+
+      selected.push(question);
+      usedIds.add(question.id);
+      if (question.variantGroup) {
+        usedVariantGroups.add(question.variantGroup);
+      }
+    });
+  };
+
+  takeFrom(preferredPool);
+  takeFrom(fallbackPool);
+  return selected.slice(0, count);
+}
+
+function materializeQuizSet(questions) {
+  const answerPlan = shuffle(
+    Array.from({ length: Math.ceil(questions.length / 4) * 4 }, (_, index) => index % 4)
+  ).slice(0, questions.length);
+
+  return questions.map((question, index) => materializeQuizQuestion(question, answerPlan[index]));
+}
+
 function buildQuiz(settings) {
+  const recentIds = getRecentQuestionIds();
+  const corePool = quizQuestions.filter((question) => question.bank === "core");
+
   if (settings.mode === "week_practice") {
-    return shuffle(
-      quizQuestions.filter((question) => question.bank === "core" && question.week === settings.week)
-    )
-      .slice(0, settings.count)
-      .map(materializeQuizQuestion);
+    return materializeQuizSet(
+      selectDistinctQuestions(
+        corePool.filter((question) => question.week === settings.week),
+        settings.count,
+        recentIds
+      )
+    );
   }
 
   if (settings.mode === "glossary_drill") {
-    return shuffle(
-      quizQuestions.filter((question) => {
-        if (question.bank !== "glossary") {
-          return false;
-        }
-        return settings.glossaryScope === "mixed" || question.family === settings.glossaryScope;
-      })
-    )
-      .slice(0, settings.count)
-      .map(materializeQuizQuestion);
+    return materializeQuizSet(
+      selectDistinctQuestions(
+        quizQuestions.filter((question) => {
+          if (question.bank !== "glossary") {
+            return false;
+          }
+          return settings.glossaryScope === "mixed" || question.family === settings.glossaryScope;
+        }),
+        settings.count,
+        recentIds
+      )
+    );
   }
 
   if (settings.mode === "cumulative") {
-    return shuffle(quizQuestions.filter((question) => question.bank === "core"))
-      .slice(0, settings.count)
-      .map(materializeQuizQuestion);
+    return materializeQuizSet(selectDistinctQuestions(corePool, settings.count, recentIds));
   }
 
-  return weightedSelection(
-    quizQuestions.filter((question) => question.bank === "core"),
-    settings.count
-  ).map(materializeQuizQuestion);
+  const romanCount = Math.min(settings.count, Math.max(1, Math.ceil(settings.count * 0.5)));
+  const highCount = Math.min(settings.count - romanCount, Math.max(1, Math.floor(settings.count * 0.3)));
+  const foundationCount = Math.max(0, settings.count - romanCount - highCount);
+
+  const romanPool = corePool.filter((question) => question.priority === "roman-heavy");
+  const highPool = corePool.filter((question) => question.priority === "high");
+  const foundationPool = corePool.filter((question) =>
+    ["foundation", "reference"].includes(question.priority)
+  );
+
+  const selected = [
+    ...selectDistinctQuestions(romanPool, romanCount, recentIds),
+    ...selectDistinctQuestions(highPool, highCount, recentIds),
+    ...selectDistinctQuestions(foundationPool, foundationCount, recentIds)
+  ];
+
+  if (selected.length < settings.count) {
+    const selectedIds = new Set(selected.map((question) => question.id));
+    selected.push(
+      ...selectDistinctQuestions(
+        corePool.filter((question) => !selectedIds.has(question.id)),
+        settings.count - selected.length,
+        recentIds
+      )
+    );
+  }
+
+  return materializeQuizSet(shuffle(selected).slice(0, settings.count));
 }
 
 function startQuiz() {
@@ -1649,6 +2052,7 @@ function answerQuestion(selectedIndex) {
     week: question.week,
     correct: isCorrect,
     correctAnswer: question.correctAnswer,
+    explanation: question.explanation,
     studyRef: question.studyRef
   });
 
@@ -1703,7 +2107,8 @@ function finishQuiz(endedEarly) {
     week: quiz.settings.week,
     correct: quiz.score,
     total: recordedTotal,
-    breakdown
+    breakdown,
+    questionIds: quiz.questions.map((question) => question.id)
   };
 
   appState.history.unshift(historyEntry);
@@ -1776,6 +2181,12 @@ function handleDocumentClick(event) {
       renderReadingsView();
       saveState();
       return;
+    case "open-timeline-event":
+      appState.settings.selectedTimelineId = id;
+      renderStartView();
+      saveState();
+      switchView("startView");
+      return;
     case "open-glossary":
       appState.settings.selectedGlossaryId = id;
       renderGlossaryView();
@@ -1783,8 +2194,10 @@ function handleDocumentClick(event) {
       saveState();
       return;
     case "open-guide-section":
-      runtime.pendingScrollTarget = id;
+      appState.settings.selectedGuideSectionId = id;
+      renderGuideView();
       switchView("guideView");
+      saveState();
       return;
     case "toggle-bookmark":
       toggleKey(appState.bookmarks, key);
@@ -1834,6 +2247,15 @@ function handleDocumentChange(event) {
   } else if (event.target === elements.glossaryFamilySelect) {
     appState.settings.glossaryFamily = event.target.value;
     renderGlossaryView();
+  } else if (event.target === elements.timelineEraSelect) {
+    appState.settings.timelineEra = event.target.value;
+    renderStartView();
+  } else if (event.target === elements.timelineCategorySelect) {
+    appState.settings.timelineCategory = event.target.value;
+    renderStartView();
+  } else if (event.target === elements.timelineFocusSelect) {
+    appState.settings.timelineFocus = event.target.value;
+    renderStartView();
   } else if (event.target === elements.modeSelect) {
     appState.settings.mode = event.target.value;
     toggleQuizFields();

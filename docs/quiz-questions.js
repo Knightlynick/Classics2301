@@ -1505,16 +1505,42 @@ function buildCoreTrap(topic) {
   return "Do not choose the answer that sounds most familiar in modern legal language unless the lecture explicitly tells you the ancient material works the same way.";
 }
 
+function tokenizeGlossaryEntry(entry) {
+  return uniqueTokens(
+    [entry.term, entry.definition]
+      .join(" ")
+      .toLowerCase()
+      .replace(/[^a-z0-9\s]/g, " ")
+      .split(/\s+/)
+  );
+}
+
+function uniqueTokens(values) {
+  return [...new Set((values || []).filter((value) => value && value.length > 2))];
+}
+
+function glossaryDistractorScore(entry, candidate) {
+  const entryTokens = tokenizeGlossaryEntry(entry);
+  const candidateTokens = tokenizeGlossaryEntry(candidate);
+  const shared = entryTokens.filter((token) => candidateTokens.includes(token)).length;
+  const termHint = entry.term[0]?.toLowerCase() === candidate.term[0]?.toLowerCase() ? 1 : 0;
+  const domainHint =
+    entry.definition.toLowerCase().includes("court") === candidate.definition.toLowerCase().includes("court") ? 1 : 0;
+
+  return shared * 3 + termHint + domainHint;
+}
+
 function pickGlossaryDistractors(entries, index) {
-  const offsets = [1, 2, 5, 8, 13, 21, 34];
-  const distractors = [];
-  for (const offset of offsets) {
-    const candidate = entries[(index + offset) % entries.length];
-    if (!candidate || distractors.some((entry) => entry.term === candidate.term)) continue;
-    distractors.push(candidate);
-    if (distractors.length === 3) break;
-  }
-  return distractors;
+  const entry = entries[index];
+  return entries
+    .filter((candidate) => candidate.term !== entry.term)
+    .map((candidate) => ({
+      candidate,
+      score: glossaryDistractorScore(entry, candidate)
+    }))
+    .sort((left, right) => right.score - left.score || left.candidate.term.localeCompare(right.candidate.term))
+    .slice(0, 3)
+    .map((item) => item.candidate);
 }
 
 function buildGlossaryStudyNote(entry, family, distractors) {
@@ -1569,8 +1595,15 @@ function toQuestionAuthoringShape(question) {
   };
 }
 
+const generatedCoreQuestions =
+  Array.isArray(window.GENERATED_CORE_QUESTIONS) && window.GENERATED_CORE_QUESTIONS.length
+    ? window.GENERATED_CORE_QUESTIONS
+    : coreQuestions;
+const authoredCoreQuestions =
+  generatedCoreQuestions === coreQuestions ? coreQuestions : [...generatedCoreQuestions, ...coreQuestions];
+
 window.QUIZ_QUESTION_BANK = [
-  ...coreQuestions.map((question) => ({
+  ...authoredCoreQuestions.map((question) => ({
     ...question,
     bank: "core",
     family: question.family || null,

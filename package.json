@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "description": "Static study guide and study app for Classics 2301.",
   "scripts": {
-    "generate:guide": "node scripts/generate-study-guide-content.mjs",
+    "generate:guide": "node scripts/generate-study-guide-content.mjs && node scripts/generate-question-bank.mjs",
+    "generate:questions": "node scripts/generate-question-bank.mjs",
     "screenshots": "node scripts/capture-pr-assets.mjs",
     "validate": "node scripts/validate-study-app.mjs",
     "test": "playwright test"
